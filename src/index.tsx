@@ -1,5 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import App from './components/main/app';
+import {CurrentFilm}  from './components/main/currentFilm';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -7,6 +9,11 @@ const root = ReactDOM.createRoot(
 
 root.render(
   <React.StrictMode>
-    <h1>Hello, World!</h1>
+    <App
+      name={CurrentFilm.name}
+      genre={CurrentFilm.genre}
+      date={CurrentFilm.date}
+      img={CurrentFilm.img}
+    />
   </React.StrictMode>
 );
