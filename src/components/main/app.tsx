@@ -8,7 +8,7 @@ type AppProps = {
 };
 
 function App(props: AppProps): JSX.Element {
-  return <MainPage name={props.name} date ={props.date} genre={props.genre} img={props.img} />;
+  return <MainPage {...props} />;
 }
 
 export default App;

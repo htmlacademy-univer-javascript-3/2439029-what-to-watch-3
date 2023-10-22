@@ -1,5 +1,5 @@
-import CatalogGenres from '../components/catalogGenres';
-import FilmCard from '../components/filmCard.tsx';
+import CatalogGenres from '../components/catalog-genres.tsx';
+import FilmCard from '../components/film-card.tsx';
 
 type movie = {
   name: string;
@@ -20,16 +20,16 @@ function MainPage({name, date, genre, img}: movie) {
 
         <header className="page-header film-card__head">
           <div className="logo">
-              <a href="main.html" className="logo__link">
-                  <span className="logo__letter logo__letter--1">W</span>
-                  <span className="logo__letter logo__letter--2">T</span>
-                  <span className="logo__letter logo__letter--3">W</span>
-              </a>
+            <a href="main.html" className="logo__link">
+              <span className="logo__letter logo__letter--1">W</span>
+              <span className="logo__letter logo__letter--2">T</span>
+              <span className="logo__letter logo__letter--3">W</span>
+            </a>
           </div>
           <ul className="user-block">
             <li className="user-block__item">
               <div className="user-block__avatar">
-                <img src='img/avatar.jpg' alt="User avatar" width="63" height="63"/>
+                <img src="img/avatar.jpg" alt="User avatar" width="63" height="63"/>
               </div>
             </li>
             <li className="user-block__item">
@@ -52,18 +52,18 @@ function MainPage({name, date, genre, img}: movie) {
               </p>
 
               <div className="film-card__buttons">
-                <button className='btn btn--play film-card__button' type="button">
-                  <svg viewBox={'0 0 '.concat('19'.concat(' '.concat('19')))} width='19' height='19'>
-                      <use xlinkHref='#play-s'></use>
+                <button className="btn btn--play film-card__button" type="button">
+                  <svg viewBox={`0 0 ${19} ${19}`}>
+                    <use xlinkHref="#play-s"></use>
                   </svg>
                   <span>Play</span>
                 </button>
-                <button className='btn btn--list film-card__button' type='button'>
-                  <svg viewBox='0 0 19 20' width='19' height='20'>
-                    <use xlinkHref='#add'></use>
+                <button className="btn btn--list film-card__button" type="button">
+                  <svg viewBox="0 0 19 20" width="19" height="20">
+                    <use xlinkHref="#add"></use>
                   </svg>
                   <span>My list</span>
-                  <span className='film-card__count'>9</span>
+                  <span className="film-card__count">9</span>
                 </button>
               </div>
             </div>
@@ -75,7 +75,7 @@ function MainPage({name, date, genre, img}: movie) {
         <section className="catalog">
           <h2 className="catalog__title visually-hidden">Catalog</h2>
 
-          <ul className='catalog__genres-list'>
+          <ul className="catalog__genres-list">
             <li className="catalog__genres-item catalog__genres-item--active">
               <a href={'#'} className="catalog__genres-link">{'All genres'}</a>
             </li>
@@ -91,7 +91,9 @@ function MainPage({name, date, genre, img}: movie) {
           </ul>
 
           <div className="catalog__films-list">
-            <FilmCard name={'Fantastic Beasts: The Crimes of Grindelwald'} img={'public/img/fantastic-beasts-the-crimes-of-grindelwald.jpg'}/>
+            <FilmCard name={'Fantastic Beasts: The Crimes of Grindelwald'}
+              img={'public/img/fantastic-beasts-the-crimes-of-grindelwald.jpg'}
+            />
             <FilmCard name={'Bohemian Rhapsody'} img={'public/img/bohemian-rhapsody.jpg'}/>
             <FilmCard name={'Macbeth'} img={'public/img/macbeth.jpg'}/>
             <FilmCard name={'Aviator'} img={'public/img/aviator.jpg'}/>
@@ -119,15 +121,15 @@ function MainPage({name, date, genre, img}: movie) {
         </section>
 
         <footer className="page-footer">
-      <div className="logo">
+          <div className="logo">
             <a href="main.html" className="logo__link">
               <span className="logo__letter logo__letter--1">W</span>
               <span className="logo__letter logo__letter--2">T</span>
               <span className="logo__letter logo__letter--3">W</span>
             </a>
-      </div>
+          </div>
           <div className="copyright">
-              <p>© 2019 What to watch Ltd.</p>
+            <p>© 2019 What to watch Ltd.</p>
           </div>
         </footer>
       </div>
