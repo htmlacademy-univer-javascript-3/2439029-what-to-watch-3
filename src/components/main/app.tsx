@@ -15,6 +15,7 @@ function App(props: AppProps): JSX.Element {
     <BrowserRouter>
       <Routes>
         <Route path={'/'} element={<MainPage {...props} />}/>
+        <Route path={'/mylist'} element={<MainPage {...props} />}/>
         <Route path={'*'} element={<NotFound/>}/>
       </Routes>
     </BrowserRouter>);

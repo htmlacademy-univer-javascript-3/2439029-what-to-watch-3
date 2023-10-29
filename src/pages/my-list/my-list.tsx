@@ -1,15 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <title>WTW</title>
-    <meta name="robots" content="noindex, nofollow">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="css/main.min.css">
-  </head>
 
-  <body>
-    <div class="user-page">
+function MyList({name, date, genre, img}: movie) {
+  return (
+<><div class="user-page">
       <header class="page-header user-page__head">
         <div class="logo">
           <a href="main.html" class="logo__link">
@@ -134,6 +126,4 @@
           <p>© 2019 What to watch Ltd.</p>
         </div>
       </footer>
-    </div>
-  </body>
-</html>
+    </div></>;};
