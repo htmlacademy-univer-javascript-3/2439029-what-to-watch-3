@@ -1,6 +1,7 @@
 import MainPage from '../../pages/main.tsx';
 import {BrowserRouter, Route, Routes} from 'react-router-dom';
-import NotFound from '../../pages/not-found/not-found.tsx';
+import NotFound from '@pages/not-found/not-found.tsx';
+import MyList from '@pages/my-list/my-list.tsx';
 
 
 type AppProps = {
@@ -15,7 +16,7 @@ function App(props: AppProps): JSX.Element {
     <BrowserRouter>
       <Routes>
         <Route path={'/'} element={<MainPage {...props} />}/>
-        <Route path={'/mylist'} element={<MainPage {...props} />}/>
+        <Route path={'/mylist'} element={<MyList/>}/>
         <Route path={'*'} element={<NotFound/>}/>
       </Routes>
     </BrowserRouter>);
