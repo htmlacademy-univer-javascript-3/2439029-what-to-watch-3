@@ -2,15 +2,9 @@ import CatalogGenres from '@components/catalog-genres.tsx';
 import FilmCard from '@components//film-card.tsx';
 import Footer from '@components/footer/footer.tsx';
 import Header from '@components/header/header.tsx';
+import {Film} from 'types/film.ts';
 
-type movie = {
-  name: string;
-  genre: string;
-  date: number;
-  img: string;
-}
-
-function MainPage({name, date, genre, img}: movie) {
+function MainPage(props: Film) {
   return (
     <>
       <section className="film-card">
@@ -25,14 +19,14 @@ function MainPage({name, date, genre, img}: movie) {
         <div className="film-card__wrap">
           <div className="film-card__info">
             <div className="film-card__poster">
-              <img src={img} alt={name} width="218" height="327"/>
+              <img src={props.img} alt={props.title} width="218" height="327"/>
             </div>
 
             <div className="film-card__desc">
-              <h2 className="film-card__title">{name}</h2>
+              <h2 className="film-card__title">{props.title}</h2>
               <p className="film-card__meta">
-                <span className="film-card__genre">{genre}</span>
-                <span className="film-card__year">{date}</span>
+                <span className="film-card__genre">{props.genre}</span>
+                <span className="film-card__year">{props.date}</span>
               </p>
 
               <div className="film-card__buttons">

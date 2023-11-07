@@ -10,7 +10,7 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <App
-      name={CurrentFilm.name}
+      title={CurrentFilm.title}
       genre={CurrentFilm.genre}
       date={CurrentFilm.date}
       img={CurrentFilm.img}

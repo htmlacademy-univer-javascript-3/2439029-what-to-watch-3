@@ -3,16 +3,11 @@ import {BrowserRouter, Route, Routes} from 'react-router-dom';
 import NotFound from '@pages/not-found/not-found.tsx';
 import MyList from '@pages/my-list/my-list.tsx';
 import SignIn from '@pages/sign-in/sign-in.tsx';
+import MoviePage from '@pages/movie-page/movie-page.tsx';
+import {Film} from 'types/film.ts';
+import {CurrentFilm} from 'types/current-film.ts';
 
-
-type AppProps = {
-  name: string;
-  genre: string;
-  date: number;
-  img: string;
-};
-
-function App(props: AppProps): JSX.Element {
+function App(props: Film): JSX.Element {
   return (
     <BrowserRouter>
       <Routes>
@@ -20,6 +15,7 @@ function App(props: AppProps): JSX.Element {
         <Route path={'/mylist'} element={<MyList/>}/>
         <Route path={'/login'} element={<SignIn/>}/>
         <Route path={'*'} element={<NotFound/>}/>
+        <Route path={'/films/:id'} element={<MoviePage{...CurrentFilm}/>}/>
       </Routes>
     </BrowserRouter>);
 }

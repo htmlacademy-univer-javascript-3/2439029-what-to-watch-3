@@ -13,10 +13,10 @@ type CatalogGenresProps = {
   name: CatalogGenre;
 }
 
-function CatalogGenres({name}: CatalogGenresProps) {
+function CatalogGenres(props: CatalogGenresProps) {
   return (
     <li className="catalog__genres-item">
-      <a href="#" className="catalog__genres-link">{name}</a>
+      <a href="#" className="catalog__genres-link">{props.name}</a>
     </li>
   );
 }
