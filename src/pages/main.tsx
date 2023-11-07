@@ -1,54 +1,36 @@
-import CatalogGenres from '../components/catalog-genres.tsx';
-import FilmCard from '../components/film-card.tsx';
+import CatalogGenres from '@components/catalog-genres.tsx';
+import FilmCard from '@components/film-card/film-card.tsx';
+import Footer from '@components/footer/footer.tsx';
+import {Film} from 'types/film.ts';
+import Logo from '@components/header/logo.tsx';
+import UserPage from '@components/header/user-page.tsx';
 
-type movie = {
-  name: string;
-  genre: string;
-  date: number;
-  img: string;
-}
-
-function MainPage({name, date, genre, img}: movie) {
+function MainPage(props: Film) {
   return (
     <>
       <section className="film-card">
         <div className="film-card__bg">
-          <img src="img/bg-the-grand-budapest-hotel.jpg" alt="The Grand Budapest Hotel"/>
+          <img src={props.img} alt={props.title}/>
         </div>
 
         <h1 className="visually-hidden">WTW</h1>
 
-        <header className="page-header film-card__head">
-          <div className="logo">
-            <a href="main.html" className="logo__link">
-              <span className="logo__letter logo__letter--1">W</span>
-              <span className="logo__letter logo__letter--2">T</span>
-              <span className="logo__letter logo__letter--3">W</span>
-            </a>
-          </div>
-          <ul className="user-block">
-            <li className="user-block__item">
-              <div className="user-block__avatar">
-                <img src="img/avatar.jpg" alt="User avatar" width="63" height="63"/>
-              </div>
-            </li>
-            <li className="user-block__item">
-              <a className="user-block__link">Sign out</a>
-            </li>
-          </ul>
+        <header className="page-header user-page__head">
+          <Logo/>
+          <UserPage/>
         </header>
 
         <div className="film-card__wrap">
           <div className="film-card__info">
             <div className="film-card__poster">
-              <img src={img} alt={name} width="218" height="327"/>
+              <img src={props.img} alt={props.title} width="218" height="327"/>
             </div>
 
             <div className="film-card__desc">
-              <h2 className="film-card__title">{name}</h2>
+              <h2 className="film-card__title">{props.title}</h2>
               <p className="film-card__meta">
-                <span className="film-card__genre">{genre}</span>
-                <span className="film-card__year">{date}</span>
+                <span className="film-card__genre">{props.genre}</span>
+                <span className="film-card__year">{props.date}</span>
               </p>
 
               <div className="film-card__buttons">
@@ -91,28 +73,26 @@ function MainPage({name, date, genre, img}: movie) {
           </ul>
 
           <div className="catalog__films-list">
-            <FilmCard name={'Fantastic Beasts: The Crimes of Grindelwald'}
-              img={'public/img/fantastic-beasts-the-crimes-of-grindelwald.jpg'}
-            />
-            <FilmCard name={'Bohemian Rhapsody'} img={'public/img/bohemian-rhapsody.jpg'}/>
-            <FilmCard name={'Macbeth'} img={'public/img/macbeth.jpg'}/>
-            <FilmCard name={'Aviator'} img={'public/img/aviator.jpg'}/>
-            <FilmCard name={'We need to talk about Kevin'} img={'public/img/we-need-to-talk-about-kevin.jpg'}/>
-            <FilmCard name={'What We Do in the Shadows'} img={'public/img/what-we-do-in-the-shadows.jpg'}/>
-            <FilmCard name={'Revenant'} img={'public/img/revenant.jpg'}/>
-            <FilmCard name={'Johnny English'} img={'public/img/johnny-english.jpg'}/>
-            <FilmCard name={'Shutter Island'} img={'public/img/shutter-island.jpg'}/>
-            <FilmCard name={'Pulp Fiction'} img={'public/img/pulp-fiction.jpg'}/>
-            <FilmCard name={'No Country for Old Men'} img={'public/img/no-country-for-old-men.jpg'}/>
-            <FilmCard name={'Snatch'} img={'public/img/snatch.jpg'}/>
-            <FilmCard name={'Moonrise Kingdom'} img={'public/img/moonrise-kingdom.jpg'}/>
-            <FilmCard name={'Seven Years in Tibet'} img={'public/img/seven-years-in-tibet.jpg'}/>
-            <FilmCard name={'Midnight Special'} img={'public/img/midnight-special.jpg'}/>
-            <FilmCard name={'War of the Worlds'} img={'public/img/war-of-the-worlds.jpg'}/>
-            <FilmCard name={'Dardjeeling Limited'} img={'public/img/dardjeeling-limited.jpg'}/>
-            <FilmCard name={'Orlando'} img={'public/img/orlando.jpg'}/>
-            <FilmCard name={'Mindhunter'} img={'public/img/mindhunter.jpg'}/>
-            <FilmCard name={'Midnight Special'} img={'public/img/midnight-special.jpg'}/>
+            <FilmCard title={'Fantastic Beasts: The Crimes of Grindelwald'} img={'public/img/fantastic-beasts-the-crimes-of-grindelwald.jpg'}/>
+            <FilmCard title={'Bohemian Rhapsody'} img={'public/img/bohemian-rhapsody.jpg'}/>
+            <FilmCard title={'Macbeth'} img={'public/img/macbeth.jpg'}/>
+            <FilmCard title={'Aviator'} img={'public/img/aviator.jpg'}/>
+            <FilmCard title={'We need to talk about Kevin'} img={'public/img/we-need-to-talk-about-kevin.jpg'}/>
+            <FilmCard title={'What We Do in the Shadows'} img={'public/img/what-we-do-in-the-shadows.jpg'}/>
+            <FilmCard title={'Revenant'} img={'public/img/revenant.jpg'}/>
+            <FilmCard title={'Johnny English'} img={'public/img/johnny-english.jpg'}/>
+            <FilmCard title={'Shutter Island'} img={'public/img/shutter-island.jpg'}/>
+            <FilmCard title={'Pulp Fiction'} img={'public/img/pulp-fiction.jpg'}/>
+            <FilmCard title={'No Country for Old Men'} img={'public/img/no-country-for-old-men.jpg'}/>
+            <FilmCard title={'Snatch'} img={'public/img/snatch.jpg'}/>
+            <FilmCard title={'Moonrise Kingdom'} img={'public/img/moonrise-kingdom.jpg'}/>
+            <FilmCard title={'Seven Years in Tibet'} img={'public/img/seven-years-in-tibet.jpg'}/>
+            <FilmCard title={'Midnight Special'} img={'public/img/midnight-special.jpg'}/>
+            <FilmCard title={'War of the Worlds'} img={'public/img/war-of-the-worlds.jpg'}/>
+            <FilmCard title={'Dardjeeling Limited'} img={'public/img/dardjeeling-limited.jpg'}/>
+            <FilmCard title={'Orlando'} img={'public/img/orlando.jpg'}/>
+            <FilmCard title={'Mindhunter'} img={'public/img/mindhunter.jpg'}/>
+            <FilmCard title={'Midnight Special'} img={'public/img/midnight-special.jpg'}/>
           </div>
 
           <div className="catalog__more">
@@ -120,18 +100,7 @@ function MainPage({name, date, genre, img}: movie) {
           </div>
         </section>
 
-        <footer className="page-footer">
-          <div className="logo">
-            <a href="main.html" className="logo__link">
-              <span className="logo__letter logo__letter--1">W</span>
-              <span className="logo__letter logo__letter--2">T</span>
-              <span className="logo__letter logo__letter--3">W</span>
-            </a>
-          </div>
-          <div className="copyright">
-            <p>© 2019 What to watch Ltd.</p>
-          </div>
-        </footer>
+        <Footer/>
       </div>
     </>
   );
