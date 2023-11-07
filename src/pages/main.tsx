@@ -1,5 +1,5 @@
 import CatalogGenres from '@components/catalog-genres.tsx';
-import FilmCard from '@components//film-card.tsx';
+import FilmCard from '@components/film-card/film-card.tsx';
 import Footer from '@components/footer/footer.tsx';
 import Header from '@components/header/header.tsx';
 import {Film} from 'types/film.ts';
@@ -9,7 +9,7 @@ function MainPage(props: Film) {
     <>
       <section className="film-card">
         <div className="film-card__bg">
-          <img src="img/bg-the-grand-budapest-hotel.jpg" alt="The Grand Budapest Hotel"/>
+          <img src={props.img} alt={props.title}/>
         </div>
 
         <h1 className="visually-hidden">WTW</h1>

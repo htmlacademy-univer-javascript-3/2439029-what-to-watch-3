@@ -9,11 +9,7 @@ const root = ReactDOM.createRoot(
 
 root.render(
   <React.StrictMode>
-    <App
-      title={CurrentFilm.title}
-      genre={CurrentFilm.genre}
-      date={CurrentFilm.date}
-      img={CurrentFilm.img}
+    <App {...CurrentFilm}
     />
   </React.StrictMode>
 );
