@@ -28,7 +28,7 @@ function AddReview(props: Film) {
         </header>
 
         <div className="film-card__poster film-card__poster--small">
-          <img src={props.posterImg} alt={props.title} width="218"
+          <img src={props.poster_img} alt={props.title} width="218"
             height="327"
           />
         </div>

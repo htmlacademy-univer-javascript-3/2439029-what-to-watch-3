@@ -7,7 +7,7 @@ function FilmDescription(props: Film) {
     <div className="film-card__wrap film-card__translate-top">
       <div className="film-card__info">
         <div className="film-card__poster film-card__poster--big">
-          <img src={props.posterImg} alt={props.title} width="218" height="327"/>
+          <img src={props.poster_img} alt={props.title} width="218" height="327"/>
         </div>
         <div className="film-card__desc">
           <FilmNav/>

@@ -1,4 +1,3 @@
-import {Film} from 'types/film.ts';
 import {Rating} from 'types/rating.ts';
 
 function FilmRating(props:Rating) {

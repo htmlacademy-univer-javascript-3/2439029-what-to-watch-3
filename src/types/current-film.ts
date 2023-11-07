@@ -3,7 +3,7 @@ export const CurrentFilm = {
   genre: 'Drama',
   date: 2014,
   img: 'img/bg-the-grand-budapest-hotel.jpg',
-  posterImg:'public/img/the-grand-budapest-hotel-poster.jpg',
+  poster_img:'public/img/the-grand-budapest-hotel-poster.jpg',
   rating: {
     score: '8,9',
     level: 'Very good',
