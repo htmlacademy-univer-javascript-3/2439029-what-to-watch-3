@@ -35,7 +35,8 @@ function MoviePage(currentFilm: Film) {
           <h2 className="catalog__title">More like this</h2>
           <div className="catalog__films-list">
             <SmallFilmCardLink title={'Fantastic Beasts: The Crimes of Grindelwald'}
-                               img={'img/fantastic-beasts-the-crimes-of-grindelwald.jpg'}/>
+              img={'img/fantastic-beasts-the-crimes-of-grindelwald.jpg'}
+            />
             <SmallFilmCardLink title={'Bohemian Rhapsody'} img={'img/bohemian-rhapsody.jpg'}/>
             <SmallFilmCardLink title={'Macbeth'} img={'img/macbeth.jpg'}/>
             <SmallFilmCardLink title={'Aviator'} img={'img/aviator.jpg'}/>
