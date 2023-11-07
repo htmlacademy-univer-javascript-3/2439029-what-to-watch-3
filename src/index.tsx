@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import App from './components/main/app';
+import App from '@components/app/app';
 import {CurrentFilm} from 'types/current-film.ts';
 
 const root = ReactDOM.createRoot(

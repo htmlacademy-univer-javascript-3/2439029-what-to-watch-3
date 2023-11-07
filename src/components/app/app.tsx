@@ -8,13 +8,14 @@ import Player from '@pages/player/player.tsx';
 import AddReview from '@pages/add-review/add-review.tsx';
 import {Film} from 'types/film.ts';
 import {CurrentFilm} from 'types/current-film.ts';
+import PrivateRoute from '@pages/private-route/private-route.tsx';
 
 function App(props: Film): JSX.Element {
   return (
     <BrowserRouter>
       <Routes>
         <Route path={'/'} element={<MainPage {...props} />}/>
-        <Route path={'/mylist'} element={<MyList/>}/>
+        <Route path={'/mylist'} element={<PrivateRoute isAuthorize={false}><MyList/></PrivateRoute>}/>
         <Route path={'/login'} element={<SignIn/>}/>
         <Route path={'*'} element={<NotFound/>}/>
         <Route path={'/films/:id'} element={<MoviePage {...CurrentFilm}/>}/>
