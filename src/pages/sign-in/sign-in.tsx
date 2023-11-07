@@ -1,10 +1,14 @@
 import Footer from '@components/footer/footer.tsx';
-import Header from '@components/header/header.tsx';
+import Logo from '@components/header/logo.tsx';
+import UserPage from '@components/header/user-page.tsx';
 
 function SignIn() {
   return (
     <div className="user-page">
-      <Header/>
+      <header className="page-header user-page__head">
+        <Logo/>
+        <UserPage/>
+      </header>
 
       <div className="sign-in user-page__content">
         <form action="#" className="sign-in__form">

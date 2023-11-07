@@ -3,7 +3,8 @@ import {Film} from 'types/film.ts';
 import FilmDescription from '@components/ciurrent-film/film-description.tsx';
 import SmallFilmCardLink from '@components/small-film-card/small-film-card-link.tsx';
 import FilmCardButtons from '@components/film-card-buttons/film-card-buttons.tsx';
-import Header from '@components/header/header.tsx';
+import Logo from '@components/header/logo.tsx';
+import UserPage from '@components/header/user-page.tsx';
 
 function MoviePage(currentFilm: Film) {
   return (
@@ -14,7 +15,10 @@ function MoviePage(currentFilm: Film) {
             <img src={currentFilm.img} alt={currentFilm.title}/>
           </div>
           <h1 className="visually-hidden">WTW</h1>
-          <Header/>
+          <header className="page-header user-page__head">
+            <Logo/>
+            <UserPage/>
+          </header>
 
           <div className="film-card__wrap">
             <div className="film-card__desc">

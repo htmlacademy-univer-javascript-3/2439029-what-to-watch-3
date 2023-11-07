@@ -1,8 +1,9 @@
 import CatalogGenres from '@components/catalog-genres.tsx';
 import FilmCard from '@components/film-card/film-card.tsx';
 import Footer from '@components/footer/footer.tsx';
-import Header from '@components/header/header.tsx';
 import {Film} from 'types/film.ts';
+import Logo from '@components/header/logo.tsx';
+import UserPage from '@components/header/user-page.tsx';
 
 function MainPage(props: Film) {
   return (
@@ -14,7 +15,10 @@ function MainPage(props: Film) {
 
         <h1 className="visually-hidden">WTW</h1>
 
-        <Header/>
+        <header className="page-header user-page__head">
+          <Logo/>
+          <UserPage/>
+        </header>
 
         <div className="film-card__wrap">
           <div className="film-card__info">

@@ -18,7 +18,7 @@ function App(props: Film): JSX.Element {
         <Route path={'/login'} element={<SignIn/>}/>
         <Route path={'*'} element={<NotFound/>}/>
         <Route path={'/films/:id'} element={<MoviePage {...CurrentFilm}/>}/>
-        <Route path={'/films/:id/review'} element={<AddReview/>}/>
+        <Route path={'/films/:id/review'} element={<AddReview {...CurrentFilm}/>}/>
         <Route path={'/player/:id'} element={<Player/>}/>
       </Routes>
     </BrowserRouter>);
