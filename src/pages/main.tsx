@@ -1,16 +1,23 @@
 import CatalogGenres from '@components/catalog-genres.tsx';
-import FilmCard from '@components/film-card/film-card.tsx';
+import {CatalogGenreValues} from '@components/catalog-genres.tsx';
 import Footer from '@components/footer/footer.tsx';
 import {Film} from 'types/film.ts';
 import Logo from '@components/header/logo.tsx';
 import UserPage from '@components/header/user-page.tsx';
+import FilmCardList from '@components/film-card/film-card-list.tsx';
 
-function MainPage(props: Film) {
+type MainPageProps = {
+  currentFilm: Film;
+  otherFilms: Film[];
+  myListCount: number;
+}
+
+function MainPage(props: MainPageProps) {
   return (
     <>
       <section className="film-card">
         <div className="film-card__bg">
-          <img src={props.img} alt={props.title}/>
+          <img src={props.currentFilm.img} alt={props.currentFilm.title}/>
         </div>
 
         <h1 className="visually-hidden">WTW</h1>
@@ -23,14 +30,14 @@ function MainPage(props: Film) {
         <div className="film-card__wrap">
           <div className="film-card__info">
             <div className="film-card__poster">
-              <img src={props.img} alt={props.title} width="218" height="327"/>
+              <img src={props.currentFilm.img} alt={props.currentFilm.title} width="218" height="327"/>
             </div>
 
             <div className="film-card__desc">
-              <h2 className="film-card__title">{props.title}</h2>
+              <h2 className="film-card__title">{props.currentFilm.title}</h2>
               <p className="film-card__meta">
-                <span className="film-card__genre">{props.genre}</span>
-                <span className="film-card__year">{props.date}</span>
+                <span className="film-card__genre">{props.currentFilm.genre}</span>
+                <span className="film-card__year">{props.currentFilm.date}</span>
               </p>
 
               <div className="film-card__buttons">
@@ -45,7 +52,7 @@ function MainPage(props: Film) {
                     <use xlinkHref="#add"></use>
                   </svg>
                   <span>My list</span>
-                  <span className="film-card__count">9</span>
+                  <span className="film-card__count">{props.myListCount}</span>
                 </button>
               </div>
             </div>
@@ -61,45 +68,17 @@ function MainPage(props: Film) {
             <li className="catalog__genres-item catalog__genres-item--active">
               <a href={'#'} className="catalog__genres-link">{'All genres'}</a>
             </li>
-
-            <CatalogGenres name={'Crime'}/>
-            <CatalogGenres name={'Documentary'}/>
-            <CatalogGenres name={'Dramas'}/>
-            <CatalogGenres name={'Horror'}/>
-            <CatalogGenres name={'Kids & Family'}/>
-            <CatalogGenres name={'Romance'}/>
-            <CatalogGenres name={'Sci-Fi'}/>
-            <CatalogGenres name={'Thrillers'}/>
+            {CatalogGenreValues.map((g)=>(<CatalogGenres name={g}/>))}
           </ul>
 
           <div className="catalog__films-list">
-            <FilmCard title={'Fantastic Beasts: The Crimes of Grindelwald'} img={'public/img/fantastic-beasts-the-crimes-of-grindelwald.jpg'}/>
-            <FilmCard title={'Bohemian Rhapsody'} img={'public/img/bohemian-rhapsody.jpg'}/>
-            <FilmCard title={'Macbeth'} img={'public/img/macbeth.jpg'}/>
-            <FilmCard title={'Aviator'} img={'public/img/aviator.jpg'}/>
-            <FilmCard title={'We need to talk about Kevin'} img={'public/img/we-need-to-talk-about-kevin.jpg'}/>
-            <FilmCard title={'What We Do in the Shadows'} img={'public/img/what-we-do-in-the-shadows.jpg'}/>
-            <FilmCard title={'Revenant'} img={'public/img/revenant.jpg'}/>
-            <FilmCard title={'Johnny English'} img={'public/img/johnny-english.jpg'}/>
-            <FilmCard title={'Shutter Island'} img={'public/img/shutter-island.jpg'}/>
-            <FilmCard title={'Pulp Fiction'} img={'public/img/pulp-fiction.jpg'}/>
-            <FilmCard title={'No Country for Old Men'} img={'public/img/no-country-for-old-men.jpg'}/>
-            <FilmCard title={'Snatch'} img={'public/img/snatch.jpg'}/>
-            <FilmCard title={'Moonrise Kingdom'} img={'public/img/moonrise-kingdom.jpg'}/>
-            <FilmCard title={'Seven Years in Tibet'} img={'public/img/seven-years-in-tibet.jpg'}/>
-            <FilmCard title={'Midnight Special'} img={'public/img/midnight-special.jpg'}/>
-            <FilmCard title={'War of the Worlds'} img={'public/img/war-of-the-worlds.jpg'}/>
-            <FilmCard title={'Dardjeeling Limited'} img={'public/img/dardjeeling-limited.jpg'}/>
-            <FilmCard title={'Orlando'} img={'public/img/orlando.jpg'}/>
-            <FilmCard title={'Mindhunter'} img={'public/img/mindhunter.jpg'}/>
-            <FilmCard title={'Midnight Special'} img={'public/img/midnight-special.jpg'}/>
+            <FilmCardList films={props.otherFilms}/>
           </div>
 
           <div className="catalog__more">
             <button className="catalog__button" type="button">Show more</button>
           </div>
         </section>
-
         <Footer/>
       </div>
     </>

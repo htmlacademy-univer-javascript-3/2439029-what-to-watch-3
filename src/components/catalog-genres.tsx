@@ -9,6 +9,18 @@ export type CatalogGenre =
   | 'Dramas'
   | 'Horror'
 
+export const CatalogGenreValues: CatalogGenre[] = [
+  'Kids & Family',
+  'Romance',
+  'Sci-Fi',
+  'Thrillers',
+  'Comedy',
+  'Crime',
+  'Documentary',
+  'Dramas',
+  'Horror'
+];
+
 type CatalogGenresProps = {
   name: CatalogGenre;
 }

@@ -5,7 +5,7 @@ type SmallFilmsCardsLinkProps = {
   films: Film[];
 }
 
-function SmallFilmsCardsLink({films}: SmallFilmsCardsLinkProps) {
+function SmallFilmCardList({films}: SmallFilmsCardsLinkProps) {
   return (
     <>
       {/* eslint-disable-next-line react/jsx-key */}
@@ -14,4 +14,4 @@ function SmallFilmsCardsLink({films}: SmallFilmsCardsLinkProps) {
   );
 }
 
-export default SmallFilmsCardsLink;
+export default SmallFilmCardList;

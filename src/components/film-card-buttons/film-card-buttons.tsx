@@ -1,6 +1,10 @@
 import {Link} from 'react-router-dom';
 
-function FilmCardButtons() {
+type FilmCardButtonsProps = {
+  count: number;
+}
+
+function FilmCardButtons({count}: FilmCardButtonsProps) {
   return (
     <div className="film-card__buttons">
       <button className="btn btn--play film-card__button" type="button">
@@ -14,7 +18,7 @@ function FilmCardButtons() {
           <use xlinkHref="#add"></use>
         </svg>
         <span>My list</span>
-        <span className="film-card__count">9</span>
+        <span className="film-card__count">{count}</span>
       </button>
       <Link to="add-review.html" className="btn film-card__button">Add review</Link>
     </div>
