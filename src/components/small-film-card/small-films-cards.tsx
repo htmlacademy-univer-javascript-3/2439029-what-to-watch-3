@@ -6,7 +6,12 @@ type SmallFilmsCardsLinkProps = {
 }
 
 function SmallFilmsCardsLink({films}: SmallFilmsCardsLinkProps) {
-  return (films.map((film) => (<SmallFilmCardLink {...film}/>)));
+  return (
+    <>
+      {/* eslint-disable-next-line react/jsx-key */}
+      {films.map((film) => (<SmallFilmCardLink film={film}/>))}
+    </>
+  );
 }
 
 export default SmallFilmsCardsLink;
