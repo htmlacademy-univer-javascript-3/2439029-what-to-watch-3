@@ -1,7 +1,16 @@
-function Player() {
-  return (
+import {Film} from 'types/film.ts';
+import NotFound from '@pages/not-found/not-found.tsx';
+
+type PlayerProps = {
+  films: Film[];
+}
+
+function Player({films}: PlayerProps) {
+  const currentId = 1;
+  const currentFilm = films.find((f) => f.id === currentId);
+  return currentFilm ? (
     <div className="player">
-      <video src="#" className="player__video" poster="img/player-poster.jpg"></video>
+      <video src={currentFilm.video} className="player__video" poster={currentFilm.img}></video>
 
       <button type="button" className="player__exit">Exit</button>
 
@@ -11,7 +20,7 @@ function Player() {
             <progress className="player__progress" value="30" max="100"></progress>
             <div className="player__toggler">Toggler</div>
           </div>
-          <div className="player__time-value">1:30:29</div>
+          <div className="player__time-value">{currentFilm.runTime}</div>
         </div>
 
         <div className="player__controls-row">
@@ -32,6 +41,8 @@ function Player() {
         </div>
       </div>
     </div>
+  ) : (
+    <NotFound/>
   );
 }
 
