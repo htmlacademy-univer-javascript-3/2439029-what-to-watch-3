@@ -19,7 +19,7 @@ function App(props: AppProps): JSX.Element {
     <BrowserRouter>
       <Routes>
         <Route path={'/'} element={<MainPage currentFilm={films[0]} otherFilms={films.slice(1)} myListCount={9}/>}/>
-        <Route path={'/mylist'} element={<PrivateRoute isAuthorize={false}><MyList/></PrivateRoute>}/>
+        <Route path={'/mylist'} element={<PrivateRoute isAuthorize={true}><MyList myFilms={films.slice(1,9)}/></PrivateRoute>}/>
         <Route path={'/login'} element={<SignIn/>}/>
         <Route path={'*'} element={<NotFound/>}/>
         <Route path={'/films/:id'} element={<MoviePage films={films} count={9}/>}/>
