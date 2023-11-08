@@ -1,5 +1,5 @@
 export type Rating = {
-  score: string;
+  score: number;
   level: string;
-  count: string;
+  count: number;
 }
