@@ -2,13 +2,20 @@ import {Film} from 'types/film.ts';
 import Logo from '@components/header/logo.tsx';
 import UserPage from '@components/header/user-page.tsx';
 import Review from '@components/review/review.tsx';
+import NotFound from '@pages/not-found/not-found.tsx';
 
-function AddReview(props: Film) {
-  return (
+type AddReviewProps = {
+  films:Film[];
+}
+
+function AddReview({films}: AddReviewProps) {
+  const currentId = 1;
+  const currentFilm = films.find((f) => f.id === currentId);
+  return currentFilm?(
     <section className="film-card film-card--full">
       <div className="film-card__header">
         <div className="film-card__bg">
-          <img src={props.img} alt={props.title}/>
+          <img src={currentFilm.img} alt={currentFilm.title}/>
         </div>
 
         <h1 className="visually-hidden">WTW</h1>
@@ -28,7 +35,7 @@ function AddReview(props: Film) {
         </header>
 
         <div className="film-card__poster film-card__poster--small">
-          <img src={props.posterImg} alt={props.title} width="218"
+          <img src={currentFilm.posterImg} alt={currentFilm.title} width="218"
             height="327"
           />
         </div>
@@ -52,6 +59,8 @@ function AddReview(props: Film) {
       ;
 
     </section>
+  ) : (
+    <NotFound/>
   );
 }
 

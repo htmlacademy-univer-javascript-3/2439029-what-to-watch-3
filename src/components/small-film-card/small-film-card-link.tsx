@@ -11,7 +11,7 @@ function SmallFilmCardLink({film}: SmallFilmCardLinkProps) {
         <img src={film.img} alt={film.title} width="280" height="175"/>
       </div>
       <h3 className="small-film-card__title">
-        <Link to={'/film-page'} className="small-film-card__link">{film.title}</Link>
+        <Link to={`/films/${film.id}`} className="small-film-card__link">{film.title}</Link>
       </h3>
     </article>
   );

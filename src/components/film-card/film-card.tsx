@@ -1,5 +1,6 @@
 import {Film} from 'types/film.ts';
 import {useState} from 'react';
+import {Link} from 'react-router-dom';
 
 type FilmCardProps = {
   film: Film;
@@ -12,7 +13,7 @@ function FilmCard({film}: FilmCardProps) {
         <img src={film.img} alt={film.title} width="280" height="175"/>
       </div>
       <h3 className="small-film-card__title">
-        <a className="small-film-card__link" href="film-page.html">{film.title}</a>
+        <Link to={`/films/${film.id}`} className="small-film-card__link">{film.title}</Link>
       </h3>
     </article>
   );

@@ -35,7 +35,7 @@ function MoviePage(props: MoviePageProps) {
                 <span className="film-card__genre">{currentFilm.genre}</span>
                 <span className="film-card__year">{currentFilm.date}</span>
               </p>
-              <FilmCardButtons count={props.count}/>
+              <FilmCardButtons count={props.count} id={currentFilm.id}/>
             </div>
           </div>
         </div>

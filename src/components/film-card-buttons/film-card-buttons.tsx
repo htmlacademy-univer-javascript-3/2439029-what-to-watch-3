@@ -1,10 +1,11 @@
 import {Link} from 'react-router-dom';
 
 type FilmCardButtonsProps = {
+  id: number;
   count: number;
 }
 
-function FilmCardButtons({count}: FilmCardButtonsProps) {
+function FilmCardButtons({count,id}: FilmCardButtonsProps) {
   return (
     <div className="film-card__buttons">
       <button className="btn btn--play film-card__button" type="button">
@@ -20,7 +21,7 @@ function FilmCardButtons({count}: FilmCardButtonsProps) {
         <span>My list</span>
         <span className="film-card__count">{count}</span>
       </button>
-      <Link to="add-review.html" className="btn film-card__button">Add review</Link>
+      <Link to={`/films/${id}/review`} className="btn film-card__button">Add review</Link>
     </div>
   );
 }
