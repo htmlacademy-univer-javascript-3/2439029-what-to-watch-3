@@ -1,13 +1,21 @@
 import Footer from '@components/footer/footer.tsx';
 import {Film} from 'types/film.ts';
 import FilmDescription from '@components/ciurrent-film/film-description.tsx';
-import SmallFilmCardLink from '@components/small-film-card/small-film-card-link.tsx';
+import SmallFilmCardList from '@components/small-film-card/small-film-card-list.tsx';
 import FilmCardButtons from '@components/film-card-buttons/film-card-buttons.tsx';
 import Logo from '@components/header/logo.tsx';
 import UserPage from '@components/header/user-page.tsx';
+import NotFound from '@pages/not-found/not-found.tsx';
 
-function MoviePage(currentFilm: Film) {
-  return (
+type MoviePageProps = {
+  films: Film[];
+  count: number;
+}
+
+function MoviePage(props: MoviePageProps) {
+  const currentId = 1;
+  const currentFilm = props.films.find((f) => f.id === currentId);
+  return currentFilm ? (
     <>
       <section className="film-card film-card--full">
         <div className="film-card__hero">
@@ -27,28 +35,24 @@ function MoviePage(currentFilm: Film) {
                 <span className="film-card__genre">{currentFilm.genre}</span>
                 <span className="film-card__year">{currentFilm.date}</span>
               </p>
-              <FilmCardButtons/>
+              <FilmCardButtons count={props.count} id={currentFilm.id}/>
             </div>
           </div>
         </div>
         <FilmDescription {...currentFilm}/>
       </section>
-
       <div className="page-content">
         <section className="catalog catalog--like-this">
           <h2 className="catalog__title">More like this</h2>
           <div className="catalog__films-list">
-            <SmallFilmCardLink title={'Fantastic Beasts: The Crimes of Grindelwald'}
-              img={'img/fantastic-beasts-the-crimes-of-grindelwald.jpg'}
-            />
-            <SmallFilmCardLink title={'Bohemian Rhapsody'} img={'img/bohemian-rhapsody.jpg'}/>
-            <SmallFilmCardLink title={'Macbeth'} img={'img/macbeth.jpg'}/>
-            <SmallFilmCardLink title={'Aviator'} img={'img/aviator.jpg'}/>
+            <SmallFilmCardList films={props.films.filter((f) => f.id !== currentId).slice(0, 4)}/>
           </div>
         </section>
         <Footer/>
       </div>
     </>
+  ) : (
+    <NotFound/>
   );
 }
 

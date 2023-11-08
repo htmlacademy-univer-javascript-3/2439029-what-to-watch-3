@@ -6,7 +6,7 @@ function FilmRating(props:Rating) {
       <div className="film-rating__score">{props.score}</div>
       <p className="film-rating__meta">
         <span className="film-rating__level">{props.level}</span>
-        <span className="film-rating__count">{props.count}</span>
+        <span className="film-rating__count">{props.count} raitings</span>
       </p>
     </div>
   );

@@ -7,20 +7,25 @@ import MoviePage from '@pages/movie-page/movie-page.tsx';
 import Player from '@pages/player/player.tsx';
 import AddReview from '@pages/add-review/add-review.tsx';
 import {Film} from 'types/film.ts';
-import {CurrentFilm} from 'types/current-film.ts';
 import PrivateRoute from '@pages/private-route/private-route.tsx';
+import ScrollToTop from '@components/scroll-to-top.tsx';
 
-function App(props: Film): JSX.Element {
+type AppProps ={
+  films:Film[];
+}
+
+function App({films}: AppProps): JSX.Element {
   return (
     <BrowserRouter>
+      <ScrollToTop/>
       <Routes>
-        <Route path={'/'} element={<MainPage {...props} />}/>
-        <Route path={'/mylist'} element={<PrivateRoute isAuthorize={false}><MyList/></PrivateRoute>}/>
+        <Route path={'/'} element={<MainPage currentFilm={films[0]} otherFilms={films.slice(1)} myListCount={9}/>}/>
+        <Route path={'/mylist'} element={<PrivateRoute isAuthorize={false}><MyList myFilms={films.slice(1,9)}/></PrivateRoute>}/>
         <Route path={'/login'} element={<SignIn/>}/>
         <Route path={'*'} element={<NotFound/>}/>
-        <Route path={'/films/:id'} element={<MoviePage {...CurrentFilm}/>}/>
-        <Route path={'/films/:id/review'} element={<AddReview {...CurrentFilm}/>}/>
-        <Route path={'/player/:id'} element={<Player/>}/>
+        <Route path={'/films/:id'} element={<MoviePage films={films} count={9}/>}/>
+        <Route path={'/films/:id/review'} element={<AddReview films={films}/>}/>
+        <Route path={'/player/:id'} element={<Player films={films}/>}/>
       </Routes>
     </BrowserRouter>);
 }
