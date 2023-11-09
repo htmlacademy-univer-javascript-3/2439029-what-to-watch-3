@@ -17,7 +17,7 @@ export const films: Film[] = [
     genre: 'Drama',
     runTime: '1h 39m',
     date: 2014,
-    video: 'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
+    video: '/video/Отель «Гранд Будапешт» - Русский трейлер.mp4',
   },
   {
     id: 2,
@@ -36,7 +36,7 @@ export const films: Film[] = [
     genre: 'Drama',
     runTime: '1h 39m',
     date: 2014,
-    video: 'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
+    video: '/video/Отель «Гранд Будапешт» - Русский трейлер.mp4',
   }, {
     id: 3,
     title: 'Fantastic Beasts: The Crimes of Grindelwald',
@@ -54,7 +54,7 @@ export const films: Film[] = [
     genre: 'Drama',
     runTime: '1h 39m',
     date: 2014,
-    video: 'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
+    video: '/video/Отель «Гранд Будапешт» - Русский трейлер.mp4',
   }, {
     id: 4,
     title: 'Macbeth',
@@ -72,7 +72,7 @@ export const films: Film[] = [
     genre: 'Drama',
     runTime: '1h 39m',
     date: 2014,
-    video: 'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
+    video: '/video/Отель «Гранд Будапешт» - Русский трейлер.mp4',
   }, {
     id: 5,
     title: 'Aviator',
@@ -90,7 +90,7 @@ export const films: Film[] = [
     genre: 'Drama',
     runTime: '1h 39m',
     date: 2014,
-    video: 'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
+    video: '/video/Отель «Гранд Будапешт» - Русский трейлер.mp4',
   }, {
     id: 6,
     title: 'We need to talk about Kevin',
@@ -108,7 +108,7 @@ export const films: Film[] = [
     genre: 'Drama',
     runTime: '1h 39m',
     date: 2014,
-    video: 'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
+    video: '/video/Отель «Гранд Будапешт» - Русский трейлер.mp4',
   }, {
     id: 7,
     title: 'What We Do in the Shadows',
@@ -126,7 +126,7 @@ export const films: Film[] = [
     genre: 'Drama',
     runTime: '1h 39m',
     date: 2014,
-    video: 'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
+    video: '/video/Отель «Гранд Будапешт» - Русский трейлер.mp4',
   }, {
     id: 8,
     title: 'Revenant',
@@ -144,7 +144,7 @@ export const films: Film[] = [
     genre: 'Drama',
     runTime: '1h 39m',
     date: 2014,
-    video: 'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
+    video: '/video/Отель «Гранд Будапешт» - Русский трейлер.mp4',
   }, {
     id: 9,
     title: 'Johnny English',
@@ -162,7 +162,7 @@ export const films: Film[] = [
     genre: 'Drama',
     runTime: '1h 39m',
     date: 2014,
-    video: 'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
+    video: '/video/Отель «Гранд Будапешт» - Русский трейлер.mp4',
   }, {
     id: 10,
     title: 'Shutter Island',
@@ -180,7 +180,7 @@ export const films: Film[] = [
     genre: 'Drama',
     runTime: '1h 39m',
     date: 2014,
-    video: 'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
+    video: '/video/Отель «Гранд Будапешт» - Русский трейлер.mp4',
   }, {
     id: 11,
     title: 'Pulp Fiction',
@@ -198,7 +198,7 @@ export const films: Film[] = [
     genre: 'Drama',
     runTime: '1h 39m',
     date: 2014,
-    video: 'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
+    video: '/video/Отель «Гранд Будапешт» - Русский трейлер.mp4',
   }, {
     id: 12,
     title: 'No Country for Old Men',
@@ -216,7 +216,7 @@ export const films: Film[] = [
     genre: 'Drama',
     runTime: '1h 39m',
     date: 2014,
-    video: 'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
+    video: '/video/Отель «Гранд Будапешт» - Русский трейлер.mp4',
   }, {
     id: 13,
     title: 'Snatch',
@@ -234,7 +234,7 @@ export const films: Film[] = [
     genre: 'Drama',
     runTime: '1h 39m',
     date: 2014,
-    video: 'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
+    video: '/video/Отель «Гранд Будапешт» - Русский трейлер.mp4',
   }, {
     id: 14,
     title: 'Moonrise Kingdom',
@@ -252,7 +252,7 @@ export const films: Film[] = [
     genre: 'Drama',
     runTime: '1h 39m',
     date: 2014,
-    video: 'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
+    video: '/video/Отель «Гранд Будапешт» - Русский трейлер.mp4',
   }, {
     id: 15,
     title: 'Seven Years in Tibet',
@@ -270,7 +270,7 @@ export const films: Film[] = [
     genre: 'Drama',
     runTime: '1h 39m',
     date: 2014,
-    video: 'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
+    video: '/video/Отель «Гранд Будапешт» - Русский трейлер.mp4',
   }, {
     id: 16,
     title: 'Midnight Special',
@@ -288,7 +288,7 @@ export const films: Film[] = [
     genre: 'Drama',
     runTime: '1h 39m',
     date: 2014,
-    video: 'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
+    video: '/video/Отель «Гранд Будапешт» - Русский трейлер.mp4',
   }, {
     id: 17,
     title: 'War of the Worlds',
@@ -306,7 +306,7 @@ export const films: Film[] = [
     genre: 'Drama',
     runTime: '1h 39m',
     date: 2014,
-    video: 'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
+    video: '/video/Отель «Гранд Будапешт» - Русский трейлер.mp4',
   }, {
     id: 18,
     title: 'Dardjeeling Limited',
@@ -324,7 +324,7 @@ export const films: Film[] = [
     genre: 'Drama',
     runTime: '1h 39m',
     date: 2014,
-    video: 'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
+    video: '/video/Отель «Гранд Будапешт» - Русский трейлер.mp4',
   }, {
     id: 19,
     title: 'Orlando',
@@ -342,7 +342,7 @@ export const films: Film[] = [
     genre: 'Drama',
     runTime: '1h 39m',
     date: 2014,
-    video: 'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
+    video: '/video/Отель «Гранд Будапешт» - Русский трейлер.mp4',
   }, {
     id: 20,
     title: 'Mindhunter',
@@ -360,7 +360,7 @@ export const films: Film[] = [
     genre: 'Drama',
     runTime: '1h 39m',
     date: 2014,
-    video: 'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
+    video: '/video/Отель «Гранд Будапешт» - Русский трейлер.mp4',
   }, {
     id: 21,
     title: 'Midnight Special',
@@ -378,6 +378,6 @@ export const films: Film[] = [
     genre: 'Drama',
     runTime: '1h 39m',
     date: 2014,
-    video: 'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
+    video: '/video/Отель «Гранд Будапешт» - Русский трейлер.mp4',
   }
 ];
