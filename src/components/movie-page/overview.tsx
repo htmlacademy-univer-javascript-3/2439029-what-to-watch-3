@@ -18,7 +18,7 @@ function Overview(props: OverviewProps) {
         <p className="film-card__director"><strong>Director: {currentFilm.director}</strong></p>
 
         <p className="film-card__starring">
-          <strong>Starring: {currentFilm.starring}</strong>
+          <strong>Starring: {currentFilm.starring.join(', ')}</strong>
         </p>
       </div>
     </>
