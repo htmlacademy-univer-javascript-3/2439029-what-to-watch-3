@@ -11,6 +11,7 @@ import PrivateRoute from '@pages/private-route/private-route.tsx';
 import ScrollToTop from '@components/scroll-to-top.tsx';
 import {Paths} from '../../const/paths.ts';
 import Overview from '@components/movie-page/overview.tsx';
+import Details from '@components/movie-page/details.tsx';
 
 type AppProps ={
   films:Film[];
@@ -26,6 +27,7 @@ function App({films}: AppProps): JSX.Element {
         <Route path={Paths.SignIn} element={<SignIn/>}/>
         <Route path={'*'} element={<NotFound/>}/>
         <Route path={Paths.MoviePage} element={<MoviePage films={films} count={9}><Overview films = {films}/></MoviePage>}/>
+        <Route path={Paths.MoviePageDetails} element={<MoviePage films={films} count={9}><Details films = {films}/></MoviePage>}/>
         <Route path={Paths.AddReview} element={<AddReview films={films}/>}/>
         <Route path={Paths.Player} element={<Player films={films}/>}/>
       </Routes>
