@@ -1,7 +1,7 @@
 import Footer from '@components/footer/footer.tsx';
 import {Film} from 'types/film.ts';
 import FilmDescription from '@components/ciurrent-film/film-description.tsx';
-import SmallFilmCardList from '@components/small-film-card/small-film-card-list.tsx';
+import FilmCardList from '@components/film-card/film-card-list.tsx';
 import FilmCardButtons from '@components/film-card-buttons/film-card-buttons.tsx';
 import Logo from '@components/header/logo.tsx';
 import UserPage from '@components/header/user-page.tsx';
@@ -45,7 +45,7 @@ function MoviePage(props: MoviePageProps) {
         <section className="catalog catalog--like-this">
           <h2 className="catalog__title">More like this</h2>
           <div className="catalog__films-list">
-            <SmallFilmCardList films={props.films.filter((f) => f.id !== currentId).slice(0, 4)}/>
+            <FilmCardList films={props.films.filter((f) => f.id !== currentId).slice(0, 4)}/>
           </div>
         </section>
         <Footer/>

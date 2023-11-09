@@ -3,12 +3,12 @@ import {Film} from 'types/film.ts';
 
 
 type VideoPlayerProps = {
-  promoFilm: Film;
+  film: Film;
   activeFilm: number | null;
   isMuted: boolean;
 }
 
-export default function VideoPlayer({promoFilm, activeFilm, isMuted}: VideoPlayerProps): JSX.Element {
+export default function VideoPlayer({film, activeFilm, isMuted}: VideoPlayerProps): JSX.Element {
   const [isLoaded, setIsLoaded] = useState(false);
   const videoRef = useRef<HTMLVideoElement | null>(null);
 
@@ -28,29 +28,18 @@ export default function VideoPlayer({promoFilm, activeFilm, isMuted}: VideoPlaye
 
   useEffect(() => {
     const videoElement = videoRef.current;
-
     if (!isLoaded || !videoElement) {
       return;
     }
-
-    if (activeFilm === promoFilm.id) {
+    if (activeFilm === film.id) {
       videoElement.play();
       return;
     }
-
     videoElement.pause();
-    videoElement.src = promoFilm.video;
-  }, [activeFilm, isLoaded, promoFilm.id, promoFilm.video]);
+    videoElement.src = film.video;
+  }, [activeFilm, isLoaded, film.id, film.video]);
 
   return (
-    <video
-      width="280"
-      height="175"
-      poster={promoFilm.posterImg}
-      ref={videoRef}
-      src={promoFilm.video}
-      muted={isMuted}
-    >
-    </video>
+    <video width="280" height="175" poster={film.posterImg} ref={videoRef} src={film.video} muted={isMuted}></video>
   );
 }
