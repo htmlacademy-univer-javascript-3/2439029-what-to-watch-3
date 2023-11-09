@@ -8,7 +8,7 @@ export type Film = {
   rating: Rating;
   text: string[];
   director: string;
-  starring: string;
+  starring: string[];
   genre: string;
   date: number;
   runTime: string;

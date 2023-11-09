@@ -13,8 +13,8 @@ export const films: Film[] = [
     text: ['In the 1930s, the Grand Budapest Hotel is a popular European ski resort, presided over by concierge Gustave H. (Ralph Fiennes). Zero, a junior lobby boy, becomes Gustave\'s friend and protege.'
       , 'Gustave prides himself on providing first-class service to the hotel\'s guests, including satisfying the sexual needs of the many elderly women who stay there. When one of Gustave\'s lovers dies mysteriously, Gustave finds himself the recipient of a priceless painting and the chief suspect in her murder'],
     director: 'Quentin Tarantino',
-    starring: 'Matt Damon, Tom Hanks, Takeshi Kitano, Christian Bale',
-    genre: 'Drama',
+    starring: ['Matt Damon', 'Tom Hanks', 'Takeshi Kitano', 'Christian Bale'],
+    genre: 'Comedy',
     runTime: '1h 39m',
     date: 2014,
     video: '/video/Отель «Гранд Будапешт» - Русский трейлер.mp4',
@@ -32,7 +32,7 @@ export const films: Film[] = [
     text: ['In the 1930s, the Grand Budapest Hotel is a popular European ski resort, presided over by concierge Gustave H. (Ralph Fiennes). Zero, a junior lobby boy, becomes Gustave\'s friend and protege.'
       , 'Gustave prides himself on providing first-class service to the hotel\'s guests, including satisfying the sexual needs of the many elderly women who stay there. When one of Gustave\'s lovers dies mysteriously, Gustave finds himself the recipient of a priceless painting and the chief suspect in her murder'],
     director: 'Quentin Tarantino',
-    starring: 'Matt Damon, Tom Hanks, Takeshi Kitano, Christian Bale',
+    starring: ['Matt Damon', 'Tom Hanks', 'Takeshi Kitano', 'Christian Bale'],
     genre: 'Drama',
     runTime: '1h 39m',
     date: 2014,
@@ -50,7 +50,7 @@ export const films: Film[] = [
     text: ['In the 1930s, the Grand Budapest Hotel is a popular European ski resort, presided over by concierge Gustave H. (Ralph Fiennes). Zero, a junior lobby boy, becomes Gustave\'s friend and protege.'
       , 'Gustave prides himself on providing first-class service to the hotel\'s guests, including satisfying the sexual needs of the many elderly women who stay there. When one of Gustave\'s lovers dies mysteriously, Gustave finds himself the recipient of a priceless painting and the chief suspect in her murder'],
     director: 'Quentin Tarantino',
-    starring: 'Matt Damon, Tom Hanks, Takeshi Kitano, Christian Bale',
+    starring: ['Matt Damon', 'Tom Hanks', 'Takeshi Kitano', 'Christian Bale'],
     genre: 'Drama',
     runTime: '1h 39m',
     date: 2014,
@@ -68,7 +68,7 @@ export const films: Film[] = [
     text: ['In the 1930s, the Grand Budapest Hotel is a popular European ski resort, presided over by concierge Gustave H. (Ralph Fiennes). Zero, a junior lobby boy, becomes Gustave\'s friend and protege.'
       , 'Gustave prides himself on providing first-class service to the hotel\'s guests, including satisfying the sexual needs of the many elderly women who stay there. When one of Gustave\'s lovers dies mysteriously, Gustave finds himself the recipient of a priceless painting and the chief suspect in her murder'],
     director: 'Quentin Tarantino',
-    starring: 'Matt Damon, Tom Hanks, Takeshi Kitano, Christian Bale',
+    starring: ['Matt Damon', 'Tom Hanks', 'Takeshi Kitano', 'Christian Bale'],
     genre: 'Drama',
     runTime: '1h 39m',
     date: 2014,
@@ -86,8 +86,8 @@ export const films: Film[] = [
     text: ['In the 1930s, the Grand Budapest Hotel is a popular European ski resort, presided over by concierge Gustave H. (Ralph Fiennes). Zero, a junior lobby boy, becomes Gustave\'s friend and protege.'
       , 'Gustave prides himself on providing first-class service to the hotel\'s guests, including satisfying the sexual needs of the many elderly women who stay there. When one of Gustave\'s lovers dies mysteriously, Gustave finds himself the recipient of a priceless painting and the chief suspect in her murder'],
     director: 'Quentin Tarantino',
-    starring: 'Matt Damon, Tom Hanks, Takeshi Kitano, Christian Bale',
-    genre: 'Drama',
+    starring: ['Matt Damon', 'Tom Hanks', 'Takeshi Kitano', 'Christian Bale'],
+    genre: 'Comedy',
     runTime: '1h 39m',
     date: 2014,
     video: '/video/Отель «Гранд Будапешт» - Русский трейлер.mp4',
@@ -104,7 +104,7 @@ export const films: Film[] = [
     text: ['In the 1930s, the Grand Budapest Hotel is a popular European ski resort, presided over by concierge Gustave H. (Ralph Fiennes). Zero, a junior lobby boy, becomes Gustave\'s friend and protege.'
       , 'Gustave prides himself on providing first-class service to the hotel\'s guests, including satisfying the sexual needs of the many elderly women who stay there. When one of Gustave\'s lovers dies mysteriously, Gustave finds himself the recipient of a priceless painting and the chief suspect in her murder'],
     director: 'Quentin Tarantino',
-    starring: 'Matt Damon, Tom Hanks, Takeshi Kitano, Christian Bale',
+    starring: ['Matt Damon', 'Tom Hanks', 'Takeshi Kitano', 'Christian Bale'],
     genre: 'Drama',
     runTime: '1h 39m',
     date: 2014,
@@ -122,8 +122,8 @@ export const films: Film[] = [
     text: ['In the 1930s, the Grand Budapest Hotel is a popular European ski resort, presided over by concierge Gustave H. (Ralph Fiennes). Zero, a junior lobby boy, becomes Gustave\'s friend and protege.'
       , 'Gustave prides himself on providing first-class service to the hotel\'s guests, including satisfying the sexual needs of the many elderly women who stay there. When one of Gustave\'s lovers dies mysteriously, Gustave finds himself the recipient of a priceless painting and the chief suspect in her murder'],
     director: 'Quentin Tarantino',
-    starring: 'Matt Damon, Tom Hanks, Takeshi Kitano, Christian Bale',
-    genre: 'Drama',
+    starring: ['Matt Damon', 'Tom Hanks', 'Takeshi Kitano', 'Christian Bale'],
+    genre: 'Comedy',
     runTime: '1h 39m',
     date: 2014,
     video: '/video/Отель «Гранд Будапешт» - Русский трейлер.mp4',
@@ -140,8 +140,8 @@ export const films: Film[] = [
     text: ['In the 1930s, the Grand Budapest Hotel is a popular European ski resort, presided over by concierge Gustave H. (Ralph Fiennes). Zero, a junior lobby boy, becomes Gustave\'s friend and protege.'
       , 'Gustave prides himself on providing first-class service to the hotel\'s guests, including satisfying the sexual needs of the many elderly women who stay there. When one of Gustave\'s lovers dies mysteriously, Gustave finds himself the recipient of a priceless painting and the chief suspect in her murder'],
     director: 'Quentin Tarantino',
-    starring: 'Matt Damon, Tom Hanks, Takeshi Kitano, Christian Bale',
-    genre: 'Drama',
+    starring: ['Matt Damon', 'Tom Hanks', 'Takeshi Kitano', 'Christian Bale'],
+    genre: 'Comedy',
     runTime: '1h 39m',
     date: 2014,
     video: '/video/Отель «Гранд Будапешт» - Русский трейлер.mp4',
@@ -158,8 +158,8 @@ export const films: Film[] = [
     text: ['In the 1930s, the Grand Budapest Hotel is a popular European ski resort, presided over by concierge Gustave H. (Ralph Fiennes). Zero, a junior lobby boy, becomes Gustave\'s friend and protege.'
       , 'Gustave prides himself on providing first-class service to the hotel\'s guests, including satisfying the sexual needs of the many elderly women who stay there. When one of Gustave\'s lovers dies mysteriously, Gustave finds himself the recipient of a priceless painting and the chief suspect in her murder'],
     director: 'Quentin Tarantino',
-    starring: 'Matt Damon, Tom Hanks, Takeshi Kitano, Christian Bale',
-    genre: 'Drama',
+    starring: ['Matt Damon', 'Tom Hanks', 'Takeshi Kitano', 'Christian Bale'],
+    genre: 'Comedy',
     runTime: '1h 39m',
     date: 2014,
     video: '/video/Отель «Гранд Будапешт» - Русский трейлер.mp4',
@@ -176,7 +176,7 @@ export const films: Film[] = [
     text: ['In the 1930s, the Grand Budapest Hotel is a popular European ski resort, presided over by concierge Gustave H. (Ralph Fiennes). Zero, a junior lobby boy, becomes Gustave\'s friend and protege.'
       , 'Gustave prides himself on providing first-class service to the hotel\'s guests, including satisfying the sexual needs of the many elderly women who stay there. When one of Gustave\'s lovers dies mysteriously, Gustave finds himself the recipient of a priceless painting and the chief suspect in her murder'],
     director: 'Quentin Tarantino',
-    starring: 'Matt Damon, Tom Hanks, Takeshi Kitano, Christian Bale',
+    starring: ['Matt Damon', 'Tom Hanks', 'Takeshi Kitano', 'Christian Bale'],
     genre: 'Drama',
     runTime: '1h 39m',
     date: 2014,
@@ -194,7 +194,7 @@ export const films: Film[] = [
     text: ['In the 1930s, the Grand Budapest Hotel is a popular European ski resort, presided over by concierge Gustave H. (Ralph Fiennes). Zero, a junior lobby boy, becomes Gustave\'s friend and protege.'
       , 'Gustave prides himself on providing first-class service to the hotel\'s guests, including satisfying the sexual needs of the many elderly women who stay there. When one of Gustave\'s lovers dies mysteriously, Gustave finds himself the recipient of a priceless painting and the chief suspect in her murder'],
     director: 'Quentin Tarantino',
-    starring: 'Matt Damon, Tom Hanks, Takeshi Kitano, Christian Bale',
+    starring: ['Matt Damon', 'Tom Hanks', 'Takeshi Kitano', 'Christian Bale'],
     genre: 'Drama',
     runTime: '1h 39m',
     date: 2014,
@@ -212,7 +212,7 @@ export const films: Film[] = [
     text: ['In the 1930s, the Grand Budapest Hotel is a popular European ski resort, presided over by concierge Gustave H. (Ralph Fiennes). Zero, a junior lobby boy, becomes Gustave\'s friend and protege.'
       , 'Gustave prides himself on providing first-class service to the hotel\'s guests, including satisfying the sexual needs of the many elderly women who stay there. When one of Gustave\'s lovers dies mysteriously, Gustave finds himself the recipient of a priceless painting and the chief suspect in her murder'],
     director: 'Quentin Tarantino',
-    starring: 'Matt Damon, Tom Hanks, Takeshi Kitano, Christian Bale',
+    starring: ['Matt Damon', 'Tom Hanks', 'Takeshi Kitano', 'Christian Bale'],
     genre: 'Drama',
     runTime: '1h 39m',
     date: 2014,
@@ -230,7 +230,7 @@ export const films: Film[] = [
     text: ['In the 1930s, the Grand Budapest Hotel is a popular European ski resort, presided over by concierge Gustave H. (Ralph Fiennes). Zero, a junior lobby boy, becomes Gustave\'s friend and protege.'
       , 'Gustave prides himself on providing first-class service to the hotel\'s guests, including satisfying the sexual needs of the many elderly women who stay there. When one of Gustave\'s lovers dies mysteriously, Gustave finds himself the recipient of a priceless painting and the chief suspect in her murder'],
     director: 'Quentin Tarantino',
-    starring: 'Matt Damon, Tom Hanks, Takeshi Kitano, Christian Bale',
+    starring: ['Matt Damon', 'Tom Hanks', 'Takeshi Kitano', 'Christian Bale'],
     genre: 'Drama',
     runTime: '1h 39m',
     date: 2014,
@@ -248,7 +248,7 @@ export const films: Film[] = [
     text: ['In the 1930s, the Grand Budapest Hotel is a popular European ski resort, presided over by concierge Gustave H. (Ralph Fiennes). Zero, a junior lobby boy, becomes Gustave\'s friend and protege.'
       , 'Gustave prides himself on providing first-class service to the hotel\'s guests, including satisfying the sexual needs of the many elderly women who stay there. When one of Gustave\'s lovers dies mysteriously, Gustave finds himself the recipient of a priceless painting and the chief suspect in her murder'],
     director: 'Quentin Tarantino',
-    starring: 'Matt Damon, Tom Hanks, Takeshi Kitano, Christian Bale',
+    starring: ['Matt Damon', 'Tom Hanks', 'Takeshi Kitano', 'Christian Bale'],
     genre: 'Drama',
     runTime: '1h 39m',
     date: 2014,
@@ -266,7 +266,7 @@ export const films: Film[] = [
     text: ['In the 1930s, the Grand Budapest Hotel is a popular European ski resort, presided over by concierge Gustave H. (Ralph Fiennes). Zero, a junior lobby boy, becomes Gustave\'s friend and protege.'
       , 'Gustave prides himself on providing first-class service to the hotel\'s guests, including satisfying the sexual needs of the many elderly women who stay there. When one of Gustave\'s lovers dies mysteriously, Gustave finds himself the recipient of a priceless painting and the chief suspect in her murder'],
     director: 'Quentin Tarantino',
-    starring: 'Matt Damon, Tom Hanks, Takeshi Kitano, Christian Bale',
+    starring: ['Matt Damon', 'Tom Hanks', 'Takeshi Kitano', 'Christian Bale'],
     genre: 'Drama',
     runTime: '1h 39m',
     date: 2014,
@@ -284,7 +284,7 @@ export const films: Film[] = [
     text: ['In the 1930s, the Grand Budapest Hotel is a popular European ski resort, presided over by concierge Gustave H. (Ralph Fiennes). Zero, a junior lobby boy, becomes Gustave\'s friend and protege.'
       , 'Gustave prides himself on providing first-class service to the hotel\'s guests, including satisfying the sexual needs of the many elderly women who stay there. When one of Gustave\'s lovers dies mysteriously, Gustave finds himself the recipient of a priceless painting and the chief suspect in her murder'],
     director: 'Quentin Tarantino',
-    starring: 'Matt Damon, Tom Hanks, Takeshi Kitano, Christian Bale',
+    starring: ['Matt Damon', 'Tom Hanks', 'Takeshi Kitano', 'Christian Bale'],
     genre: 'Drama',
     runTime: '1h 39m',
     date: 2014,
@@ -302,7 +302,7 @@ export const films: Film[] = [
     text: ['In the 1930s, the Grand Budapest Hotel is a popular European ski resort, presided over by concierge Gustave H. (Ralph Fiennes). Zero, a junior lobby boy, becomes Gustave\'s friend and protege.'
       , 'Gustave prides himself on providing first-class service to the hotel\'s guests, including satisfying the sexual needs of the many elderly women who stay there. When one of Gustave\'s lovers dies mysteriously, Gustave finds himself the recipient of a priceless painting and the chief suspect in her murder'],
     director: 'Quentin Tarantino',
-    starring: 'Matt Damon, Tom Hanks, Takeshi Kitano, Christian Bale',
+    starring: ['Matt Damon', 'Tom Hanks', 'Takeshi Kitano', 'Christian Bale'],
     genre: 'Drama',
     runTime: '1h 39m',
     date: 2014,
@@ -320,7 +320,7 @@ export const films: Film[] = [
     text: ['In the 1930s, the Grand Budapest Hotel is a popular European ski resort, presided over by concierge Gustave H. (Ralph Fiennes). Zero, a junior lobby boy, becomes Gustave\'s friend and protege.'
       , 'Gustave prides himself on providing first-class service to the hotel\'s guests, including satisfying the sexual needs of the many elderly women who stay there. When one of Gustave\'s lovers dies mysteriously, Gustave finds himself the recipient of a priceless painting and the chief suspect in her murder'],
     director: 'Quentin Tarantino',
-    starring: 'Matt Damon, Tom Hanks, Takeshi Kitano, Christian Bale',
+    starring: ['Matt Damon', 'Tom Hanks', 'Takeshi Kitano', 'Christian Bale'],
     genre: 'Drama',
     runTime: '1h 39m',
     date: 2014,
@@ -338,7 +338,7 @@ export const films: Film[] = [
     text: ['In the 1930s, the Grand Budapest Hotel is a popular European ski resort, presided over by concierge Gustave H. (Ralph Fiennes). Zero, a junior lobby boy, becomes Gustave\'s friend and protege.'
       , 'Gustave prides himself on providing first-class service to the hotel\'s guests, including satisfying the sexual needs of the many elderly women who stay there. When one of Gustave\'s lovers dies mysteriously, Gustave finds himself the recipient of a priceless painting and the chief suspect in her murder'],
     director: 'Quentin Tarantino',
-    starring: 'Matt Damon, Tom Hanks, Takeshi Kitano, Christian Bale',
+    starring: ['Matt Damon', 'Tom Hanks', 'Takeshi Kitano', 'Christian Bale'],
     genre: 'Drama',
     runTime: '1h 39m',
     date: 2014,
@@ -356,7 +356,7 @@ export const films: Film[] = [
     text: ['In the 1930s, the Grand Budapest Hotel is a popular European ski resort, presided over by concierge Gustave H. (Ralph Fiennes). Zero, a junior lobby boy, becomes Gustave\'s friend and protege.'
       , 'Gustave prides himself on providing first-class service to the hotel\'s guests, including satisfying the sexual needs of the many elderly women who stay there. When one of Gustave\'s lovers dies mysteriously, Gustave finds himself the recipient of a priceless painting and the chief suspect in her murder'],
     director: 'Quentin Tarantino',
-    starring: 'Matt Damon, Tom Hanks, Takeshi Kitano, Christian Bale',
+    starring: ['Matt Damon', 'Tom Hanks', 'Takeshi Kitano', 'Christian Bale'],
     genre: 'Drama',
     runTime: '1h 39m',
     date: 2014,
@@ -374,7 +374,7 @@ export const films: Film[] = [
     text: ['In the 1930s, the Grand Budapest Hotel is a popular European ski resort, presided over by concierge Gustave H. (Ralph Fiennes). Zero, a junior lobby boy, becomes Gustave\'s friend and protege.'
       , 'Gustave prides himself on providing first-class service to the hotel\'s guests, including satisfying the sexual needs of the many elderly women who stay there. When one of Gustave\'s lovers dies mysteriously, Gustave finds himself the recipient of a priceless painting and the chief suspect in her murder'],
     director: 'Quentin Tarantino',
-    starring: 'Matt Damon, Tom Hanks, Takeshi Kitano, Christian Bale',
+    starring: ['Matt Damon', 'Tom Hanks', 'Takeshi Kitano', 'Christian Bale'],
     genre: 'Drama',
     runTime: '1h 39m',
     date: 2014,

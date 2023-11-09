@@ -10,6 +10,7 @@ import NotFound from '@pages/not-found/not-found.tsx';
 type MoviePageProps = {
   films: Film[];
   count: number;
+  children: JSX.Element;
 }
 
 function MoviePage(props: MoviePageProps) {
@@ -39,13 +40,13 @@ function MoviePage(props: MoviePageProps) {
             </div>
           </div>
         </div>
-        <FilmDescription {...currentFilm}/>
+        <FilmDescription film={currentFilm}>{props.children}</FilmDescription>
       </section>
       <div className="page-content">
         <section className="catalog catalog--like-this">
           <h2 className="catalog__title">More like this</h2>
           <div className="catalog__films-list">
-            <FilmCardList films={props.films.filter((f) => f.id !== currentId).slice(0, 4)}/>
+            <FilmCardList films={props.films.filter((f) => f.id !== currentId && f.genre===currentFilm.genre).slice(0, 4)}/>
           </div>
         </section>
         <Footer/>
