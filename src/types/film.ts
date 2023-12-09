@@ -1,4 +1,5 @@
 import {Rating} from 'types/rating.ts';
+import {CatalogGenre} from 'types/genre.ts';
 
 export type Film = {
   id: number;
@@ -9,7 +10,7 @@ export type Film = {
   text: string[];
   director: string;
   starring: string[];
-  genre: string;
+  genre: CatalogGenre;
   date: number;
   runTime: string;
   video: string;

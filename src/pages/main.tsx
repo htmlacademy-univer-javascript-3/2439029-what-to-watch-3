@@ -1,18 +1,18 @@
-import CatalogGenres from '@components/catalog-genres.tsx';
-import {CatalogGenreValues} from '@components/catalog-genres.tsx';
 import Footer from '@components/footer/footer.tsx';
 import {Film} from 'types/film.ts';
 import Logo from '@components/header/logo.tsx';
 import UserPage from '@components/header/user-page.tsx';
 import FilmCardList from '@components/film-card/film-card-list.tsx';
+import GenreList from '@components/genre/genre-list';
+import {useAppSelector} from '@components/genre/genre-item.tsx';
 
 type MainPageProps = {
   currentFilm: Film;
-  otherFilms: Film[];
   myListCount: number;
 }
 
 function MainPage(props: MainPageProps) {
+  const films = useAppSelector((state) => state.filteredFilms);
   return (
     <>
       <section className="film-card">
@@ -64,15 +64,10 @@ function MainPage(props: MainPageProps) {
         <section className="catalog">
           <h2 className="catalog__title visually-hidden">Catalog</h2>
 
-          <ul className="catalog__genres-list">
-            <li className="catalog__genres-item catalog__genres-item--active">
-              <a href={'#'} className="catalog__genres-link">{'All genres'}</a>
-            </li>
-            {CatalogGenreValues.map((g)=>(<CatalogGenres name={g}/>))}
-          </ul>
+          <GenreList />
 
           <div className="catalog__films-list">
-            <FilmCardList films={props.otherFilms}/>
+            <FilmCardList films={films}/>
           </div>
 
           <div className="catalog__more">

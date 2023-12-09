@@ -1,13 +1,15 @@
 import FilmRating from '@components/ciurrent-film/film-rating.tsx';
 import {Film} from 'types/film.ts';
 import NotFound from '@pages/not-found/not-found.tsx';
+import {useParams} from 'react-router-dom';
 
 type OverviewProps = {
   films: Film[];
 }
 
 function Overview(props: OverviewProps) {
-  const currentId = 1;
+  const {id} = useParams<string>();
+  const currentId = Number(id);
   const currentFilm = props.films.find((f) => f.id === currentId);
   return currentFilm ? (
     <>

@@ -1,12 +1,14 @@
 import {Film} from 'types/film.ts';
 import NotFound from '@pages/not-found/not-found.tsx';
+import {useParams} from 'react-router-dom';
 
 type OverviewProps = {
   films: Film[];
 }
 
 function Details(props: OverviewProps) {
-  const currentId = 1;
+  const {id} = useParams<string>();
+  const currentId = Number(id);
   const currentFilm = props.films.find((f) => f.id === currentId);
   return currentFilm ? (
     <div className="film-card__text film-card__row">

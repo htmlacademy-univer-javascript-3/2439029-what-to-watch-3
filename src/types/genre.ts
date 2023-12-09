@@ -1,0 +1,11 @@
+export type CatalogGenre =
+  'All genres'
+  |'Kids & Family'
+  | 'Romance'
+  | 'Sci-Fi'
+  | 'Thrillers'
+  | 'Comedy'
+  | 'Crime'
+  | 'Documentary'
+  | 'Dramas'
+  | 'Horror'
