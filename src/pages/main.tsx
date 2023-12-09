@@ -4,7 +4,8 @@ import Logo from '@components/header/logo.tsx';
 import UserPage from '@components/header/user-page.tsx';
 import FilmCardList from '@components/film-card/film-card-list.tsx';
 import GenreList from '@components/genre/genre-list';
-import {useAppSelector} from '@components/genre/genre-item.tsx';
+import {useAppSelector} from '@components/use-app/use-app.tsx';
+import ShowMore from '@components/buttons/show-more.tsx';
 
 type MainPageProps = {
   currentFilm: Film;
@@ -12,7 +13,8 @@ type MainPageProps = {
 }
 
 function MainPage(props: MainPageProps) {
-  const films = useAppSelector((state) => state.filteredFilms);
+  const count = useAppSelector((state) => state.count);
+  let films = useAppSelector((state) => state.filteredFilms);
   return (
     <>
       <section className="film-card">
@@ -67,12 +69,9 @@ function MainPage(props: MainPageProps) {
           <GenreList />
 
           <div className="catalog__films-list">
-            <FilmCardList films={films}/>
+            <FilmCardList films={films.slice(0,count)}/>
           </div>
-
-          <div className="catalog__more">
-            <button className="catalog__button" type="button">Show more</button>
-          </div>
+          {count < films.length && <ShowMore />}
         </section>
         <Footer/>
       </div>

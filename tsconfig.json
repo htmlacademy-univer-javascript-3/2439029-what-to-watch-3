@@ -42,6 +42,9 @@
       "@store/*": [
         "./src/store/*"
       ],
+      "@const/*": [
+        "./src/const/*"
+      ],
     },
   },
   "include": ["src", "vite.config.ts"],

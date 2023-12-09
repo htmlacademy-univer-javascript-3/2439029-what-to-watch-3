@@ -1,10 +1,5 @@
 import {CatalogGenre} from 'types/genre.ts';
-import {TypedUseSelectorHook, useSelector} from 'react-redux';
-import {store} from 'store';
-
-type State = ReturnType<typeof store.getState>;
-
-export const useAppSelector: TypedUseSelectorHook<State> = useSelector;
+import {useAppSelector} from '@components/use-app/use-app.tsx';
 
 type GenreItemProps = {
   genre: CatalogGenre;
