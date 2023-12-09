@@ -6,6 +6,7 @@ import FilmCardButtons from '@components/film-card-buttons/film-card-buttons.tsx
 import Logo from '@components/header/logo.tsx';
 import UserPage from '@components/header/user-page.tsx';
 import NotFound from '@pages/not-found/not-found.tsx';
+import {useParams} from 'react-router-dom';
 
 type MoviePageProps = {
   films: Film[];
@@ -14,7 +15,8 @@ type MoviePageProps = {
 }
 
 function MoviePage(props: MoviePageProps) {
-  const currentId = 1;
+  const {id} = useParams<string>();
+  const currentId = Number(id);
   const currentFilm = props.films.find((f) => f.id === currentId);
   return currentFilm ? (
     <>

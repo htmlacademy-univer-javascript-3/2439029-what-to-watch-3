@@ -4,6 +4,7 @@ import UserPage from '@components/header/user-page.tsx';
 import {AddReviewForm} from '@components/review/add-review-form.tsx';
 import NotFound from '@pages/not-found/not-found.tsx';
 import {useState} from 'react';
+import {useParams} from 'react-router-dom';
 
 type AddReviewProps = {
   films: Film[];
@@ -11,7 +12,8 @@ type AddReviewProps = {
 
 function AddReview({films}: AddReviewProps) {
   const [, setFilmRating] = useState(0);
-  const currentId = 1;
+  const {id} = useParams<string>();
+  const currentId = Number(id);
   const currentFilm = films.find((f) => f.id === currentId);
   return currentFilm ? (
     <section className="film-card film-card--full">

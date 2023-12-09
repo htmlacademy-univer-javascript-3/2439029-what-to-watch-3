@@ -1,12 +1,14 @@
 import {Film} from 'types/film.ts';
 import NotFound from '@pages/not-found/not-found.tsx';
+import {useParams} from 'react-router-dom';
 
 type PlayerProps = {
   films: Film[];
 }
 
 function Player({films}: PlayerProps) {
-  const currentId = 1;
+  const {id} = useParams<string>();
+  const currentId = Number(id);
   const currentFilm = films.find((f) => f.id === currentId);
   return currentFilm ? (
     <div className="player">
