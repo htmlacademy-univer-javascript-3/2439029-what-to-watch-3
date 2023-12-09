@@ -1,14 +1,8 @@
 import {CatalogGenre} from 'types/genre.ts';
 import {useEffect} from 'react';
-import {changeGenre, takeFilms, setGenres} from '../../store/action.ts';
+import {changeGenre, takeFilms, setGenres} from '@store/action.ts';
 import GenreItem from './genre-item';
-import {useDispatch} from 'react-redux';
-import {store} from '@store/index.ts';
-import {useAppSelector} from './genre-item.tsx';
-
-
-type AppDispatch = typeof store.dispatch;
-const useAppDispatch = () => useDispatch<AppDispatch>();
+import {useAppSelector, useAppDispatch} from '@components/use-app/use-app.tsx';
 
 export default function GenreList() {
   const {allFilms, genres} = useAppSelector((state) => state);
