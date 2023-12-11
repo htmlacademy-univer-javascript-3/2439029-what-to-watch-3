@@ -14,4 +14,4 @@ export default function ShowMore(): JSX.Element {
       </button>
     </div>
   );
-};
+}

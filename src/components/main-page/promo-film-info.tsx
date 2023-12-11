@@ -5,7 +5,7 @@ type PromoFilmProps = {
   myListCount: number;
 }
 
-function PromoFilm({promoFilm, myListCount}: PromoFilmProps) {
+function PromoFilmInfo({promoFilm, myListCount}: PromoFilmProps) {
   return (
     <div className="film-card__wrap">
       <div className="film-card__info">
@@ -41,4 +41,4 @@ function PromoFilm({promoFilm, myListCount}: PromoFilmProps) {
   );
 }
 
-export default PromoFilm;
+export default PromoFilmInfo;

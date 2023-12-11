@@ -24,7 +24,7 @@ function Overview(props: OverviewProps) {
         </p>
       </div>
     </>
-  ): (
+  ) : (
     <NotFound/>
   );
 }

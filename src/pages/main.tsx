@@ -6,7 +6,7 @@ import GenreList from '@components/genre/genre-list';
 import {useAppSelector} from '@components/use-app/use-app.tsx';
 import ShowMore from '@components/buttons/show-more.tsx';
 import Spinner from '@components/spinner/spinner.tsx';
-import PromoFilm from 'components/main-page/promo-film.tsx';
+import PromoFilmInfo from '@components/main-page/promo-film-info.tsx';
 
 type MainPageProps = {
   myListCount: number;
@@ -27,7 +27,7 @@ function MainPage(props: MainPageProps) {
           <Logo/>
           <UserPage/>
         </header>
-        <PromoFilm promoFilm={promoFilm} myListCount={props.myListCount}/>
+        <PromoFilmInfo promoFilm={promoFilm} myListCount={props.myListCount}/>
       </section>
 
       <div className="page-content">
