@@ -8,10 +8,10 @@ type FilmCardListProps = {
 }
 
 function FilmCardList({films}: FilmCardListProps) {
-  const [activeFilm, setSelectedFilm] = useState<number | null>(null);
+  const [activeFilm, setSelectedFilm] = useState<string | null>(null);
   let timer: undefined | TimeoutId = undefined;
 
-  const handleFocus = (id: number) => {
+  const handleFocus = (id: string) => {
     timer = setTimeout(() => {
       setSelectedFilm(id);
     }, 200);
@@ -23,7 +23,6 @@ function FilmCardList({films}: FilmCardListProps) {
   };
   return (
     <>
-      {/* eslint-disable-next-line react/jsx-key */}
       {films.map((film) => (
         <FilmCard film={film} activeFilm={activeFilm} onMouseOver={handleFocus} onMouseOut={handleFocusOff}/>))}
     </>

@@ -48,7 +48,7 @@ function MoviePage(props: MoviePageProps) {
         <section className="catalog catalog--like-this">
           <h2 className="catalog__title">More like this</h2>
           <div className="catalog__films-list">
-            <FilmCardList films={props.films.filter((f) => f.id !== currentId && f.genre===currentFilm.genre).slice(0, 4)}/>
+            <FilmCardList films={props.films.filter((f) => f.id !== currentId && f.genre === currentFilm.genre).slice(0, 4)}/>
           </div>
         </section>
         <Footer/>

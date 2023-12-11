@@ -4,7 +4,7 @@ import {Film} from 'types/film.ts';
 
 type VideoPlayerProps = {
   film: Film;
-  activeFilm: number | null;
+  activeFilm: string | null;
   isMuted: boolean;
 }
 
@@ -36,10 +36,10 @@ export default function VideoPlayer({film, activeFilm, isMuted}: VideoPlayerProp
       return;
     }
     videoElement.pause();
-    videoElement.src = film.video;
-  }, [activeFilm, isLoaded, film.id, film.video]);
+    videoElement.src = film.previewVideoLink;
+  }, [activeFilm, isLoaded, film.id, film.previewVideoLink]);
 
   return (
-    <video width="280" height="175" poster={film.posterImg} ref={videoRef} src={film.video} muted={isMuted}></video>
+    <video width="280" height="175" poster={film.previewImage} ref={videoRef} src={film.previewVideoLink} muted={isMuted}></video>
   );
 }

@@ -1,6 +1,6 @@
 import {CatalogGenre} from 'types/genre.ts';
 import {useEffect} from 'react';
-import {changeGenre, takeFilms, setGenres} from '@store/action.ts';
+import {changeGenre, setGenres} from '@store/action.ts';
 import GenreItem from './genre-item';
 import {useAppSelector, useAppDispatch} from '@components/use-app/use-app.tsx';
 
@@ -16,7 +16,6 @@ export default function GenreList() {
 
   const handleGenreClick = (genre: CatalogGenre) => {
     dispatch(changeGenre(genre));
-    dispatch(takeFilms());
   };
 
   return (
