@@ -5,6 +5,7 @@ import FilmCardList from '@components/film-card/film-card-list.tsx';
 import GenreList from '@components/genre/genre-list';
 import {useAppSelector} from '@components/use-app/use-app.tsx';
 import ShowMore from '@components/buttons/show-more.tsx';
+import Spinner from '@components/spinner/spinner.tsx';
 
 type MainPageProps = {
   myListCount: number;
@@ -62,16 +63,15 @@ function MainPage(props: MainPageProps) {
       </section>
 
       <div className="page-content">
-        <section className="catalog">
-          <h2 className="catalog__title visually-hidden">Catalog</h2>
-
-          <GenreList />
-
-          <div className="catalog__films-list">
-            <FilmCardList films={films.slice(0,count)}/>
-          </div>
-          {count < films.length && <ShowMore />}
-        </section>
+        {films.length === 0 ? <Spinner/> :
+          <section className="catalog">
+            <h2 className="catalog__title visually-hidden">Catalog</h2>
+            <GenreList />
+            <div className="catalog__films-list">
+              <FilmCardList films={films.slice(0,count)}/>
+            </div>
+            {count < films.length && <ShowMore />}
+          </section>}
         <Footer/>
       </div>
     </>
