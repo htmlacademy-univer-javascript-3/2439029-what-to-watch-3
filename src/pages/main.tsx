@@ -1,5 +1,4 @@
 import Footer from '@components/footer/footer.tsx';
-import {Film} from 'types/film.ts';
 import Logo from '@components/header/logo.tsx';
 import UserPage from '@components/header/user-page.tsx';
 import FilmCardList from '@components/film-card/film-card-list.tsx';
@@ -8,18 +7,18 @@ import {useAppSelector} from '@components/use-app/use-app.tsx';
 import ShowMore from '@components/buttons/show-more.tsx';
 
 type MainPageProps = {
-  currentFilm: Film;
   myListCount: number;
 }
 
 function MainPage(props: MainPageProps) {
   const count = useAppSelector((state) => state.count);
-  let films = useAppSelector((state) => state.filteredFilms);
+  const films = useAppSelector((state) => state.filteredFilms);
+  const promoFilm = useAppSelector((state) => state.promoFilm);
   return (
     <>
       <section className="film-card">
         <div className="film-card__bg">
-          <img src={props.currentFilm.img} alt={props.currentFilm.title}/>
+          <img src={promoFilm?.backgroundImage} alt={promoFilm?.name}/>
         </div>
 
         <h1 className="visually-hidden">WTW</h1>
@@ -32,14 +31,14 @@ function MainPage(props: MainPageProps) {
         <div className="film-card__wrap">
           <div className="film-card__info">
             <div className="film-card__poster">
-              <img src={props.currentFilm.img} alt={props.currentFilm.title} width="218" height="327"/>
+              <img src={promoFilm?.posterImage} alt={promoFilm?.name} width="218" height="327"/>
             </div>
 
             <div className="film-card__desc">
-              <h2 className="film-card__title">{props.currentFilm.title}</h2>
+              <h2 className="film-card__title">{promoFilm?.name}</h2>
               <p className="film-card__meta">
-                <span className="film-card__genre">{props.currentFilm.genre}</span>
-                <span className="film-card__year">{props.currentFilm.date}</span>
+                <span className="film-card__genre">{promoFilm?.genre}</span>
+                <span className="film-card__year">{promoFilm?.released}</span>
               </p>
 
               <div className="film-card__buttons">
