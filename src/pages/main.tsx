@@ -6,6 +6,7 @@ import GenreList from '@components/genre/genre-list';
 import {useAppSelector} from '@components/use-app/use-app.tsx';
 import ShowMore from '@components/buttons/show-more.tsx';
 import Spinner from '@components/spinner/spinner.tsx';
+import PromoFilm from 'components/main-page/promo-film.tsx';
 
 type MainPageProps = {
   myListCount: number;
@@ -21,45 +22,12 @@ function MainPage(props: MainPageProps) {
         <div className="film-card__bg">
           <img src={promoFilm?.backgroundImage} alt={promoFilm?.name}/>
         </div>
-
         <h1 className="visually-hidden">WTW</h1>
-
         <header className="page-header user-page__head">
           <Logo/>
           <UserPage/>
         </header>
-
-        <div className="film-card__wrap">
-          <div className="film-card__info">
-            <div className="film-card__poster">
-              <img src={promoFilm?.posterImage} alt={promoFilm?.name} width="218" height="327"/>
-            </div>
-
-            <div className="film-card__desc">
-              <h2 className="film-card__title">{promoFilm?.name}</h2>
-              <p className="film-card__meta">
-                <span className="film-card__genre">{promoFilm?.genre}</span>
-                <span className="film-card__year">{promoFilm?.released}</span>
-              </p>
-
-              <div className="film-card__buttons">
-                <button className="btn btn--play film-card__button" type="button">
-                  <svg viewBox={`0 0 ${19} ${19}`}>
-                    <use xlinkHref="#play-s"></use>
-                  </svg>
-                  <span>Play</span>
-                </button>
-                <button className="btn btn--list film-card__button" type="button">
-                  <svg viewBox="0 0 19 20" width="19" height="20">
-                    <use xlinkHref="#add"></use>
-                  </svg>
-                  <span>My list</span>
-                  <span className="film-card__count">{props.myListCount}</span>
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
+        <PromoFilm promoFilm={promoFilm} myListCount={props.myListCount}/>
       </section>
 
       <div className="page-content">
