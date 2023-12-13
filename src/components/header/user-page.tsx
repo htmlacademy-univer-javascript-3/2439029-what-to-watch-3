@@ -1,4 +1,15 @@
+import {useAppDispatch, useAppSelector} from '@components/use-app/use-app.tsx';
+import {Link} from 'react-router-dom';
+import {logout} from '@api/api-action.ts';
+
 function UserPage() {
+  const auth = useAppSelector((state) => state.authorizationStatus);
+  const dispatch = useAppDispatch();
+  const onClick = () => {
+    if (auth) {
+      dispatch(logout());
+    }
+  };
   return (
     <ul className="user-block">
       <li className="user-block__item">
@@ -7,7 +18,7 @@ function UserPage() {
         </div>
       </li>
       <li className="user-block__item">
-        <a className="user-block__link">Sign out</a>
+        <Link to="/login" className="user-block__link" onClick={onClick}>{auth ? 'Sign out' : 'Sign In'}</Link>
       </li>
     </ul>
   );

@@ -1,4 +1,5 @@
 import {PromoFilm} from 'types/film.ts';
+import {useAppSelector} from '@components/use-app/use-app.tsx';
 
 type PromoFilmProps = {
   promoFilm: PromoFilm | null;
@@ -6,6 +7,7 @@ type PromoFilmProps = {
 }
 
 function PromoFilmInfo({promoFilm, myListCount}: PromoFilmProps) {
+  const auth = useAppSelector((state) => state.authorizationStatus);
   return (
     <div className="film-card__wrap">
       <div className="film-card__info">
@@ -27,13 +29,14 @@ function PromoFilmInfo({promoFilm, myListCount}: PromoFilmProps) {
               </svg>
               <span>Play</span>
             </button>
-            <button className="btn btn--list film-card__button" type="button">
-              <svg viewBox="0 0 19 20" width="19" height="20">
-                <use xlinkHref="#add"></use>
-              </svg>
-              <span>My list</span>
-              <span className="film-card__count">{myListCount}</span>
-            </button>
+            {auth ?
+              <button className="btn btn--list film-card__button" type="button">
+                <svg viewBox="0 0 19 20" width="19" height="20">
+                  <use xlinkHref="#add"></use>
+                </svg>
+                <span>My list</span>
+                <span className="film-card__count">{myListCount}</span>
+              </button> : ''}
           </div>
         </div>
       </div>

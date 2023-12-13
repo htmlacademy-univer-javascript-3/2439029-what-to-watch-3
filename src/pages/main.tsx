@@ -38,7 +38,7 @@ function MainPage(props: MainPageProps) {
             <div className="catalog__films-list">
               <FilmCardList films={films.slice(0,count)}/>
             </div>
-            {count < films.length && <ShowMore />}
+            {count < films.length && <ShowMore/>}
           </section>}
         <Footer/>
       </div>

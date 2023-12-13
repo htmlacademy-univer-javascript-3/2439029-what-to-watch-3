@@ -1,7 +1,6 @@
 import Footer from '@components/footer/footer.tsx';
 import Logo from '@components/header/logo.tsx';
-import UserPage from '@components/header/user-page.tsx';
-import {useAppDispatch,} from '@components/use-app/use-app.tsx';
+import {useAppDispatch} from '@components/use-app/use-app.tsx';
 import {useNavigate} from 'react-router-dom';
 import {FormEventHandler, useRef} from 'react';
 import {login} from '@api/api-action.ts';
@@ -27,7 +26,7 @@ function SignIn() {
     <div className="user-page">
       <header className="page-header user-page__head">
         <Logo/>
-        <UserPage/>
+        <h1 className="page-title user-page__title">Sign in</h1>
       </header>
 
       <div className="sign-in user-page__content">

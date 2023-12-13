@@ -59,7 +59,7 @@ export const checkAuth = createAsyncThunk<void, undefined, {
   },
 );
 
-export const logoutAction = createAsyncThunk<void, undefined, {
+export const logout = createAsyncThunk<void, undefined, {
   dispatch: AppDispatch;
   state: State;
   extra: AxiosInstance;
