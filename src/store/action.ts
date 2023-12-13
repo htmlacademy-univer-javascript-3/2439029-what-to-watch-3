@@ -9,5 +9,5 @@ export const getPromoFilm = createAction<PromoFilm>('films/getPromoFilm');
 export const setGenres = createAction<CatalogGenre[]>('genre/setGenres');
 export const changeShowedFilms = createAction('films/changeShowedFilms');
 export const setAuthorization = createAction<boolean>('login/setAuthorization');
-export const setUserImage = createAction<string>('user/image');
+export const setImage = createAction<string>('user/image');
 export const setError = createAction<string | null>('films/error');

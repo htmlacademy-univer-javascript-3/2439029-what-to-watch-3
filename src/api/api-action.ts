@@ -2,7 +2,7 @@ import {createAsyncThunk} from '@reduxjs/toolkit';
 import {AxiosInstance} from 'axios';
 import {ApiPaths} from '@const/paths.ts';
 import {Film, PromoFilm} from 'types/film.ts';
-import {getFilms, getPromoFilm, setAuthorization} from '@store/action.ts';
+import {getFilms, getPromoFilm, setAuthorization, setImage} from '@store/action.ts';
 import {AppDispatch, saveToken, State, dropToken} from '@components/use-app/use-app.tsx';
 import {AuthData, UserData} from 'types/post-user-request.ts';
 
@@ -37,9 +37,10 @@ export const login = createAsyncThunk<void, AuthData, {
 }>(
   'user/login',
   async ({email: email, password}, {dispatch, extra: api}) => {
-    const {data: {token}} = await api.post<UserData>(ApiPaths.Login, {email, password});
+    const {data: {token, avatarUrl}} = await api.post<UserData>(ApiPaths.Login, {email, password});
     saveToken(token);
     dispatch(setAuthorization(true));
+    dispatch(setImage(avatarUrl));
   },
 );
 
