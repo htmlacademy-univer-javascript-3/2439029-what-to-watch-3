@@ -4,8 +4,10 @@ import {
   changeShowedFilms,
   getFilms,
   getPromoFilm,
+  setAuthorization,
+  setError,
   setGenres,
-  setAuthorization, setImage
+  setImage
 } from './action.ts';
 import {CatalogGenre} from 'types/genre.ts';
 import {Film, PromoFilm} from 'types/film.ts';
@@ -20,6 +22,7 @@ type initialStateProps = {
   count: number;
   authorizationStatus: boolean;
   image: string;
+  error: string | null;
 };
 
 const initialState: initialStateProps = {
@@ -30,7 +33,8 @@ const initialState: initialStateProps = {
   allFilms: [],
   count: showedFilmsCount,
   authorizationStatus: false,
-  image: 'img/avatar.jpg'
+  image: 'img/avatar.jpg',
+  error: null
 };
 
 const reducer = createReducer(initialState, (builder) => {
@@ -59,10 +63,15 @@ const reducer = createReducer(initialState, (builder) => {
       state.authorizationStatus = action.payload;
       if (!state.authorizationStatus){
         state.image = 'img/avatar.jpg';
+      }else{
+        state.error = null;
       }
     })
     .addCase(setImage, (state, action) => {
       state.image = action.payload;
+    })
+    .addCase(setError, (state, action) => {
+      state.error = action.payload;
     })
     .addCase(changeShowedFilms, (state) => {
       state.count =
