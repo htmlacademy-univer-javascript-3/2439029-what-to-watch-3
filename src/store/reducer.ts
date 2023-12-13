@@ -1,5 +1,14 @@
 import {createReducer} from '@reduxjs/toolkit';
-import {changeGenre, changeShowedFilms, getFilms, getPromoFilm, setGenres} from './action.ts';
+import {
+  changeGenre,
+  changeShowedFilms,
+  getFilms,
+  getPromoFilm,
+  setAuthorization,
+  setError,
+  setGenres,
+  setImage
+} from './action.ts';
 import {CatalogGenre} from 'types/genre.ts';
 import {Film, PromoFilm} from 'types/film.ts';
 import {showedFilmsCount} from '@const/values.ts';
@@ -11,6 +20,9 @@ type initialStateProps = {
   promoFilm: PromoFilm | null;
   allFilms: Film[];
   count: number;
+  authorizationStatus: boolean;
+  image: string;
+  error: string | null;
 };
 
 const initialState: initialStateProps = {
@@ -20,6 +32,9 @@ const initialState: initialStateProps = {
   filteredFilms: [],
   allFilms: [],
   count: showedFilmsCount,
+  authorizationStatus: false,
+  image: 'img/avatar.jpg',
+  error: null
 };
 
 const reducer = createReducer(initialState, (builder) => {
@@ -43,6 +58,20 @@ const reducer = createReducer(initialState, (builder) => {
     })
     .addCase(getPromoFilm, (state, action) => {
       state.promoFilm = action.payload;
+    })
+    .addCase(setAuthorization, (state, action) => {
+      state.authorizationStatus = action.payload;
+      if (!state.authorizationStatus){
+        state.image = 'img/avatar.jpg';
+      }else{
+        state.error = null;
+      }
+    })
+    .addCase(setImage, (state, action) => {
+      state.image = action.payload;
+    })
+    .addCase(setError, (state, action) => {
+      state.error = action.payload;
     })
     .addCase(changeShowedFilms, (state) => {
       state.count =
