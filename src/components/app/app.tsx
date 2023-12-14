@@ -6,6 +6,7 @@ import ScrollToTop from '@components/scroll-to-top.tsx';
 import {Paths} from '@const/paths.ts';
 import HistoryRouter from "@components/history-route/history-route.tsx";
 import browserHistory from "../../browser-history.ts";
+import MoviePage from '@pages/movie-page/movie-page.tsx';
 
 function App(): JSX.Element {
   return (
@@ -16,7 +17,7 @@ function App(): JSX.Element {
         {/*<Route path={Paths.MyList} element={<PrivateRoute isAuthorize={false}><MyList myFilms={films.slice(1,9)}/></PrivateRoute>}/>*/}
         <Route path={Paths.SignIn} element={<SignIn/>}/>
         <Route path={'*'} element={<NotFound/>}/>
-        {/*<Route path={Paths.MoviePage} element={<MoviePage films={films} count={9}><Overview films = {films}/></MoviePage>}/>*/}
+        <Route path={Paths.MoviePage} element={<MoviePage><div/></MoviePage>}/>
         {/*<Route path={Paths.MoviePageDetails} element={<MoviePage films={films} count={9}><Details films = {films}/></MoviePage>}/>*/}
         {/*<Route path={Paths.AddReview} element={<AddReview films={films}/>}/>*/}
         {/*<Route path={Paths.Player} element={<Player films={films}/>}/>*/}

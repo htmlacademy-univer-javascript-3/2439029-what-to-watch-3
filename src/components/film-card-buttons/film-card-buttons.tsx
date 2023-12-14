@@ -1,7 +1,7 @@
 import {Link} from 'react-router-dom';
 
 type FilmCardButtonsProps = {
-  id: number;
+  id: string;
   count: number;
 }
 

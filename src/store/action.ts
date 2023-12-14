@@ -1,10 +1,11 @@
 import {createAction} from '@reduxjs/toolkit';
 import {CatalogGenre} from 'types/genre.ts';
-import {Film, PromoFilm} from 'types/film.ts';
+import {Film, PromoFilm, FilmCard} from 'types/film.ts';
 import {Paths} from "@const/paths.ts";
 
 export const changeGenre = createAction<CatalogGenre>('genre/changeGenre');
 export const getFilms = createAction<Film[]>('films/getFilms');
+export const setFilm = createAction<FilmCard | null>('films/:id');
 export const getPromoFilm = createAction<PromoFilm>('films/getPromoFilm');
 
 export const setGenres = createAction<CatalogGenre[]>('genre/setGenres');
