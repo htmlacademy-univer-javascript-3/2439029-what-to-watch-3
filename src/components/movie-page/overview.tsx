@@ -7,7 +7,7 @@ function Overview() {
   const film = useAppSelector((state) => state.film);
   return film ? (
     <>
-      {/*<FilmRating {...currentFilm.rating}/>*/}
+      <FilmRating {...film}/>
 
       <div className="film-card__text">
         {film.description}

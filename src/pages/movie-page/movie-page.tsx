@@ -25,8 +25,10 @@ function MoviePage(props: MoviePageProps) {
       //dispatch(fetchCommentsMovie(id));
     }
   }, [id]);
+
   const film = useAppSelector((state) => state.film);
   const similarFilms = useAppSelector((state) => state.similarFilms);
+
   return film ? (
     <>
       <section className="film-card film-card--full">
