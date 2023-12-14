@@ -10,11 +10,11 @@ import {useAppDispatch, useAppSelector} from "@components/use-app/use-app.tsx";
 import {useEffect} from "react";
 import {getFilm, getSimilarFilms} from "@api/api-action.ts";
 
+type MoviePageProps = {
+  children: JSX.Element;
+}
 
-
-
-
-function MoviePage() {
+function MoviePage(props: MoviePageProps) {
 
   const {id} = useParams();
   const dispatch = useAppDispatch();
@@ -51,7 +51,7 @@ function MoviePage() {
             </div>
           </div>
         </div>
-        {/*<FilmDescription film={currentFilm}>{props.children}</FilmDescription>*/}
+        <FilmDescription film={film}>{props.children}</FilmDescription>
       </section>
       <div className="page-content">
         <section className="catalog catalog--like-this">

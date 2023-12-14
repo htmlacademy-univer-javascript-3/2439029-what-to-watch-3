@@ -1,7 +1,7 @@
 import {Link} from 'react-router-dom';
 
 type FilmNavProps = {
-  id:number;
+  id:string;
 }
 
 function FilmNav({id}:FilmNavProps) {
