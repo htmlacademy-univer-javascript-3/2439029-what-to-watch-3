@@ -17,7 +17,7 @@ function App(): JSX.Element {
         {/*<Route path={Paths.MyList} element={<PrivateRoute isAuthorize={false}><MyList myFilms={films.slice(1,9)}/></PrivateRoute>}/>*/}
         <Route path={Paths.SignIn} element={<SignIn/>}/>
         <Route path={'*'} element={<NotFound/>}/>
-        <Route path={Paths.MoviePage} element={<MoviePage><div/></MoviePage>}/>
+        <Route path={Paths.MoviePage} element={<MoviePage/>}/>
         {/*<Route path={Paths.MoviePageDetails} element={<MoviePage films={films} count={9}><Details films = {films}/></MoviePage>}/>*/}
         {/*<Route path={Paths.AddReview} element={<AddReview films={films}/>}/>*/}
         {/*<Route path={Paths.Player} element={<Player films={films}/>}/>*/}

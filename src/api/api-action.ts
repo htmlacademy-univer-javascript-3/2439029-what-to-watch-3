@@ -2,7 +2,15 @@ import {createAsyncThunk} from '@reduxjs/toolkit';
 import {AxiosInstance} from 'axios';
 import {ApiPaths, Paths} from '@const/paths.ts';
 import {Film, FilmCard, PromoFilm} from 'types/film.ts';
-import {getFilms, getPromoFilm, redirectToRoute, setAuthorization, setFilm, setImage} from '@store/action.ts';
+import {
+  getFilms,
+  getPromoFilm,
+  redirectToRoute,
+  setAuthorization,
+  setFilm,
+  setImage,
+  setSimilarFilms
+} from '@store/action.ts';
 import {AppDispatch, dropToken, saveToken, State} from '@components/use-app/use-app.tsx';
 import {AuthData, UserData} from 'types/request/post-user-request.ts';
 import {processErrorHandle} from "@api/errors.ts";
@@ -89,5 +97,18 @@ export const getFilm = createAsyncThunk<void, String, {
     const film = await api.get<FilmCard>(`${ApiPaths.Films}/${id}`)
       .then((res) => res.data).catch(() => null);
     dispatch(setFilm(film));
+  },
+);
+
+export const getSimilarFilms = createAsyncThunk<void, String, {
+  dispatch: AppDispatch;
+  state: State;
+  extra: AxiosInstance;
+}>(
+  'film/:id',
+  async (id, {dispatch, extra: api}) => {
+    const films = await api.get<Film[]>(`${ApiPaths.Films}/${id}/similar`)
+      .then((res) => res.data).catch(() => []);
+    dispatch(setSimilarFilms(films));
   },
 );

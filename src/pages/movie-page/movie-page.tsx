@@ -1,5 +1,4 @@
 import Footer from '@components/footer/footer.tsx';
-import {Film} from 'types/film.ts';
 import FilmDescription from '@components/ciurrent-film/film-description.tsx';
 import FilmCardList from '@components/film-card/film-card-list.tsx';
 import FilmCardButtons from '@components/film-card-buttons/film-card-buttons.tsx';
@@ -9,26 +8,25 @@ import NotFound from '@pages/not-found/not-found.tsx';
 import {useParams} from 'react-router-dom';
 import {useAppDispatch, useAppSelector} from "@components/use-app/use-app.tsx";
 import {useEffect} from "react";
-import {getFilm} from "@api/api-action.ts";
-
-type MoviePageProps = {
-  children: JSX.Element;
-}
+import {getFilm, getSimilarFilms} from "@api/api-action.ts";
 
 
 
-function MoviePage(props: MoviePageProps) {
+
+
+function MoviePage() {
 
   const {id} = useParams();
   const dispatch = useAppDispatch();
   useEffect(() => {
     if (id) {
       dispatch(getFilm(id));
-      //dispatch(fetchRelatedMovies(id));
+      dispatch(getSimilarFilms(id));
       //dispatch(fetchCommentsMovie(id));
     }
   }, [id]);
   const film = useAppSelector((state) => state.film);
+  const similarFilms = useAppSelector((state) => state.similarFilms);
   return film ? (
     <>
       <section className="film-card film-card--full">
@@ -58,9 +56,9 @@ function MoviePage(props: MoviePageProps) {
       <div className="page-content">
         <section className="catalog catalog--like-this">
           <h2 className="catalog__title">More like this</h2>
-          {/*<div className="catalog__films-list">*/}
-          {/*  <FilmCardList films={props.films.filter((f) => f.id !== currentId && f.genre === currentFilm.genre).slice(0, 4)}/>*/}
-          {/*</div>*/}
+          <div className="catalog__films-list">
+            <FilmCardList films={similarFilms}/>
+          </div>
         </section>
         <Footer/>
       </div>

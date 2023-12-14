@@ -6,6 +6,7 @@ import {Paths} from "@const/paths.ts";
 export const changeGenre = createAction<CatalogGenre>('genre/changeGenre');
 export const getFilms = createAction<Film[]>('films/getFilms');
 export const setFilm = createAction<FilmCard | null>('films/:id');
+export const setSimilarFilms = createAction<Film[]>('films/:id/similar');
 export const getPromoFilm = createAction<PromoFilm>('films/getPromoFilm');
 
 export const setGenres = createAction<CatalogGenre[]>('genre/setGenres');

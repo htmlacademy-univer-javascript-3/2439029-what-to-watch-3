@@ -1,13 +1,15 @@
 import {createReducer} from '@reduxjs/toolkit';
 import {
   changeGenre,
-  changeShowedFilms, setFilm,
+  changeShowedFilms,
+  setFilm,
   getFilms,
   getPromoFilm,
   setAuthorization,
   setError,
   setGenres,
-  setImage
+  setImage,
+  setSimilarFilms
 } from './action.ts';
 import {CatalogGenre} from 'types/genre.ts';
 import {Film, PromoFilm, FilmCard} from 'types/film.ts';
@@ -24,6 +26,7 @@ type initialStateProps = {
   image: string;
   error: string | null;
   film: FilmCard | null;
+  similarFilms: Film[];
 };
 
 const initialState: initialStateProps = {
@@ -36,7 +39,8 @@ const initialState: initialStateProps = {
   authorizationStatus: false,
   image: 'img/avatar.jpg',
   error: null,
-  film: null
+  film: null,
+  similarFilms:[]
 };
 
 const reducer = createReducer(initialState, (builder) => {
@@ -77,6 +81,9 @@ const reducer = createReducer(initialState, (builder) => {
     })
     .addCase(setFilm, (state, action) => {
       state.film = action.payload;
+    })
+    .addCase(setSimilarFilms, (state, action) => {
+      state.similarFilms = action.payload;
     })
     .addCase(changeShowedFilms, (state) => {
       state.count =
