@@ -8,7 +8,7 @@ import NotFound from '@pages/not-found/not-found.tsx';
 import {useParams} from 'react-router-dom';
 import {useAppDispatch, useAppSelector} from "@components/use-app/use-app.tsx";
 import {useEffect} from "react";
-import {getFilm, getSimilarFilms} from "@api/api-action.ts";
+import {getFilm, getReviews, getSimilarFilms} from "@api/api-action.ts";
 
 type MoviePageProps = {
   children: JSX.Element;
@@ -22,7 +22,7 @@ function MoviePage(props: MoviePageProps) {
     if (id) {
       dispatch(getFilm(id));
       dispatch(getSimilarFilms(id));
-      //dispatch(fetchCommentsMovie(id));
+      dispatch(getReviews(id));
     }
   }, [id]);
 

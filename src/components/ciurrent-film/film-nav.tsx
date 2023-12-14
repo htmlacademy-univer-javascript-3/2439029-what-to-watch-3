@@ -15,7 +15,7 @@ function FilmNav({id}:FilmNavProps) {
           <Link to={`/films/${id}/details`} className="film-nav__link">Details</Link>
         </li>
         <li className="film-nav__item">
-          <Link to={`/films/${id}/review`} className="film-nav__link">Reviews</Link>
+          <Link to={`/films/${id}/reviews`} className="film-nav__link">Reviews</Link>
         </li>
       </ul>
     </nav>

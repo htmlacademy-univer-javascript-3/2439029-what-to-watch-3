@@ -9,11 +9,13 @@ import {
   setError,
   setGenres,
   setImage,
-  setSimilarFilms
+  setSimilarFilms,
+  setReviews
 } from './action.ts';
 import {CatalogGenre} from 'types/genre.ts';
 import {Film, PromoFilm, FilmCard} from 'types/film.ts';
 import {showedFilmsCount} from '@const/values.ts';
+import {ReviewType} from "types/review.ts";
 
 type initialStateProps = {
   genre: CatalogGenre;
@@ -27,6 +29,7 @@ type initialStateProps = {
   error: string | null;
   film: FilmCard | null;
   similarFilms: Film[];
+  reviews: ReviewType[];
 };
 
 const initialState: initialStateProps = {
@@ -40,7 +43,8 @@ const initialState: initialStateProps = {
   image: 'img/avatar.jpg',
   error: null,
   film: null,
-  similarFilms:[]
+  similarFilms:[],
+  reviews: []
 };
 
 const reducer = createReducer(initialState, (builder) => {
@@ -75,6 +79,9 @@ const reducer = createReducer(initialState, (builder) => {
     })
     .addCase(setImage, (state, action) => {
       state.image = action.payload;
+    })
+    .addCase(setReviews, (state, action) => {
+      state.reviews = action.payload;
     })
     .addCase(setError, (state, action) => {
       state.error = action.payload;
