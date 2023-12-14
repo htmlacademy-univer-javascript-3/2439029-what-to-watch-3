@@ -1,10 +1,11 @@
 import {createAsyncThunk} from '@reduxjs/toolkit';
 import {AxiosInstance} from 'axios';
-import {ApiPaths} from '@const/paths.ts';
+import {ApiPaths, Paths} from '@const/paths.ts';
 import {Film, PromoFilm} from 'types/film.ts';
-import {getFilms, getPromoFilm, setAuthorization, setError, setImage} from '@store/action.ts';
+import {getFilms, getPromoFilm, redirectToRoute, setAuthorization, setImage} from '@store/action.ts';
 import {AppDispatch, saveToken, State, dropToken} from '@components/use-app/use-app.tsx';
 import {AuthData, UserData} from 'types/post-user-request.ts';
+import {processErrorHandle} from "@api/errors.ts";
 
 export const fetchFilmsAction = createAsyncThunk<void, undefined,
   {
@@ -42,8 +43,9 @@ export const login = createAsyncThunk<void, AuthData, {
       saveToken(token);
       dispatch(setAuthorization(true));
       dispatch(setImage(avatarUrl));
-    }catch{
-      setError('Заполните поля валидными значениями');
+      dispatch(redirectToRoute(Paths.Main));
+    } catch {
+      processErrorHandle('Fill the fields with valid values!');
     }
   },
 );
