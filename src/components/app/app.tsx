@@ -10,6 +10,7 @@ import MoviePage from '@pages/movie-page/movie-page.tsx';
 import Overview from "@components/movie-page/overview.tsx";
 import Details from "@components/movie-page/details.tsx";
 import Reviews from "@components/movie-page/reviews.tsx";
+import AddReview from "@pages/add-review/add-review.tsx";
 
 function App(): JSX.Element {
   return (
@@ -23,7 +24,7 @@ function App(): JSX.Element {
         <Route path={Paths.MoviePage} element={<MoviePage><Overview/></MoviePage>}/>
         <Route path={Paths.MoviePageDetails} element={<MoviePage><Details/></MoviePage>}/>
         <Route path={Paths.MoviePageReviews} element={<MoviePage><Reviews/></MoviePage>}/>
-        {/*<Route path={Paths.AddReview} element={<AddReview films={films}/>}/>*/}
+        <Route path={Paths.AddReview} element={<AddReview/>}/>
         {/*<Route path={Paths.Player} element={<Player films={films}/>}/>*/}
       </Routes>
     </HistoryRouter>);
