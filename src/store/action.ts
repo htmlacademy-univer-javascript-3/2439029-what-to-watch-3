@@ -15,5 +15,6 @@ export const changeShowedFilms = createAction('films/changeShowedFilms');
 export const setAuthorization = createAction<boolean>('login/setAuthorization');
 export const setImage = createAction<string>('user/image');
 export const setError = createAction<string | null>('films/error');
+export const setSection = createAction<'Overview' | 'Details' | 'Reviews'>('films/:id/section');
 
 export const redirectToRoute = createAction<Paths>('game/redirectToRoute');
