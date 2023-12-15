@@ -2,16 +2,21 @@ import {createReducer} from '@reduxjs/toolkit';
 import {
   changeGenre,
   changeShowedFilms,
+  setFilm,
   getFilms,
   getPromoFilm,
   setAuthorization,
   setError,
   setGenres,
-  setImage
+  setImage,
+  setSimilarFilms,
+  setReviews,
+  setSection
 } from './action.ts';
 import {CatalogGenre} from 'types/genre.ts';
-import {Film, PromoFilm} from 'types/film.ts';
+import {Film, PromoFilm, FilmCard} from 'types/film.ts';
 import {showedFilmsCount} from '@const/values.ts';
+import {ReviewType} from "types/review.ts";
 
 type initialStateProps = {
   genre: CatalogGenre;
@@ -23,6 +28,10 @@ type initialStateProps = {
   authorizationStatus: boolean;
   image: string;
   error: string | null;
+  film: FilmCard | null;
+  similarFilms: Film[];
+  reviews: ReviewType[];
+  section: 'Overview' | 'Details' | 'Reviews';
 };
 
 const initialState: initialStateProps = {
@@ -34,7 +43,11 @@ const initialState: initialStateProps = {
   count: showedFilmsCount,
   authorizationStatus: false,
   image: 'img/avatar.jpg',
-  error: null
+  error: null,
+  film: null,
+  similarFilms: [],
+  reviews: [],
+  section: 'Overview'
 };
 
 const reducer = createReducer(initialState, (builder) => {
@@ -61,17 +74,29 @@ const reducer = createReducer(initialState, (builder) => {
     })
     .addCase(setAuthorization, (state, action) => {
       state.authorizationStatus = action.payload;
-      if (!state.authorizationStatus){
+      if (!state.authorizationStatus) {
         state.image = 'img/avatar.jpg';
-      }else{
+      } else {
         state.error = null;
       }
     })
     .addCase(setImage, (state, action) => {
       state.image = action.payload;
     })
+    .addCase(setReviews, (state, action) => {
+      state.reviews = action.payload;
+    })
     .addCase(setError, (state, action) => {
       state.error = action.payload;
+    })
+    .addCase(setFilm, (state, action) => {
+      state.film = action.payload;
+    })
+    .addCase(setSection, (state, action) => {
+      state.section = action.payload;
+    })
+    .addCase(setSimilarFilms, (state, action) => {
+      state.similarFilms = action.payload;
     })
     .addCase(changeShowedFilms, (state) => {
       state.count =

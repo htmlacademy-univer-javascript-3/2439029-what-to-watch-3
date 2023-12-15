@@ -1,10 +1,20 @@
 import {createAsyncThunk} from '@reduxjs/toolkit';
 import {AxiosInstance} from 'axios';
-import {ApiPaths} from '@const/paths.ts';
-import {Film, PromoFilm} from 'types/film.ts';
-import {getFilms, getPromoFilm, setAuthorization, setError, setImage} from '@store/action.ts';
-import {AppDispatch, saveToken, State, dropToken} from '@components/use-app/use-app.tsx';
-import {AuthData, UserData} from 'types/post-user-request.ts';
+import {ApiPaths, Paths} from '@const/paths.ts';
+import {Film, FilmCard, PromoFilm} from 'types/film.ts';
+import {
+  getFilms,
+  getPromoFilm,
+  redirectToRoute,
+  setAuthorization,
+  setFilm,
+  setImage, setReviews,
+  setSimilarFilms
+} from '@store/action.ts';
+import {AppDispatch, dropToken, saveToken, State} from '@components/use-app/use-app.tsx';
+import {AuthData, UserData} from 'types/request/post-user-request.ts';
+import {processErrorHandle} from "@api/errors.ts";
+import {ReviewType} from "types/review.ts";
 
 export const fetchFilmsAction = createAsyncThunk<void, undefined,
   {
@@ -42,8 +52,9 @@ export const login = createAsyncThunk<void, AuthData, {
       saveToken(token);
       dispatch(setAuthorization(true));
       dispatch(setImage(avatarUrl));
-    }catch{
-      setError('Заполните поля валидными значениями');
+      dispatch(redirectToRoute(Paths.Main));
+    } catch {
+      processErrorHandle('Fill the fields with valid values!');
     }
   },
 );
@@ -74,5 +85,44 @@ export const logout = createAsyncThunk<void, undefined, {
     await api.delete(ApiPaths.Logout);
     dropToken();
     dispatch(setAuthorization(false));
+  },
+);
+
+export const getFilm = createAsyncThunk<void, String, {
+  dispatch: AppDispatch;
+  state: State;
+  extra: AxiosInstance;
+}>(
+  'film/:id',
+  async (id, {dispatch, extra: api}) => {
+    const film = await api.get<FilmCard>(`${ApiPaths.Films}/${id}`)
+      .then((res) => res.data).catch(() => null);
+    dispatch(setFilm(film));
+  },
+);
+
+export const getSimilarFilms = createAsyncThunk<void, String, {
+  dispatch: AppDispatch;
+  state: State;
+  extra: AxiosInstance;
+}>(
+  'film/:id',
+  async (id, {dispatch, extra: api}) => {
+    const films = await api.get<Film[]>(`${ApiPaths.Films}/${id}/similar`)
+      .then((res) => res.data).catch(() => []);
+    dispatch(setSimilarFilms(films));
+  },
+);
+
+export const getReviews = createAsyncThunk<void, String, {
+  dispatch: AppDispatch;
+  state: State;
+  extra: AxiosInstance;
+}>(
+  'comments/:id',
+  async (id, {dispatch, extra: api}) => {
+    const films = await api.get<ReviewType[]>(`${ApiPaths.Comments}/${id}`)
+      .then((res) => res.data).catch(() => []);
+    dispatch(setReviews(films));
   },
 );

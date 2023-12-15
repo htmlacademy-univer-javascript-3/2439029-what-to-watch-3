@@ -5,17 +5,16 @@ export enum Paths {
   MoviePage = '/films/:id',
   MoviePageDetails = '/films/:id/details',
   AddReview = '/films/:id/review',
+  MoviePageReviews = '/films/:id/reviews',
   Player = '/player/:id',
 }
 
 export enum ApiPaths {
   Films = '/films',
-  Film = '/films/:filmId',
-  Similar = '/films/:filmId/similar',
   Promo = '/promo',
   Favorite = '/favorite',
   SetFilmStatus = '/favorite/:filmId/:status',
-  Comments = '/comments/:filmId',
+  Comments = '/comments',
   Login = '/login',
   Logout = '/logout',
 }
