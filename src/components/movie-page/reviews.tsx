@@ -1,7 +1,11 @@
-import {useAppSelector} from "@components/use-app/use-app.tsx";
 import Review from "@components/movie-page/review.tsx";
+import {setSection} from "@store/action.ts";
+import {useAppSelector, useAppDispatch} from '@components/use-app/use-app.tsx';
+
 
 function Reviews() {
+  const dispatch = useAppDispatch();
+  dispatch(setSection('Reviews'));
   const reviews = useAppSelector((state) => state.reviews);
 
   return (

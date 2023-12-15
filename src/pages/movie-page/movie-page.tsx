@@ -6,7 +6,7 @@ import Logo from '@components/header/logo.tsx';
 import UserPage from '@components/header/user-page.tsx';
 import NotFound from '@pages/not-found/not-found.tsx';
 import {useParams} from 'react-router-dom';
-import {useAppDispatch, useAppSelector} from "@components/use-app/use-app.tsx";
+import {useAppSelector, useAppDispatch} from '@components/use-app/use-app.tsx';
 import {useEffect} from "react";
 import {getFilm, getReviews, getSimilarFilms} from "@api/api-action.ts";
 

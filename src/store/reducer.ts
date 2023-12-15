@@ -10,7 +10,8 @@ import {
   setGenres,
   setImage,
   setSimilarFilms,
-  setReviews
+  setReviews,
+  setSection
 } from './action.ts';
 import {CatalogGenre} from 'types/genre.ts';
 import {Film, PromoFilm, FilmCard} from 'types/film.ts';
@@ -30,6 +31,7 @@ type initialStateProps = {
   film: FilmCard | null;
   similarFilms: Film[];
   reviews: ReviewType[];
+  section: 'Overview' | 'Details' | 'Reviews';
 };
 
 const initialState: initialStateProps = {
@@ -43,8 +45,9 @@ const initialState: initialStateProps = {
   image: 'img/avatar.jpg',
   error: null,
   film: null,
-  similarFilms:[],
-  reviews: []
+  similarFilms: [],
+  reviews: [],
+  section: 'Overview'
 };
 
 const reducer = createReducer(initialState, (builder) => {
@@ -71,9 +74,9 @@ const reducer = createReducer(initialState, (builder) => {
     })
     .addCase(setAuthorization, (state, action) => {
       state.authorizationStatus = action.payload;
-      if (!state.authorizationStatus){
+      if (!state.authorizationStatus) {
         state.image = 'img/avatar.jpg';
-      }else{
+      } else {
         state.error = null;
       }
     })
@@ -88,6 +91,9 @@ const reducer = createReducer(initialState, (builder) => {
     })
     .addCase(setFilm, (state, action) => {
       state.film = action.payload;
+    })
+    .addCase(setSection, (state, action) => {
+      state.section = action.payload;
     })
     .addCase(setSimilarFilms, (state, action) => {
       state.similarFilms = action.payload;
