@@ -3,7 +3,7 @@ import Logo from '@components/header/logo.tsx';
 import {useAppDispatch, useAppSelector} from '@components/use-app/use-app.tsx';
 import {FormEvent, useRef} from 'react';
 import {login} from '@api/api-action.ts';
-import {processErrorHandle} from "@api/errors.ts";
+import {processErrorHandle} from '@api/errors.ts';
 
 function SignIn() {
   const dispatch = useAppDispatch();
@@ -39,13 +39,11 @@ function SignIn() {
             </div> : ''}
           <div className="sign-in__fields">
             <div className="sign-in__field">
-              <input ref={loginRef} className="sign-in__input" type="email" placeholder="Email address"
-                     name="user-email" id="user-email"/>
+              <input ref={loginRef} className="sign-in__input" type="email" placeholder="Email address" name="user-email" id="user-email"/>
               <label className="sign-in__label visually-hidden" htmlFor="user-email">Email address</label>
             </div>
             <div className="sign-in__field">
-              <input ref={passwordRef} className="sign-in__input" type="password" placeholder="Password"
-                     name="user-password" id="user-password"/>
+              <input ref={passwordRef} className="sign-in__input" type="password" placeholder="Password" name="user-password" id="user-password"/>
               <label className="sign-in__label visually-hidden" htmlFor="user-password">Password</label>
             </div>
           </div>
