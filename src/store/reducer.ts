@@ -16,9 +16,10 @@ import {
 import {CatalogGenre} from 'types/genre.ts';
 import {Film, PromoFilm, FilmCard} from 'types/film.ts';
 import {showedFilmsCount} from '@const/values.ts';
-import {ReviewType} from "types/review.ts";
+import {ReviewType} from 'types/review.ts';
 
 type initialStateProps = {
+  id: string | null;
   genre: CatalogGenre;
   genres: CatalogGenre[];
   filteredFilms: Film[];
@@ -47,7 +48,8 @@ const initialState: initialStateProps = {
   film: null,
   similarFilms: [],
   reviews: [],
-  section: 'Overview'
+  section: 'Overview',
+  id: null
 };
 
 const reducer = createReducer(initialState, (builder) => {

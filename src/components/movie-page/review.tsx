@@ -1,9 +1,9 @@
-import {ReviewType} from "types/review.ts";
+import {ReviewType} from 'types/review.ts';
 
 function Review(review: ReviewType) {
-  let date = new Date(review.date);
-  let options = { year: 'numeric', month: 'long', day: 'numeric' };
-  let formattedDate = date.toLocaleDateString("en-US", options);
+  const date = new Date(review.date);
+  const options = { year: 'numeric', month: 'long', day: 'numeric' };
+  const formattedDate = date.toLocaleDateString('en-US', options);
 
   return (
     <div className="review">

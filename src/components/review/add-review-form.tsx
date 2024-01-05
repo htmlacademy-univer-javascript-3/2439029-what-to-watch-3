@@ -1,10 +1,17 @@
 import {useState, FormEvent, useEffect} from 'react';
+import {postReview} from '@api/api-action.ts';
+import {useAppDispatch, useAppSelector} from '@components/use-app/use-app.tsx';
+import {useParams} from 'react-router-dom';
 
 export function AddReviewForm(): JSX.Element {
   const [filmRating, setFilmRating] = useState(0);
   const [text, setText] = useState<string | null>(null);
   const [isSubmitDisabled, setIsSubmitDisabled] = useState(true);
   const [isFormDisabled, setIsFormDisabled] = useState(false);
+
+  const dispatch = useAppDispatch();
+  const error = useAppSelector((state) => state.error);
+  const {id} = useParams();
 
   useEffect(() => {
     setIsSubmitDisabled(!(filmRating > 0 && text && text.length >= 50 && text.length <= 400));
@@ -13,10 +20,10 @@ export function AddReviewForm(): JSX.Element {
   const submit = ((evt: FormEvent<HTMLFormElement>) => {
     evt.preventDefault();
     if (!isSubmitDisabled) {
-      console.log('yes');
       setIsFormDisabled(true);
+      dispatch(postReview({comment: String(text), rating: filmRating, id: String(id)}))
+        .finally(() => setIsFormDisabled(false));
     }
-    setIsFormDisabled(false);
   });
 
   return (
@@ -26,6 +33,10 @@ export function AddReviewForm(): JSX.Element {
       onSubmit={submit}
     >
       <div className="rating">
+        {error !== null ?
+          <div className="sign-in__message">
+            <p>{error}</p>
+          </div> : ''}
         <div className="rating__stars">
           {[10, 9, 8, 7, 6, 5, 4, 3, 2, 1].map((num) => (
             <>

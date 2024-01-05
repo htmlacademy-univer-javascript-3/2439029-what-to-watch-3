@@ -1,5 +1,5 @@
 import {Navigate} from 'react-router-dom';
-import {useAppSelector} from 'components/use-app/use-app.tsx';
+import {useAppSelector} from '@components/use-app/use-app.tsx';
 
 type PrivateRouteProps = {
   children: JSX.Element;

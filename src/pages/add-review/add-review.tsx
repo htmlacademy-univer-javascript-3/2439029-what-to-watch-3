@@ -49,7 +49,7 @@ function AddReview() {
       </div>
 
       <div className="add-review">
-        <AddReviewForm/>
+        <AddReviewForm />
       </div>
     </section>
   ) : (

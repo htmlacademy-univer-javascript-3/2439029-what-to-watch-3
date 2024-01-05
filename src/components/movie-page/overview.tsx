@@ -1,6 +1,6 @@
 import FilmRating from '@components/ciurrent-film/film-rating.tsx';
 import NotFound from '@pages/not-found/not-found.tsx';
-import {setSection} from "@store/action.ts";
+import {setSection} from '@store/action.ts';
 import {useAppSelector, useAppDispatch} from '@components/use-app/use-app.tsx';
 
 function Overview() {
