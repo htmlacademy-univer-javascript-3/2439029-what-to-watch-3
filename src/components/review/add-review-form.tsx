@@ -1,18 +1,29 @@
-import {useState, FormEvent} from 'react';
+import {useState, FormEvent, useEffect} from 'react';
 
-type AddReviewFormProps = {
-  onAnswer: (rating: number) => void;
-};
-export function AddReviewForm({ onAnswer }: AddReviewFormProps): JSX.Element {
-  const [userAnswers, setUserAnswers] = useState(0);
+export function AddReviewForm(): JSX.Element {
+  const [filmRating, setFilmRating] = useState(0);
+  const [text, setText] = useState<string | null>(null);
+  const [isSubmitDisabled, setIsSubmitDisabled] = useState(true);
+  const [isFormDisabled, setIsFormDisabled] = useState(false);
+
+  useEffect(() => {
+    setIsSubmitDisabled(!(filmRating > 0 && text && text.length >= 50 && text.length <= 400));
+  }, [filmRating, text]);
+
+  const submit = ((evt: FormEvent<HTMLFormElement>) => {
+    evt.preventDefault();
+    if (!isSubmitDisabled) {
+      console.log('yes');
+      setIsFormDisabled(true);
+    }
+    setIsFormDisabled(false);
+  });
+
   return (
     <form
       action="#"
       className="add-review__form"
-      onSubmit={(evt: FormEvent<HTMLFormElement>) => {
-        evt.preventDefault();
-        onAnswer(userAnswers);
-      }}
+      onSubmit={submit}
     >
       <div className="rating">
         <div className="rating__stars">
@@ -25,8 +36,9 @@ export function AddReviewForm({ onAnswer }: AddReviewFormProps): JSX.Element {
                 name="rating"
                 value={`${num}`}
                 onChange={() => {
-                  setUserAnswers(num);
+                  setFilmRating(num);
                 }}
+                disabled={isFormDisabled}
               />
               <label className="rating__label" htmlFor={`star-${num}`}>
                 Rating {num}
@@ -42,10 +54,14 @@ export function AddReviewForm({ onAnswer }: AddReviewFormProps): JSX.Element {
           name="review-text"
           id="review-text"
           placeholder="Review text"
+          disabled={isFormDisabled}
+          onChange={(e) => {
+            setText(e.target.value);
+          }}
         >
         </textarea>
         <div className="add-review__submit">
-          <button className="add-review__btn" type="submit">
+          <button className="add-review__btn" type="submit" disabled={isSubmitDisabled}>
             Post
           </button>
         </div>
