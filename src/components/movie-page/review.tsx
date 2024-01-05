@@ -2,7 +2,7 @@ import {ReviewType} from 'types/review.ts';
 
 function Review(review: ReviewType) {
   const date = new Date(review.date);
-  const options = { year: 'numeric', month: 'long', day: 'numeric' };
+  const options: Intl.DateTimeFormatOptions = { year: 'numeric', month: 'long', day: 'numeric' };
   const formattedDate = date.toLocaleDateString('en-US', options);
 
   return (

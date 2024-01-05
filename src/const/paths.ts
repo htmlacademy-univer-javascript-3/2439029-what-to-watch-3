@@ -7,6 +7,7 @@ export enum Paths {
   AddReview = '/films/:id/review',
   MoviePageReviews = '/films/:id/reviews',
   Player = '/player/:id',
+  NotFound = '*'
 }
 
 export enum ApiPaths {

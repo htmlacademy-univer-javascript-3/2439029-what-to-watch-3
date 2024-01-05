@@ -98,7 +98,11 @@ export const getFilm = createAsyncThunk<void, string, {
   'film/:id',
   async (id, {dispatch, extra: api}) => {
     const film = await api.get<FilmCard>(`${ApiPaths.Films}/${id}`)
-      .then((res) => res.data).catch(() => null);
+      .then((res) => res.data)
+      .catch(() => {
+        dispatch(redirectToRoute(Paths.NotFound));
+        return null;
+      });
     dispatch(setFilm(film));
   },
 );
