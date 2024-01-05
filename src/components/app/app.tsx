@@ -13,6 +13,7 @@ import Reviews from '@components/movie-page/reviews.tsx';
 import AddReview from '@pages/add-review/add-review.tsx';
 import PrivateRoute from '@pages/private-route/private-route.tsx';
 
+
 function App(): JSX.Element {
   return (
     <HistoryRouter history={browserHistory}>

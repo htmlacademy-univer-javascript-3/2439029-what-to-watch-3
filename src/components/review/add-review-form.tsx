@@ -34,7 +34,7 @@ export function AddReviewForm(): JSX.Element {
     >
       <div className="rating">
         {error !== null ?
-          <div className="sign-in__message">
+          <div className="add-review__btn">
             <p>{error}</p>
           </div> : ''}
         <div className="rating__stars">
