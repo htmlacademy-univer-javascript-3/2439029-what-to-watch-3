@@ -7,15 +7,18 @@ import {useAppSelector} from '@components/use-app/use-app.tsx';
 import ShowMore from '@components/buttons/show-more.tsx';
 import Spinner from '@components/spinner/spinner.tsx';
 import PromoFilmInfo from '@components/main-page/promo-film-info.tsx';
+import {filmsDataLoading, getFilms, getPromoFilm, getShowFilms} from '@store/film/selections.ts';
+
 
 type MainPageProps = {
   myListCount: number;
 }
 
 function MainPage(props: MainPageProps) {
-  const count = useAppSelector((state) => state.count);
-  const films = useAppSelector((state) => state.filteredFilms);
-  const promoFilm = useAppSelector((state) => state.promoFilm);
+  const count = useAppSelector(getShowFilms);
+  const films = useAppSelector(getFilms);
+  const promoFilm = useAppSelector(getPromoFilm);
+  const loading = useAppSelector(filmsDataLoading);
   return (
     <>
       <section className="film-card">
@@ -31,12 +34,12 @@ function MainPage(props: MainPageProps) {
       </section>
 
       <div className="page-content">
-        {films.length === 0 ? <Spinner/> :
+        {loading ? <Spinner/> :
           <section className="catalog">
             <h2 className="catalog__title visually-hidden">Catalog</h2>
-            <GenreList />
+            <GenreList/>
             <div className="catalog__films-list">
-              <FilmCardList films={films.slice(0,count)}/>
+              <FilmCardList films={films.slice(0, count)}/>
             </div>
             {count < films.length && <ShowMore/>}
           </section>}

@@ -1,5 +1,6 @@
 import {PromoFilm} from 'types/film.ts';
 import {useAppSelector} from '@components/use-app/use-app.tsx';
+import {getAuthorizationStatus} from '@store/user/selections.ts';
 
 type PromoFilmProps = {
   promoFilm: PromoFilm | null;
@@ -7,7 +8,7 @@ type PromoFilmProps = {
 }
 
 function PromoFilmInfo({promoFilm, myListCount}: PromoFilmProps) {
-  const auth = useAppSelector((state) => state.authorizationStatus);
+  const auth = useAppSelector(getAuthorizationStatus);
   return (
     <div className="film-card__wrap">
       <div className="film-card__info">

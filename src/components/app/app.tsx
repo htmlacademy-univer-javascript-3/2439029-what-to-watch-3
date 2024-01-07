@@ -19,14 +19,14 @@ function App(): JSX.Element {
     <HistoryRouter history={browserHistory}>
       <ScrollToTop/>
       <Routes>
-        <Route path={Paths.Main} element={<MainPage myListCount={9}/>}/>
+        <Route path={Paths.Main()} element={<MainPage myListCount={9}/>}/>
         {/*<Route path={Paths.MyList} element={<PrivateRoute isAuthorize={false}><MyList myFilms={films.slice(1,9)}/></PrivateRoute>}/>*/}
-        <Route path={Paths.SignIn} element={<SignIn/>}/>
+        <Route path={Paths.SignIn()} element={<SignIn/>}/>
         <Route path={'*'} element={<NotFound/>}/>
-        <Route path={Paths.MoviePage} element={<MoviePage><Overview/></MoviePage>}/>
-        <Route path={Paths.MoviePageDetails} element={<MoviePage><Details/></MoviePage>}/>
-        <Route path={Paths.MoviePageReviews} element={<MoviePage><Reviews/></MoviePage>}/>
-        <Route path={Paths.AddReview} element={<PrivateRoute><AddReview/></PrivateRoute>}/>
+        <Route path={Paths.MoviePage(':id')} element={<MoviePage><Overview/></MoviePage>}/>
+        <Route path={Paths.MoviePageDetails(':id')} element={<MoviePage><Details/></MoviePage>}/>
+        <Route path={Paths.MoviePageReviews(':id')} element={<MoviePage><Reviews/></MoviePage>}/>
+        <Route path={Paths.AddReview(':id')} element={<PrivateRoute><AddReview/></PrivateRoute>}/>
         {/*<Route path={Paths.Player} element={<Player films={films}/>}/>*/}
       </Routes>
     </HistoryRouter>);

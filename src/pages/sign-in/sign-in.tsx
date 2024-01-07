@@ -4,10 +4,11 @@ import {useAppDispatch, useAppSelector} from '@components/use-app/use-app.tsx';
 import {FormEvent, useRef} from 'react';
 import {login} from '@api/api-action.ts';
 import {processErrorHandle} from '@api/errors.ts';
+import {getError} from '@store/film/selections.ts';
 
 function SignIn() {
   const dispatch = useAppDispatch();
-  const error = useAppSelector((state) => state.error);
+  const error = useAppSelector(getError);
 
   const loginRef = useRef<HTMLInputElement | null>(null);
   const passwordRef = useRef<HTMLInputElement | null>(null);
@@ -52,7 +53,6 @@ function SignIn() {
           </div>
         </form>
       </div>
-
       <Footer/>
     </div>
   );

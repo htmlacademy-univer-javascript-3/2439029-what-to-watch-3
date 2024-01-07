@@ -1,12 +1,13 @@
 import {Link} from 'react-router-dom';
-import {useAppSelector} from "@components/use-app/use-app.tsx";
+import {useAppSelector} from '@components/use-app/use-app.tsx';
+import {getAuthorizationStatus} from '@store/user/selections.ts';
 
 type FilmCardButtonsProps = {
   id: string;
 }
 
 function FilmCardButtons({id}: FilmCardButtonsProps) {
-  const auth = useAppSelector((state) => state.authorizationStatus);
+  const auth = useAppSelector(getAuthorizationStatus);
   return (
     <div className="film-card__buttons">
       <button className="btn btn--play film-card__button" type="button">

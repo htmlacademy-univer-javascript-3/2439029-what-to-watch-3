@@ -7,8 +7,9 @@ import UserPage from '@components/header/user-page.tsx';
 import {useParams} from 'react-router-dom';
 import {useAppSelector, useAppDispatch} from '@components/use-app/use-app.tsx';
 import {useEffect} from 'react';
-import {getFilm, getReviews, getSimilarFilms} from '@api/api-action.ts';
+import {getFilm} from '@api/api-action.ts';
 import Spinner from '@components/spinner/spinner.tsx';
+import {filmDataLoading, getFilmData, getSimilarFilms} from '@store/film/selections.ts';
 
 type MoviePageProps = {
   children: JSX.Element;
@@ -20,22 +21,21 @@ function MoviePage(props: MoviePageProps) {
   useEffect(() => {
     if (id) {
       dispatch(getFilm(id));
-      dispatch(getSimilarFilms(id));
-      dispatch(getReviews(id));
     }
   }, [id]);
 
-  const film = useAppSelector((state) => state.film);
-  const similarFilms = useAppSelector((state) => state.similarFilms);
+  const film = useAppSelector(getFilmData);
+  const similarFilms = useAppSelector(getSimilarFilms);
+  const loading = useAppSelector(filmDataLoading);
 
   return (
     <>
-      {film && film.id === id ?
+      {!loading && film ?
         <>
           <section className="film-card film-card--full">
             <div className="film-card__hero">
               <div className="film-card__bg">
-                <img src={film.backgroundImage} alt={film.name}/>
+                <img src={film?.backgroundImage} alt={film.name}/>
               </div>
               <h1 className="visually-hidden">WTW</h1>
               <header className="page-header user-page__head">

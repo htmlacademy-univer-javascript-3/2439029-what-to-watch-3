@@ -2,6 +2,7 @@ import {useState, FormEvent, useEffect} from 'react';
 import {postReview} from '@api/api-action.ts';
 import {useAppDispatch, useAppSelector} from '@components/use-app/use-app.tsx';
 import {useParams} from 'react-router-dom';
+import {getError} from '@store/film/selections.ts';
 
 export function AddReviewForm(): JSX.Element {
   const [filmRating, setFilmRating] = useState(0);
@@ -10,7 +11,7 @@ export function AddReviewForm(): JSX.Element {
   const [isFormDisabled, setIsFormDisabled] = useState(false);
 
   const dispatch = useAppDispatch();
-  const error = useAppSelector((state) => state.error);
+  const error = useAppSelector(getError);
   const {id} = useParams();
 
   useEffect(() => {

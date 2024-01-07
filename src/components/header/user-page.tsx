@@ -1,11 +1,12 @@
 import {useAppDispatch, useAppSelector} from '@components/use-app/use-app.tsx';
 import {Link} from 'react-router-dom';
 import {logout} from '@api/api-action.ts';
+import {getAuthorizationStatus, getUserImage} from '@store/user/selections.ts';
 
 function UserPage() {
-  const auth = useAppSelector((state) => state.authorizationStatus);
+  const auth = useAppSelector(getAuthorizationStatus);
   const dispatch = useAppDispatch();
-  const image = useAppSelector((state) => state.image);
+  const image = useAppSelector(getUserImage);
   const onClick = () => {
     if (auth) {
       dispatch(logout());

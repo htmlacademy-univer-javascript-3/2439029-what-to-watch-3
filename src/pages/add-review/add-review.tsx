@@ -5,7 +5,8 @@ import NotFound from '@pages/not-found/not-found.tsx';
 import {useEffect} from 'react';
 import {Link, useParams} from 'react-router-dom';
 import {useAppDispatch, useAppSelector} from '@components/use-app/use-app.tsx';
-import {getFilm, getReviews, getSimilarFilms} from '@api/api-action.ts';
+import {getFilm} from '@api/api-action.ts';
+import {getFilmData} from '@store/film/selections.ts';
 
 function AddReview() {
   const {id} = useParams();
@@ -13,12 +14,10 @@ function AddReview() {
   useEffect(() => {
     if (id) {
       dispatch(getFilm(id));
-      dispatch(getSimilarFilms(id));
-      dispatch(getReviews(id));
     }
   }, [id]);
 
-  const film = useAppSelector((state) => state.film);
+  const film = useAppSelector(getFilmData);
 
   return film ? (
     <section className="film-card film-card--full">
@@ -49,7 +48,7 @@ function AddReview() {
       </div>
 
       <div className="add-review">
-        <AddReviewForm />
+        <AddReviewForm/>
       </div>
     </section>
   ) : (

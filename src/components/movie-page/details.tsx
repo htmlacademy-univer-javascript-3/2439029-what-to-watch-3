@@ -1,11 +1,12 @@
 import NotFound from '@pages/not-found/not-found.tsx';
-import {setSection} from "@store/action.ts";
 import {useAppSelector, useAppDispatch} from '@components/use-app/use-app.tsx';
+import {getFilmData} from '@store/film/selections.ts';
+import {setSection} from '@store/film/process.ts';
 
 function Details() {
   const dispatch = useAppDispatch();
   dispatch(setSection('Details'));
-  const film = useAppSelector((state) => state.film);
+  const film = useAppSelector(getFilmData);
 
   return film ? (
     <div className="film-card__text film-card__row">

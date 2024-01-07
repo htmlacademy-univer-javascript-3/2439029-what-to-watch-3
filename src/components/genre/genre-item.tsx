@@ -1,5 +1,6 @@
 import {CatalogGenre} from 'types/genre.ts';
 import {useAppSelector} from '@components/use-app/use-app.tsx';
+import {getGenre} from '@store/film/selections.ts';
 
 type GenreItemProps = {
   genre: CatalogGenre;
@@ -7,7 +8,7 @@ type GenreItemProps = {
 };
 
 export default function GenreItem({genre, onClick}: GenreItemProps): JSX.Element {
-  const currentGenre = useAppSelector((state) => state.genre);
+  const currentGenre = useAppSelector(getGenre);
 
   return (
     <li className={`catalog__genres-item ${genre === currentGenre ? 'catalog__genres-item--active' : ''}`} onClick={() => onClick(genre)}>
