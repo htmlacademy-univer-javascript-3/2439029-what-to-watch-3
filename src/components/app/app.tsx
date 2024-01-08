@@ -13,6 +13,7 @@ import Reviews from '@components/movie-page/reviews.tsx';
 import AddReview from '@pages/add-review/add-review.tsx';
 import PrivateRoute from '@pages/private-route/private-route.tsx';
 import MyList from '@pages/my-list/my-list.tsx';
+import {PlayerPage} from '@pages/player/player.tsx';
 
 
 function App(): JSX.Element {
@@ -28,7 +29,7 @@ function App(): JSX.Element {
         <Route path={Paths.MoviePageDetails(':id')} element={<MoviePage><Details/></MoviePage>}/>
         <Route path={Paths.MoviePageReviews(':id')} element={<MoviePage><Reviews/></MoviePage>}/>
         <Route path={Paths.AddReview(':id')} element={<PrivateRoute><AddReview/></PrivateRoute>}/>
-        {/*<Route path={Paths.Player} element={<Player films={films}/>}/>*/}
+        <Route path={Paths.Player(':id')} element={<PlayerPage />}/>
       </Routes>
     </HistoryRouter>);
 }

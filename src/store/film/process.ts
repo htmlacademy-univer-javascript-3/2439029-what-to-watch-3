@@ -104,7 +104,6 @@ export const FilmProcess = createSlice({
         state.isMyListLoading = true;
       })
       .addCase(fetchMyList.fulfilled, (state, action) => {
-        console.log('jnjkl');
         state.myList = action.payload;
         state.myListCount = state.myList.length;
         state.isMyListLoading = false;
