@@ -31,6 +31,7 @@ export const userProcess = createSlice({
       })
       .addCase(checkAuth.rejected, (state) => {
         state.authorizationStatus = false;
+        state.userImage = 'img/avatar.jpg';
       })
       .addCase(login.fulfilled, (state, action) => {
         const userData = action.payload;
@@ -42,10 +43,12 @@ export const userProcess = createSlice({
       })
       .addCase(login.rejected, (state) => {
         state.authorizationStatus = false;
+        state.userImage = 'img/avatar.jpg';
         state.error = 'Fill the fields with valid values!';
       })
       .addCase(logout.fulfilled, (state) => {
         state.authorizationStatus = false;
+        state.userImage = 'img/avatar.jpg';
         dropToken();
       });
   }
