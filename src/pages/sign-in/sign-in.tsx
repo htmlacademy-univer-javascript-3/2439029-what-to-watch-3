@@ -1,14 +1,28 @@
 import Footer from '@components/footer/footer.tsx';
 import Logo from '@components/header/logo.tsx';
 import {useAppDispatch, useAppSelector} from '@components/use-app/use-app.tsx';
-import {FormEvent, useRef} from 'react';
+import {FormEvent, useEffect, useRef} from 'react';
 import {login} from '@api/api-action.ts';
-import {processErrorHandle} from '@api/errors.ts';
-import {getError} from '@store/film/selections.ts';
+import {getUserError} from '@store/user/selections.ts';
+import {setUserError} from '@store/user/process.ts';
+import {TIMEOUT_SHOW_ERROR} from '@const/values.ts';
 
 function SignIn() {
   const dispatch = useAppDispatch();
-  const error = useAppSelector(getError);
+  const error = useAppSelector(getUserError);
+
+  useEffect(() => {
+
+    if (error !== null) {
+      const timerId = setTimeout(() => {
+        dispatch(setUserError(null));
+      }, TIMEOUT_SHOW_ERROR);
+      return () => {
+        clearTimeout(timerId);
+      };
+    }
+  }, [error, dispatch]);
+
 
   const loginRef = useRef<HTMLInputElement | null>(null);
   const passwordRef = useRef<HTMLInputElement | null>(null);
@@ -21,7 +35,7 @@ function SignIn() {
         password: passwordRef.current.value
       }));
     } else {
-      processErrorHandle('All fields must be filled in ;)');
+      dispatch(setUserError('All fields must be filled in ;)'));
     }
   };
 

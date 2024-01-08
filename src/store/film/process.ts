@@ -43,6 +43,8 @@ const initialState: initialStateType = {
   isFilmDataLoading: false,
   isPromoFilmLoading: false
 };
+
+
 export const FilmProcess = createSlice({
   name: NameSpace.Film,
   initialState,
@@ -51,16 +53,24 @@ export const FilmProcess = createSlice({
       state.count = state.filteredFilms.length > state.count + showedFilmsCount
         ? state.count + showedFilmsCount : state.filteredFilms.length;
     },
-    setError(state, action: { payload: string | null }) {
+    setError(state, action: {
+      payload: string | null
+    }) {
       state.error = action.payload;
     },
-    setGenres(state, action: { payload: CatalogGenre[] }) {
+    setGenres(state, action: {
+      payload: CatalogGenre[]
+    }) {
       state.genres = action.payload;
     },
-    setSection(state, action: { payload: 'Overview' | 'Details' | 'Reviews' }) {
+    setSection(state, action: {
+      payload: 'Overview' | 'Details' | 'Reviews'
+    }) {
       state.section = action.payload;
     },
-    changeGenre(state, action: { payload: CatalogGenre }) {
+    changeGenre(state, action: {
+      payload: CatalogGenre
+    }) {
       state.genre = action.payload;
       state.count = showedFilmsCount;
       if (state.genre === 'All genres') {
@@ -104,5 +114,6 @@ export const FilmProcess = createSlice({
       });
   }
 });
+
 
 export const {changeShowedFilms, setError, setSection, setGenres, changeGenre} = FilmProcess.actions;

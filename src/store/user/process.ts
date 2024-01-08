@@ -2,22 +2,27 @@ import {createSlice} from '@reduxjs/toolkit';
 import {NameSpace} from '@const/namespaces.ts';
 import {checkAuth, login, logout} from '@api/api-action.ts';
 import {dropToken, saveToken} from '@components/use-app/use-app.tsx';
-import {processErrorHandle} from '@api/errors.ts';
 import browserHistory from '../../browser-history.ts';
 import {Paths} from '@const/paths.ts';
 
 export type UserProcess = {
   authorizationStatus: boolean;
   image: string;
+  error: string | null;
 };
 const initialState: UserProcess = {
   authorizationStatus: false,
   image: 'img/avatar.jpg',
+  error: null
 };
 export const userProcess = createSlice({
   name: NameSpace.User,
   initialState,
-  reducers: {},
+  reducers: {
+    setUserError(state, action: { payload: string | null }) {
+      state.error = action.payload;
+    }
+  },
   extraReducers(builder) {
     builder
       .addCase(checkAuth.fulfilled, (state, action) => {
@@ -32,11 +37,12 @@ export const userProcess = createSlice({
         saveToken(userData.token);
         state.authorizationStatus = true;
         state.image = userData.avatarUrl;
+        state.error = null;
         browserHistory.push(Paths.Main());
       })
       .addCase(login.rejected, (state) => {
         state.authorizationStatus = false;
-        processErrorHandle('Fill the fields with valid values!');
+        state.error = 'Fill the fields with valid values!';
       })
       .addCase(logout.fulfilled, (state) => {
         state.authorizationStatus = false;
@@ -44,3 +50,5 @@ export const userProcess = createSlice({
       });
   }
 });
+
+export const {setUserError} = userProcess.actions;
