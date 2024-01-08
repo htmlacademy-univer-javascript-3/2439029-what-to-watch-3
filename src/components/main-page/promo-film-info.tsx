@@ -30,7 +30,7 @@ function PromoFilmInfo({promoFilm}: PromoFilmProps) {
               <svg viewBox={`0 0 ${19} ${19}`}>
                 <use xlinkHref="#play-s"></use>
               </svg>
-              <Link to={Paths.Player(String(promoFilm?.id))}>Play</Link>
+              <span>Play</span>
             </Link>
             {auth && promoFilm &&
               <MyListButton id={promoFilm.id} isFavorite={promoFilm.isFavorite}></MyListButton>}

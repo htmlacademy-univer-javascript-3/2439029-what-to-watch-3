@@ -3,8 +3,8 @@ import {postReview} from '@api/api-action.ts';
 import {useAppDispatch, useAppSelector} from '@components/use-app/use-app.tsx';
 import {useParams} from 'react-router-dom';
 import {getError} from '@store/film/selections.ts';
-import {setUserError} from 'store/user/process.ts';
-import {TIMEOUT_SHOW_ERROR} from 'const/values.ts';
+import {setUserError} from '@store/user/process.ts';
+import {TIMEOUT_SHOW_ERROR} from '@const/values.ts';
 
 export function AddReviewForm(): JSX.Element {
   const [filmRating, setFilmRating] = useState(0);

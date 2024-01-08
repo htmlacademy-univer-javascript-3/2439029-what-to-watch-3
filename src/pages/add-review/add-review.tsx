@@ -6,7 +6,7 @@ import {Link, useParams} from 'react-router-dom';
 import {useAppDispatch, useAppSelector} from '@components/use-app/use-app.tsx';
 import {getFilm} from '@api/api-action.ts';
 import {getFilmData} from '@store/film/selections.ts';
-import {Paths} from 'const/paths.ts';
+import {Paths} from '@const/paths.ts';
 
 function AddReview() {
   const {id} = useParams();
