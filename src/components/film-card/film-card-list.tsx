@@ -23,8 +23,7 @@ function FilmCardList({films}: FilmCardListProps) {
   };
   return (
     <>
-      {films.map((film) => (
-        <FilmCard film={film} activeFilm={activeFilm} onMouseOver={handleFocus} onMouseOut={handleFocusOff}/>))}
+      {films.map((film) => (<FilmCard key={film.id} film={film} activeFilm={activeFilm} onMouseOver={handleFocus} onMouseOut={handleFocusOff}/>))}
     </>
   );
 }

@@ -15,7 +15,7 @@ function AddReview() {
     if (id) {
       dispatch(getFilm(id));
     }
-  }, [id]);
+  }, [dispatch, id]);
 
   const film = useAppSelector(getFilmData);
 

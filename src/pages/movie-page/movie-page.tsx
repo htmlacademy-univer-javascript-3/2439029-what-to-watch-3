@@ -22,52 +22,50 @@ function MoviePage(props: MoviePageProps) {
     if (id) {
       dispatch(getFilm(id));
     }
-  }, [id]);
+  }, [dispatch, id]);
 
   const film = useAppSelector(getFilmData);
   const similarFilms = useAppSelector(getSimilarFilms);
   const loading = useAppSelector(filmDataLoading);
 
   return (
-    <>
-      {!loading && film ?
-        <>
-          <section className="film-card film-card--full">
-            <div className="film-card__hero">
-              <div className="film-card__bg">
-                <img src={film?.backgroundImage} alt={film.name}/>
-              </div>
-              <h1 className="visually-hidden">WTW</h1>
-              <header className="page-header user-page__head">
-                <Logo/>
-                <UserPage/>
-              </header>
-              <div className="film-card__wrap">
-                <div className="film-card__desc">
-                  <h2 className="film-card__title">{film.name}</h2>
-                  <p className="film-card__meta">
-                    <span className="film-card__genre">{film.genre}</span>
-                    <span className="film-card__year">{film.released}</span>
-                  </p>
-                  <FilmCardButtons id={film.id} isFavorite={film.isFavorite}/>
-                </div>
+    !loading && film ?
+      <>
+        <section className="film-card film-card--full">
+          <div className="film-card__hero">
+            <div className="film-card__bg">
+              <img src={film?.backgroundImage} alt={film.name}/>
+            </div>
+            <h1 className="visually-hidden">WTW</h1>
+            <header className="page-header user-page__head">
+              <Logo/>
+              <UserPage/>
+            </header>
+            <div className="film-card__wrap">
+              <div className="film-card__desc">
+                <h2 className="film-card__title">{film.name}</h2>
+                <p className="film-card__meta">
+                  <span className="film-card__genre">{film.genre}</span>
+                  <span className="film-card__year">{film.released}</span>
+                </p>
+                <FilmCardButtons id={film.id} isFavorite={film.isFavorite}/>
               </div>
             </div>
-            <FilmDescription film={film}>{props.children}</FilmDescription>
-          </section>
-          <div className="page-content">
-            <section className="catalog catalog--like-this">
-              <h2 className="catalog__title">More like this</h2>
-              <div className="catalog__films-list">
-                <FilmCardList films={similarFilms}/>
-              </div>
-            </section>
-            <FooterLight/>
           </div>
-        </>
-        :
-        <Spinner/>}
-    </>
+          <FilmDescription film={film}>{props.children}</FilmDescription>
+        </section>
+        <div className="page-content">
+          <section className="catalog catalog--like-this">
+            <h2 className="catalog__title">More like this</h2>
+            <div className="catalog__films-list">
+              <FilmCardList films={similarFilms}/>
+            </div>
+          </section>
+          <FooterLight/>
+        </div>
+      </>
+      :
+      <Spinner/>
   );
 }
 
