@@ -1,13 +1,16 @@
 import {PromoFilm} from 'types/film.ts';
 import {useAppSelector} from '@components/use-app/use-app.tsx';
+import {getAuthorizationStatus} from '@store/user/selections.ts';
+import MyListButton from '@components/buttons/my-list.tsx';
+import {Paths} from '@const/paths.ts';
+import {Link} from 'react-router-dom';
 
 type PromoFilmProps = {
   promoFilm: PromoFilm | null;
-  myListCount: number;
 }
 
-function PromoFilmInfo({promoFilm, myListCount}: PromoFilmProps) {
-  const auth = useAppSelector((state) => state.authorizationStatus);
+function PromoFilmInfo({promoFilm}: PromoFilmProps) {
+  const auth = useAppSelector(getAuthorizationStatus);
   return (
     <div className="film-card__wrap">
       <div className="film-card__info">
@@ -23,20 +26,14 @@ function PromoFilmInfo({promoFilm, myListCount}: PromoFilmProps) {
           </p>
 
           <div className="film-card__buttons">
-            <button className="btn btn--play film-card__button" type="button">
+            <Link to={Paths.Player(String(promoFilm?.id))} className="btn btn--play film-card__button" type="button">
               <svg viewBox={`0 0 ${19} ${19}`}>
                 <use xlinkHref="#play-s"></use>
               </svg>
-              <span>Play</span>
-            </button>
-            {auth ?
-              <button className="btn btn--list film-card__button" type="button">
-                <svg viewBox="0 0 19 20" width="19" height="20">
-                  <use xlinkHref="#add"></use>
-                </svg>
-                <span>My list</span>
-                <span className="film-card__count">{myListCount}</span>
-              </button> : ''}
+              <Link to={Paths.Player(String(promoFilm?.id))}>Play</Link>
+            </Link>
+            {auth && promoFilm &&
+              <MyListButton id={promoFilm.id} isFavorite={promoFilm.isFavorite}></MyListButton>}
           </div>
         </div>
       </div>

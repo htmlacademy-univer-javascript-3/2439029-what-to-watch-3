@@ -1,4 +1,3 @@
-import Footer from '@components/footer/footer.tsx';
 import Logo from '@components/header/logo.tsx';
 import UserPage from '@components/header/user-page.tsx';
 import FilmCardList from '@components/film-card/film-card-list.tsx';
@@ -7,15 +6,14 @@ import {useAppSelector} from '@components/use-app/use-app.tsx';
 import ShowMore from '@components/buttons/show-more.tsx';
 import Spinner from '@components/spinner/spinner.tsx';
 import PromoFilmInfo from '@components/main-page/promo-film-info.tsx';
+import {filmsDataLoading, getFilms, getPromoFilm, getShowFilms} from '@store/film/selections.ts';
+import FooterLight from '@components/footer/footer-light.tsx';
 
-type MainPageProps = {
-  myListCount: number;
-}
-
-function MainPage(props: MainPageProps) {
-  const count = useAppSelector((state) => state.count);
-  const films = useAppSelector((state) => state.filteredFilms);
-  const promoFilm = useAppSelector((state) => state.promoFilm);
+function MainPage() {
+  const count = useAppSelector(getShowFilms);
+  const films = useAppSelector(getFilms);
+  const promoFilm = useAppSelector(getPromoFilm);
+  const loading = useAppSelector(filmsDataLoading);
   return (
     <>
       <section className="film-card">
@@ -27,20 +25,20 @@ function MainPage(props: MainPageProps) {
           <Logo/>
           <UserPage/>
         </header>
-        <PromoFilmInfo promoFilm={promoFilm} myListCount={props.myListCount}/>
+        <PromoFilmInfo promoFilm={promoFilm}/>
       </section>
 
       <div className="page-content">
-        {films.length === 0 ? <Spinner/> :
+        {loading ? <Spinner/> :
           <section className="catalog">
             <h2 className="catalog__title visually-hidden">Catalog</h2>
-            <GenreList />
+            <GenreList/>
             <div className="catalog__films-list">
-              <FilmCardList films={films.slice(0,count)}/>
+              <FilmCardList films={films.slice(0, count)}/>
             </div>
             {count < films.length && <ShowMore/>}
           </section>}
-        <Footer/>
+        <FooterLight/>
       </div>
     </>
   );

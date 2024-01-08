@@ -1,4 +1,4 @@
-import {changeShowedFilms} from '@store/action';
+import {changeShowedFilms} from '@store/film/process.ts';
 import {useAppDispatch} from '@components/use-app/use-app.tsx';
 
 export default function ShowMore(): JSX.Element {
