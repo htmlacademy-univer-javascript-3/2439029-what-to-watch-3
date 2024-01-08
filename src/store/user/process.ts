@@ -7,12 +7,12 @@ import {Paths} from '@const/paths.ts';
 
 export type UserProcess = {
   authorizationStatus: boolean;
-  image: string;
+  userImage: string;
   error: string | null;
 };
 const initialState: UserProcess = {
   authorizationStatus: false,
-  image: 'img/avatar.jpg',
+  userImage: 'img/avatar.jpg',
   error: null
 };
 export const userProcess = createSlice({
@@ -27,7 +27,7 @@ export const userProcess = createSlice({
     builder
       .addCase(checkAuth.fulfilled, (state, action) => {
         state.authorizationStatus = true;
-        state.image = action.payload;
+        state.userImage = action.payload;
       })
       .addCase(checkAuth.rejected, (state) => {
         state.authorizationStatus = false;
@@ -36,7 +36,7 @@ export const userProcess = createSlice({
         const userData = action.payload;
         saveToken(userData.token);
         state.authorizationStatus = true;
-        state.image = userData.avatarUrl;
+        state.userImage = userData.avatarUrl;
         state.error = null;
         browserHistory.push(Paths.Main());
       })
