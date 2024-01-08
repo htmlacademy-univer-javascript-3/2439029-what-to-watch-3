@@ -1,8 +1,10 @@
-import {useState, FormEvent, useEffect} from 'react';
+import {FormEvent, useEffect, useState} from 'react';
 import {postReview} from '@api/api-action.ts';
 import {useAppDispatch, useAppSelector} from '@components/use-app/use-app.tsx';
 import {useParams} from 'react-router-dom';
 import {getError} from '@store/film/selections.ts';
+import {setUserError} from 'store/user/process.ts';
+import {TIMEOUT_SHOW_ERROR} from 'const/values.ts';
 
 export function AddReviewForm(): JSX.Element {
   const [filmRating, setFilmRating] = useState(0);
@@ -13,6 +15,16 @@ export function AddReviewForm(): JSX.Element {
   const dispatch = useAppDispatch();
   const error = useAppSelector(getError);
   const {id} = useParams();
+  useEffect(() => {
+    if (error !== null) {
+      const timerId = setTimeout(() => {
+        dispatch(setUserError(null));
+      }, TIMEOUT_SHOW_ERROR);
+      return () => {
+        clearTimeout(timerId);
+      };
+    }
+  }, [error, dispatch]);
 
   useEffect(() => {
     setIsSubmitDisabled(!(filmRating > 0 && text && text.length >= 50 && text.length <= 400));

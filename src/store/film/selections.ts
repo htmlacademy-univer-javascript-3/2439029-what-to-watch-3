@@ -1,7 +1,6 @@
 import {NameSpace} from '@const/namespaces.ts';
 import {State} from '@components/use-app/use-app.tsx';
 import {FilmCard, PromoFilm, Film} from 'types/film.ts';
-import reviews from 'components/movie-page/reviews.tsx';
 import {ReviewType} from 'types/review.ts';
 import {CatalogGenre} from 'types/genre.ts';
 
