@@ -49,7 +49,7 @@ function MoviePage(props: MoviePageProps) {
                     <span className="film-card__genre">{film.genre}</span>
                     <span className="film-card__year">{film.released}</span>
                   </p>
-                  <FilmCardButtons id={film.id}/>
+                  <FilmCardButtons id={film.id} isFavorite={film.isFavorite}/>
                 </div>
               </div>
             </div>

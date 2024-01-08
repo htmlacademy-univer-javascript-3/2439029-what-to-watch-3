@@ -16,8 +16,8 @@ export const ApiPaths = {
   Similar: (id: string) => `/films/${id}/similar`,
   Promo: () => '/promo',
   Favorite: () => '/favorite',
-  // SetFilmStatus: (filmId: string, status: FilmStatus) =>
-  //   `/favorite/${filmId}/${status}`,
+  SetFilmStatus: (filmId: string, status: number) =>
+    `/favorite/${filmId}/${status}`,
   Comments: (id: string) => `/comments/${id}`,
   Login: () => '/login',
   Logout: () => '/logout',

@@ -4,7 +4,7 @@ import {CatalogGenre} from 'types/genre.ts';
 import {Film, FilmCard, PromoFilm} from 'types/film.ts';
 import {showedFilmsCount} from '@const/values.ts';
 import {ReviewType} from 'types/review.ts';
-import {fetchFilmsAction, fetchPromoFilmAction, getFilm, fetchMyList} from '@api/api-action.ts';
+import {fetchFilmsAction, fetchPromoFilmAction, getFilm, fetchMyList, postFavorite} from '@api/api-action.ts';
 import browserHistory from '../../browser-history.ts';
 import {Paths} from '@const/paths.ts';
 
@@ -104,6 +104,7 @@ export const FilmProcess = createSlice({
         state.isMyListLoading = true;
       })
       .addCase(fetchMyList.fulfilled, (state, action) => {
+        console.log('jnjkl');
         state.myList = action.payload;
         state.myListCount = state.myList.length;
         state.isMyListLoading = false;
@@ -125,6 +126,20 @@ export const FilmProcess = createSlice({
       .addCase(fetchPromoFilmAction.fulfilled, (state, action) => {
         state.promoFilm = action.payload;
         state.isPromoFilmLoading = false;
+      })
+      .addCase(postFavorite.fulfilled, (state, action) => {
+        const film = action.payload;
+        if (state.promoFilm && state.promoFilm.id === film.id) {
+          state.promoFilm.isFavorite = film.isFavorite;
+        }
+        if (state.film && state.film.id === film.id) {
+          state.film.isFavorite = film.isFavorite;
+        }
+        if (film.isFavorite) {
+          state.myListCount += 1;
+        } else {
+          state.myListCount -= 1;
+        }
       });
   }
 });

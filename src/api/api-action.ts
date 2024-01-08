@@ -7,6 +7,7 @@ import {AuthData, UserData} from 'types/request/post-user-request.ts';
 import {ReviewType} from 'types/review.ts';
 import {ReviewComment, ReviewCommentResponse} from 'types/request/post-comment-request.ts';
 import browserHistory from '../browser-history.ts';
+import {FavoriteData} from 'types/request/post-favorite-request.ts';
 
 export const fetchFilmsAction = createAsyncThunk<Film[], undefined,
   {
@@ -94,4 +95,13 @@ export const postReview = createAsyncThunk<void, ReviewComment, {
     await api.post<ReviewCommentResponse>(ApiPaths.Comments(id), {comment, rating})
       .then(() => browserHistory.push(Paths.MoviePage(id)));
   }
+);
+
+export const postFavorite = createAsyncThunk<FilmCard, FavoriteData, {
+  dispatch: AppDispatch;
+  state: State;
+  extra: AxiosInstance;
+}>(
+  '/favorite/setStatus',
+  async ({status, id}, {extra: api}) => await api.post<FilmCard>(ApiPaths.SetFilmStatus(id, status)).then((res) => res.data)
 );

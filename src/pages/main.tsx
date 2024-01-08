@@ -6,7 +6,7 @@ import {useAppSelector} from '@components/use-app/use-app.tsx';
 import ShowMore from '@components/buttons/show-more.tsx';
 import Spinner from '@components/spinner/spinner.tsx';
 import PromoFilmInfo from '@components/main-page/promo-film-info.tsx';
-import {filmsDataLoading, getFilms, getMyListCount, getPromoFilm, getShowFilms} from '@store/film/selections.ts';
+import {filmsDataLoading, getFilms, getPromoFilm, getShowFilms} from '@store/film/selections.ts';
 import FooterLight from '@components/footer/footer-light.tsx';
 
 function MainPage() {
@@ -14,7 +14,6 @@ function MainPage() {
   const films = useAppSelector(getFilms);
   const promoFilm = useAppSelector(getPromoFilm);
   const loading = useAppSelector(filmsDataLoading);
-  const myListCount = useAppSelector(getMyListCount);
   return (
     <>
       <section className="film-card">
@@ -26,7 +25,7 @@ function MainPage() {
           <Logo/>
           <UserPage/>
         </header>
-        <PromoFilmInfo promoFilm={promoFilm} myListCount={myListCount}/>
+        <PromoFilmInfo promoFilm={promoFilm}/>
       </section>
 
       <div className="page-content">
