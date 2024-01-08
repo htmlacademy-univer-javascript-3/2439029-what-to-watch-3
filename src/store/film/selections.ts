@@ -14,3 +14,6 @@ export const filmDataLoading = (state: State) => state[NameSpace.Film].isFilmDat
 export const getGenre = (state: State) => state[NameSpace.Film].genre;
 export const getGenres = (state: State) => state[NameSpace.Film].genres;
 export const getSection = (state: State) => state[NameSpace.Film].section;
+export const getMyList = (state: State) => state[NameSpace.Film].myList;
+export const myListLoading = (state: State) => state[NameSpace.Film].isMyListLoading;
+export const getMyListCount = (state: State) => state[NameSpace.Film].myListCount;

@@ -1,4 +1,3 @@
-import Footer from '@components/footer/footer.tsx';
 import FilmDescription from '@components/ciurrent-film/film-description.tsx';
 import FilmCardList from '@components/film-card/film-card-list.tsx';
 import FilmCardButtons from '@components/film-card-buttons/film-card-buttons.tsx';
@@ -10,6 +9,7 @@ import {useEffect} from 'react';
 import {getFilm} from '@api/api-action.ts';
 import Spinner from '@components/spinner/spinner.tsx';
 import {filmDataLoading, getFilmData, getSimilarFilms} from '@store/film/selections.ts';
+import FooterLight from '@components/footer/footer-light.tsx';
 
 type MoviePageProps = {
   children: JSX.Element;
@@ -62,7 +62,7 @@ function MoviePage(props: MoviePageProps) {
                 <FilmCardList films={similarFilms}/>
               </div>
             </section>
-            <Footer/>
+            <FooterLight/>
           </div>
         </>
         :

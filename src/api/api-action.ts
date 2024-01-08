@@ -16,6 +16,14 @@ export const fetchFilmsAction = createAsyncThunk<Film[], undefined,
   }
 >('data/fetchFilms', async (_arg, {extra: api}) => await api.get<Film[]>(ApiPaths.Films()).then((res) => res.data));
 
+export const fetchMyList = createAsyncThunk<Film[], undefined,
+  {
+    dispatch: AppDispatch;
+    state: State;
+    extra: AxiosInstance;
+  }
+>('data/fetchMyList', async (_arg, {extra: api}) => await api.get<Film[]>(ApiPaths.Favorite()).then((res) => res.data));
+
 export const fetchPromoFilmAction = createAsyncThunk<PromoFilm, undefined,
   {
     dispatch: AppDispatch;

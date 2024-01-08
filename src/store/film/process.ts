@@ -4,7 +4,7 @@ import {CatalogGenre} from 'types/genre.ts';
 import {Film, FilmCard, PromoFilm} from 'types/film.ts';
 import {showedFilmsCount} from '@const/values.ts';
 import {ReviewType} from 'types/review.ts';
-import {fetchFilmsAction, fetchPromoFilmAction, getFilm} from '@api/api-action.ts';
+import {fetchFilmsAction, fetchPromoFilmAction, getFilm, fetchMyList} from '@api/api-action.ts';
 import browserHistory from '../../browser-history.ts';
 import {Paths} from '@const/paths.ts';
 
@@ -24,6 +24,9 @@ type initialStateType = {
   isFilmsDataLoading: boolean;
   isFilmDataLoading: boolean;
   isPromoFilmLoading: boolean;
+  myList: Film[];
+  isMyListLoading: boolean;
+  myListCount: number;
 };
 
 const initialState: initialStateType = {
@@ -41,7 +44,10 @@ const initialState: initialStateType = {
   section: 'Overview',
   isFilmsDataLoading: false,
   isFilmDataLoading: false,
-  isPromoFilmLoading: false
+  isPromoFilmLoading: false,
+  myList: [],
+  isMyListLoading: false,
+  myListCount: 0
 };
 
 
@@ -54,22 +60,22 @@ export const FilmProcess = createSlice({
         ? state.count + showedFilmsCount : state.filteredFilms.length;
     },
     setError(state, action: {
-      payload: string | null
+      payload: string | null;
     }) {
       state.error = action.payload;
     },
     setGenres(state, action: {
-      payload: CatalogGenre[]
+      payload: CatalogGenre[];
     }) {
       state.genres = action.payload;
     },
     setSection(state, action: {
-      payload: 'Overview' | 'Details' | 'Reviews'
+      payload: 'Overview' | 'Details' | 'Reviews';
     }) {
       state.section = action.payload;
     },
     changeGenre(state, action: {
-      payload: CatalogGenre
+      payload: CatalogGenre;
     }) {
       state.genre = action.payload;
       state.count = showedFilmsCount;
@@ -93,6 +99,14 @@ export const FilmProcess = createSlice({
       })
       .addCase(getFilm.pending, (state) => {
         state.isFilmDataLoading = true;
+      })
+      .addCase(fetchMyList.pending, (state) => {
+        state.isMyListLoading = true;
+      })
+      .addCase(fetchMyList.fulfilled, (state, action) => {
+        state.myList = action.payload;
+        state.myListCount = state.myList.length;
+        state.isMyListLoading = false;
       })
       .addCase(getFilm.fulfilled, (state, action) => {
         const filmData = action.payload;

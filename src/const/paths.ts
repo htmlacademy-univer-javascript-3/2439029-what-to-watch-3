@@ -1,7 +1,7 @@
 export const Paths = {
   Main: () => '/',
   SignIn: () => '/login',
-  // MyList = '/mylist',
+  MyList: () => '/mylist',
   MoviePage: (id:string) => `/films/${id}`,
   MoviePageDetails: (id:string) => `/films/${id}/details`,
   AddReview: (id:string) => `/films/${id}/review`,

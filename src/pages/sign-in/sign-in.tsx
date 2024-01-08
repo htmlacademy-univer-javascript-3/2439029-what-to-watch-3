@@ -1,4 +1,3 @@
-import Footer from '@components/footer/footer.tsx';
 import Logo from '@components/header/logo.tsx';
 import {useAppDispatch, useAppSelector} from '@components/use-app/use-app.tsx';
 import {FormEvent, useEffect, useRef} from 'react';
@@ -6,6 +5,7 @@ import {login} from '@api/api-action.ts';
 import {getUserError} from '@store/user/selections.ts';
 import {setUserError} from '@store/user/process.ts';
 import {TIMEOUT_SHOW_ERROR} from '@const/values.ts';
+import FooterLight from '@components/footer/footer-light.tsx';
 
 function SignIn() {
   const dispatch = useAppDispatch();
@@ -67,7 +67,7 @@ function SignIn() {
           </div>
         </form>
       </div>
-      <Footer/>
+      <FooterLight/>
     </div>
   );
 }

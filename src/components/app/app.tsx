@@ -12,6 +12,7 @@ import Details from '@components/movie-page/details.tsx';
 import Reviews from '@components/movie-page/reviews.tsx';
 import AddReview from '@pages/add-review/add-review.tsx';
 import PrivateRoute from '@pages/private-route/private-route.tsx';
+import MyList from '@pages/my-list/my-list.tsx';
 
 
 function App(): JSX.Element {
@@ -19,8 +20,8 @@ function App(): JSX.Element {
     <HistoryRouter history={browserHistory}>
       <ScrollToTop/>
       <Routes>
-        <Route path={Paths.Main()} element={<MainPage myListCount={9}/>}/>
-        {/*<Route path={Paths.MyList} element={<PrivateRoute isAuthorize={false}><MyList myFilms={films.slice(1,9)}/></PrivateRoute>}/>*/}
+        <Route path={Paths.Main()} element={<MainPage/>}/>
+        <Route path={Paths.MyList()} element={<PrivateRoute><MyList/></PrivateRoute>}/>
         <Route path={Paths.SignIn()} element={<SignIn/>}/>
         <Route path={'*'} element={<NotFound/>}/>
         <Route path={Paths.MoviePage(':id')} element={<MoviePage><Overview/></MoviePage>}/>

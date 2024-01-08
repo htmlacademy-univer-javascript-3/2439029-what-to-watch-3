@@ -1,4 +1,3 @@
-import Footer from '@components/footer/footer.tsx';
 import Logo from '@components/header/logo.tsx';
 import UserPage from '@components/header/user-page.tsx';
 import FilmCardList from '@components/film-card/film-card-list.tsx';
@@ -7,18 +6,15 @@ import {useAppSelector} from '@components/use-app/use-app.tsx';
 import ShowMore from '@components/buttons/show-more.tsx';
 import Spinner from '@components/spinner/spinner.tsx';
 import PromoFilmInfo from '@components/main-page/promo-film-info.tsx';
-import {filmsDataLoading, getFilms, getPromoFilm, getShowFilms} from '@store/film/selections.ts';
+import {filmsDataLoading, getFilms, getMyListCount, getPromoFilm, getShowFilms} from '@store/film/selections.ts';
+import FooterLight from '@components/footer/footer-light.tsx';
 
-
-type MainPageProps = {
-  myListCount: number;
-}
-
-function MainPage(props: MainPageProps) {
+function MainPage() {
   const count = useAppSelector(getShowFilms);
   const films = useAppSelector(getFilms);
   const promoFilm = useAppSelector(getPromoFilm);
   const loading = useAppSelector(filmsDataLoading);
+  const myListCount = useAppSelector(getMyListCount);
   return (
     <>
       <section className="film-card">
@@ -30,7 +26,7 @@ function MainPage(props: MainPageProps) {
           <Logo/>
           <UserPage/>
         </header>
-        <PromoFilmInfo promoFilm={promoFilm} myListCount={props.myListCount}/>
+        <PromoFilmInfo promoFilm={promoFilm} myListCount={myListCount}/>
       </section>
 
       <div className="page-content">
@@ -43,7 +39,7 @@ function MainPage(props: MainPageProps) {
             </div>
             {count < films.length && <ShowMore/>}
           </section>}
-        <Footer/>
+        <FooterLight/>
       </div>
     </>
   );
