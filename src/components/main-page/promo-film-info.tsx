@@ -2,6 +2,8 @@ import {PromoFilm} from 'types/film.ts';
 import {useAppSelector} from '@components/use-app/use-app.tsx';
 import {getAuthorizationStatus} from '@store/user/selections.ts';
 import MyListButton from '@components/buttons/my-list.tsx';
+import {Paths} from '@const/paths.ts';
+import {Link} from 'react-router-dom';
 
 type PromoFilmProps = {
   promoFilm: PromoFilm | null;
@@ -24,14 +26,14 @@ function PromoFilmInfo({promoFilm}: PromoFilmProps) {
           </p>
 
           <div className="film-card__buttons">
-            <button className="btn btn--play film-card__button" type="button">
+            <Link to={Paths.Player(String(promoFilm?.id))} className="btn btn--play film-card__button" type="button">
               <svg viewBox={`0 0 ${19} ${19}`}>
                 <use xlinkHref="#play-s"></use>
               </svg>
               <span>Play</span>
-            </button>
+            </Link>
             {auth && promoFilm &&
-             <MyListButton id={promoFilm.id} isFavorite={promoFilm.isFavorite}></MyListButton>}
+              <MyListButton id={promoFilm.id} isFavorite={promoFilm.isFavorite}></MyListButton>}
           </div>
         </div>
       </div>
