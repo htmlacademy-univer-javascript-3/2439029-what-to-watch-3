@@ -4,7 +4,14 @@ import {CatalogGenre} from 'types/genre.ts';
 import {Film, FilmCard, PromoFilm} from 'types/film.ts';
 import {showedFilmsCount} from '@const/values.ts';
 import {ReviewType} from 'types/review.ts';
-import {fetchFilmsAction, fetchPromoFilmAction, getFilm, fetchMyList, postFavorite} from '@api/api-action.ts';
+import {
+  fetchFilmsAction,
+  fetchPromoFilmAction,
+  getFilm,
+  fetchMyList,
+  postFavorite,
+  postReview
+} from '@api/api-action.ts';
 import browserHistory from '../../browser-history.ts';
 import {Paths} from '@const/paths.ts';
 
@@ -121,6 +128,9 @@ export const FilmProcess = createSlice({
       })
       .addCase(fetchPromoFilmAction.pending, (state) => {
         state.isPromoFilmLoading = true;
+      })
+      .addCase(postReview.rejected, (state) => {
+        state.error = 'The comment was not published, something went wrong(';
       })
       .addCase(fetchPromoFilmAction.fulfilled, (state, action) => {
         state.promoFilm = action.payload;
