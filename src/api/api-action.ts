@@ -1,6 +1,6 @@
 import {createAsyncThunk} from '@reduxjs/toolkit';
 import {AxiosInstance} from 'axios';
-import {ApiPaths, Paths} from '@const/paths.ts';
+import {API_PATHS, PATHS} from '@const/paths.ts';
 import {Film, FilmCard, PromoFilm} from 'types/film.ts';
 import {AppDispatch, State} from '@components/use-app/use-app.tsx';
 import {AuthData, UserData} from 'types/request/post-user-request.ts';
@@ -15,7 +15,7 @@ export const fetchFilmsAction = createAsyncThunk<Film[], undefined,
     state: State;
     extra: AxiosInstance;
   }
->('data/fetchFilms', async (_arg, {extra: api}) => await api.get<Film[]>(ApiPaths.Films()).then((res) => res.data));
+>('data/fetchFilms', async (_arg, {extra: api}) => await api.get<Film[]>(API_PATHS.Films()).then((res) => res.data));
 
 export const fetchMyList = createAsyncThunk<Film[], undefined,
   {
@@ -23,7 +23,7 @@ export const fetchMyList = createAsyncThunk<Film[], undefined,
     state: State;
     extra: AxiosInstance;
   }
->('data/fetchMyList', async (_arg, {extra: api}) => await api.get<Film[]>(ApiPaths.Favorite()).then((res) => res.data));
+>('data/fetchMyList', async (_arg, {extra: api}) => await api.get<Film[]>(API_PATHS.Favorite()).then((res) => res.data));
 
 export const fetchPromoFilmAction = createAsyncThunk<PromoFilm, undefined,
   {
@@ -31,7 +31,7 @@ export const fetchPromoFilmAction = createAsyncThunk<PromoFilm, undefined,
     state: State;
     extra: AxiosInstance;
   }
->('data/fetchPromoFilm', async (_arg, {extra: api}) => await api.get<PromoFilm>(ApiPaths.Promo()).then((res) => res.data));
+>('data/fetchPromoFilm', async (_arg, {extra: api}) => await api.get<PromoFilm>(API_PATHS.Promo()).then((res) => res.data));
 
 export const login = createAsyncThunk<UserData, AuthData, {
   dispatch: AppDispatch;
@@ -39,7 +39,7 @@ export const login = createAsyncThunk<UserData, AuthData, {
   extra: AxiosInstance;
 }>(
   'user/login',
-  async ({email: email, password}, {extra: api}) => await api.post<UserData>(ApiPaths.Login(), {
+  async ({email: email, password}, {extra: api}) => await api.post<UserData>(API_PATHS.Login(), {
     email,
     password
   }).then((res) => res.data));
@@ -50,7 +50,7 @@ export const checkAuth = createAsyncThunk<string, undefined, {
   extra: AxiosInstance;
 }>(
   'user/checkAuth',
-  async (_arg, {extra: api}) => await api.get<UserData>(ApiPaths.Login()).then((res) => res.data.avatarUrl)
+  async (_arg, {extra: api}) => await api.get<UserData>(API_PATHS.Login()).then((res) => res.data.avatarUrl)
 );
 
 export const logout = createAsyncThunk<void, undefined, {
@@ -60,7 +60,7 @@ export const logout = createAsyncThunk<void, undefined, {
 }>(
   'user/logout',
   async (_arg, {extra: api}) => {
-    await api.delete(ApiPaths.Logout());
+    await api.delete(API_PATHS.Logout());
   },
 );
 
@@ -77,9 +77,9 @@ export const getFilm = createAsyncThunk<{
   async (id, {extra: api}) => {
     const [{data: filmCard}, {data: comments}, {data: moreLikeThis}] =
       await Promise.all([
-        api.get<FilmCard>(ApiPaths.Film(id)),
-        api.get<ReviewType[]>(ApiPaths.Comments(id)),
-        api.get<Film[]>(ApiPaths.Similar(id)),
+        api.get<FilmCard>(API_PATHS.Film(id)),
+        api.get<ReviewType[]>(API_PATHS.Comments(id)),
+        api.get<Film[]>(API_PATHS.Similar(id)),
       ]);
     return {filmCard, comments, moreLikeThis};
   }
@@ -92,8 +92,8 @@ export const postReview = createAsyncThunk<void, ReviewComment, {
 }>(
   '/comments/:id',
   async ({comment, rating, id}, {extra: api}) => {
-    await api.post<ReviewCommentResponse>(ApiPaths.Comments(id), {comment, rating})
-      .then(() => browserHistory.push(Paths.MoviePage(id)));
+    await api.post<ReviewCommentResponse>(API_PATHS.Comments(id), {comment, rating})
+      .then(() => browserHistory.push(PATHS.MoviePage(id)));
   }
 );
 
@@ -103,5 +103,5 @@ export const postFavorite = createAsyncThunk<FilmCard, FavoriteData, {
   extra: AxiosInstance;
 }>(
   '/favorite/setStatus',
-  async ({status, id}, {extra: api}) => await api.post<FilmCard>(ApiPaths.SetFilmStatus(id, status)).then((res) => res.data)
+  async ({status, id}, {extra: api}) => await api.post<FilmCard>(API_PATHS.SetFilmStatus(id, status)).then((res) => res.data)
 );

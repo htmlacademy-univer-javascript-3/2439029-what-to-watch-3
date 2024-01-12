@@ -3,7 +3,7 @@ import {NameSpace} from '@const/namespaces.ts';
 import {checkAuth, login, logout} from '@api/api-action.ts';
 import {dropToken, saveToken} from '@components/use-app/use-app.tsx';
 import browserHistory from '../../browser-history.ts';
-import {Paths} from '@const/paths.ts';
+import {PATHS} from '@const/paths.ts';
 
 export type UserProcess = {
   authorizationStatus: boolean;
@@ -41,7 +41,7 @@ export const userProcess = createSlice({
         state.authorizationStatus = true;
         state.userImage = userData.avatarUrl;
         state.error = null;
-        browserHistory.push(Paths.Main());
+        browserHistory.push(PATHS.Main());
       })
       .addCase(login.rejected, (state) => {
         state.authorizationStatus = false;

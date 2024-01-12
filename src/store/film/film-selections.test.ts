@@ -5,7 +5,7 @@ import {
   filmsDataLoading, filmDataLoading, getGenre, getGenres, getSection, getMyList, myListLoading, getMyListCount
 }
   from '@store/film/selections.ts';
-import {showedFilmsCount} from '@const/values.ts';
+import {SHOWED_FILMS_COUNT} from '@const/values.ts';
 import {CatalogGenre} from 'types/genre.ts';
 import {Film, FilmCard, PromoFilm} from 'types/film.ts';
 import {ReviewType} from 'types/review.ts';
@@ -66,7 +66,7 @@ describe('UserSlice selectors', () => {
       promoFilm: promofilm,
       filteredFilms: [film1, film2],
       allFilms: [film1, film2, film3],
-      count: showedFilmsCount,
+      count: SHOWED_FILMS_COUNT,
       authorizationStatus: false,
       error: 'test_error',
       film: filmCard,

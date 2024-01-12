@@ -2,7 +2,7 @@ import {createSlice} from '@reduxjs/toolkit';
 import {NameSpace} from '@const/namespaces.ts';
 import {CatalogGenre} from 'types/genre.ts';
 import {Film, FilmCard, PromoFilm} from 'types/film.ts';
-import {showedFilmsCount} from '@const/values.ts';
+import {SHOWED_FILMS_COUNT} from '@const/values.ts';
 import {ReviewType} from 'types/review.ts';
 import {
   fetchFilmsAction,
@@ -13,7 +13,7 @@ import {
   postReview
 } from '@api/api-action.ts';
 import browserHistory from '../../browser-history.ts';
-import {Paths} from '@const/paths.ts';
+import {PATHS} from '@const/paths.ts';
 
 type initialStateType = {
   genre: CatalogGenre;
@@ -42,7 +42,7 @@ const initialState: initialStateType = {
   promoFilm: null,
   filteredFilms: [],
   allFilms: [],
-  count: showedFilmsCount,
+  count: SHOWED_FILMS_COUNT,
   authorizationStatus: false,
   error: null,
   film: null,
@@ -63,8 +63,8 @@ export const FilmProcess = createSlice({
   initialState,
   reducers: {
     changeShowedFilms(state) {
-      state.count = state.filteredFilms.length > state.count + showedFilmsCount
-        ? state.count + showedFilmsCount : state.filteredFilms.length;
+      state.count = state.filteredFilms.length > state.count + SHOWED_FILMS_COUNT
+        ? state.count + SHOWED_FILMS_COUNT : state.filteredFilms.length;
     },
     setError(state, action: {
       payload: string | null;
@@ -85,7 +85,7 @@ export const FilmProcess = createSlice({
       payload: CatalogGenre;
     }) {
       state.genre = action.payload;
-      state.count = showedFilmsCount;
+      state.count = SHOWED_FILMS_COUNT;
       if (state.genre === 'All genres') {
         state.filteredFilms = state.allFilms;
       } else {
@@ -124,7 +124,7 @@ export const FilmProcess = createSlice({
       })
       .addCase(getFilm.rejected, (state) => {
         state.isFilmDataLoading = false;
-        browserHistory.push(Paths.NotFound());
+        browserHistory.push(PATHS.NotFound());
       })
       .addCase(fetchPromoFilmAction.pending, (state) => {
         state.isPromoFilmLoading = true;

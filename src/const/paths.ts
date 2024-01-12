@@ -1,17 +1,17 @@
-export const Paths = {
+export const PATHS = {
   Main: () => '/',
   SignIn: () => '/login',
   MyList: () => '/mylist',
-  MoviePage: (id:string) => `/films/${id}`,
-  MoviePageDetails: (id:string) => `/films/${id}/details`,
-  AddReview: (id:string) => `/films/${id}/review`,
-  MoviePageReviews:(id:string) =>`/films/${id}/reviews`,
-  Player: (id:string) => `/player/${id}`,
+  MoviePage: (id: string) => `/films/${id}`,
+  MoviePageDetails: (id: string) => `/films/${id}/details`,
+  AddReview: (id: string) => `/films/${id}/review`,
+  MoviePageReviews: (id: string) => `/films/${id}/reviews`,
+  Player: (id: string) => `/player/${id}`,
   NotFound: () => '*',
 };
 
-export const ApiPaths = {
-  Films : () => '/films',
+export const API_PATHS = {
+  Films: () => '/films',
   Film: (id: string) => `/films/${id}`,
   Similar: (id: string) => `/films/${id}/similar`,
   Promo: () => '/promo',
