@@ -1,13 +1,14 @@
 import {checkAuth, login, logout} from '@api/api-action.ts';
 import {setUserError, userProcess} from '@store/user/process.ts';
 import {expect} from 'vitest';
+import {UserData} from 'types/request/post-user-request.ts';
 
 describe('UserProcess Slice', () => {
-  const auth = {
-    'name': 'Oliver.conner',
-    'avatarUrl': 'https://url-to-image/image.jpg',
-    'email': 'Oliver.conner@gmail.com',
-    'token': 'T2xpdmVyLmNvbm5lckBnbWFpbC5jb20='
+  const auth: UserData = {
+    name: 'Oliver.conner',
+    avatarUrl: 'https://url-to-image/image.jpg',
+    email: 'Oliver.conner@gmail.com',
+    token: 'T2xpdmVyLmNvbm5lckBnbWFpbC5jb20='
   };
 
   it('should return initial state with auth', () => {
@@ -65,7 +66,6 @@ describe('UserProcess Slice', () => {
   it('should set true, with "login.fulfilled" action', () => {
     const initialState = {authorizationStatus: false, userImage: 'img/avatar.jpg', error: null};
     const expectedState = {authorizationStatus: true, userImage: 'https://url-to-image/image.jpg', error: null};
-
     const result = userProcess.reducer(initialState, login.fulfilled(auth));
 
     expect(result).toEqual(expectedState);

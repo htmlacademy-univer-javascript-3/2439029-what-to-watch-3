@@ -9,3 +9,4 @@ export type CatalogGenre =
   | 'Documentary'
   | 'Dramas'
   | 'Horror'
+  | 'Fantasy'
