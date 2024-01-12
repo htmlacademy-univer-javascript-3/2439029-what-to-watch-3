@@ -7,19 +7,21 @@ import {Paths} from '@const/paths.ts';
 
 export type UserProcess = {
   authorizationStatus: boolean;
-  userImage: string;
+  userImage: string | null;
   error: string | null;
 };
 const initialState: UserProcess = {
   authorizationStatus: false,
-  userImage: 'img/avatar.jpg',
+  userImage: null,
   error: null
 };
 export const userProcess = createSlice({
   name: NameSpace.User,
   initialState,
   reducers: {
-    setUserError(state, action: { payload: string | null }) {
+    setUserError(state, action: {
+      payload: string | null;
+    }) {
       state.error = action.payload;
     }
   },
@@ -31,7 +33,7 @@ export const userProcess = createSlice({
       })
       .addCase(checkAuth.rejected, (state) => {
         state.authorizationStatus = false;
-        state.userImage = 'img/avatar.jpg';
+        state.userImage = null;
       })
       .addCase(login.fulfilled, (state, action) => {
         const userData = action.payload;
@@ -43,12 +45,12 @@ export const userProcess = createSlice({
       })
       .addCase(login.rejected, (state) => {
         state.authorizationStatus = false;
-        state.userImage = 'img/avatar.jpg';
+        state.userImage = null;
         state.error = 'Fill the fields with valid values!';
       })
       .addCase(logout.fulfilled, (state) => {
         state.authorizationStatus = false;
-        state.userImage = 'img/avatar.jpg';
+        state.userImage = null;
         dropToken();
       });
   }
