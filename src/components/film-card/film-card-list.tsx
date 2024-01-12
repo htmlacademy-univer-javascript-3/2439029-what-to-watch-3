@@ -14,7 +14,7 @@ function FilmCardList({films}: FilmCardListProps) {
   const handleFocus = (id: string) => {
     timer = setTimeout(() => {
       setSelectedFilm(id);
-    }, 200);
+    }, 2000);
   };
 
   const handleFocusOff = () => {
