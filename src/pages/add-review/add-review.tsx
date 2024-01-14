@@ -18,12 +18,11 @@ function AddReview() {
       dispatch(getFilm(id));
     }
   }, [dispatch, id]);
+  const film = useAppSelector(getFilmData);
   const error = useAppSelector(getHasFilmError);
   if (error) {
     return <Error id={id}/>;
   }
-  const film = useAppSelector(getFilmData);
-
   return (
     film ?
       <section className="film-card film-card--full">
