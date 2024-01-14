@@ -48,7 +48,7 @@ describe('UserProcess Slice', () => {
   });
   it('should set "NoAuth" with "login.rejected" action', () => {
     const initialState = {authorizationStatus: true, userImage: 'test_img', error: null};
-    const expectedState = {authorizationStatus: false, userImage: null, error: 'Fill the fields with valid values!'};
+    const expectedState = {authorizationStatus: false, userImage: null, error: 'Failed to register, please check if your email and password are correct!'};
 
     const result = userProcess.reducer(initialState, login.rejected);
 

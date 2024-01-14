@@ -5,9 +5,10 @@ import {useEffect} from 'react';
 import {Link, useParams} from 'react-router-dom';
 import {useAppDispatch, useAppSelector} from '@components/use-app/use-app.tsx';
 import {getFilm} from '@api/api-action.ts';
-import {getFilmData} from '@store/film/selections.ts';
+import {getFilmData, getHasFilmError} from '@store/film/selections.ts';
 import {PATHS} from '@const/paths.ts';
 import NotFound from '@pages/not-found/not-found.tsx';
+import Error from '@pages/error/error.tsx';
 
 function AddReview() {
   const {id} = useParams();
@@ -17,9 +18,11 @@ function AddReview() {
       dispatch(getFilm(id));
     }
   }, [dispatch, id]);
-
   const film = useAppSelector(getFilmData);
-
+  const error = useAppSelector(getHasFilmError);
+  if (error) {
+    return <Error id={id}/>;
+  }
   return (
     film ?
       <section className="film-card film-card--full">
