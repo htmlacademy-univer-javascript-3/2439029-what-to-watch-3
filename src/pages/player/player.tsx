@@ -17,11 +17,6 @@ export function PlayerPage() {
   const [progress, setProgress] = useState(0);
   const [duration, setDuration] = useState(0);
   const isMounted = useRef(false);
-  const error = useAppSelector(getHasFilmError);
-  if (error) {
-    return <Error id={id}/>;
-  }
-
   const getDurationFormat = (seconds: number): string => {
     const hours = Math.floor(seconds / (60 * 60));
     const minutes = Math.floor((seconds % (60 * 60)) / 60);
@@ -64,6 +59,10 @@ export function PlayerPage() {
       videoRef.current?.requestFullscreen();
     }
   };
+  const error = useAppSelector(getHasFilmError);
+  if (error) {
+    return <Error id={id}/>;
+  }
   if (!film) {
     return (
       <Spinner/>
