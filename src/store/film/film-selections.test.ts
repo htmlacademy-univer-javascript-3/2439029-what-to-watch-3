@@ -1,8 +1,23 @@
 import {describe, expect} from 'vitest';
 import {NameSpace} from '@const/namespaces.ts';
 import {
-  getPromoFilm, getFilms, getAllFilms, getShowFilms, getFilmData, getError, getReviews, getSimilarFilms,
-  filmsDataLoading, filmDataLoading, getGenre, getGenres, getSection, getMyList, myListLoading, getMyListCount
+  getPromoFilm,
+  getFilms,
+  getAllFilms,
+  getShowFilms,
+  getFilmData,
+  getError,
+  getReviews,
+  getSimilarFilms,
+  filmsDataLoading,
+  filmDataLoading,
+  getGenre,
+  getGenres,
+  getSection,
+  getMyList,
+  myListLoading,
+  getMyListCount,
+  getHasMyListError
 }
   from '@store/film/selections.ts';
 import {SHOWED_FILMS_COUNT} from '@const/values.ts';
@@ -78,7 +93,8 @@ describe('UserSlice selectors', () => {
       isPromoFilmLoading: true,
       myList: [film2],
       isMyListLoading: false,
-      myListCount: 1
+      myListCount: 1,
+      hasMyListError: true
     },
   };
   it('should return promoFilm from state', () => {
@@ -161,5 +177,9 @@ describe('UserSlice selectors', () => {
     const result = getMyListCount(state);
     expect(result).toBe(myListCount);
   });
-
+  it('should return hasMyListError from state', () => {
+    const {hasMyListError} = state[NameSpace.Film];
+    const result = getHasMyListError(state);
+    expect(result).toBe(hasMyListError);
+  });
 });

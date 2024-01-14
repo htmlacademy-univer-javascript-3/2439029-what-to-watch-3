@@ -3,19 +3,26 @@ import Logo from '@components/header/logo.tsx';
 import UserPage from '@components/header/user-page.tsx';
 import FilmCardList from '@components/film-card/film-card-list.tsx';
 import {useAppSelector} from '@components/use-app/use-app.tsx';
-import {getMyList, myListLoading} from '@store/film/selections.ts';
+import {getHasMyListError, getMyList, myListLoading} from '@store/film/selections.ts';
 import Spinner from '@components/spinner/spinner.tsx';
+import Error from '@pages/error/error.tsx';
 
 export function MyList() {
   const myList = useAppSelector(getMyList);
   const loading = useAppSelector(myListLoading);
+  const error = useAppSelector(getHasMyListError);
+  if (error) {
+    return (<Error/>);
+  }
   return (
     loading ? <Spinner/>
       :
       <div className="user-page">
         <header className="page-header user-page__head">
           <Logo/>
-          <h1 className="page-title user-page__title">My list <span className="user-page__film-count">{myList.length}</span></h1>
+          <h1 className="page-title user-page__title">
+            My list<span className="user-page__film-count">{myList.length}</span>
+          </h1>
           <UserPage/>
         </header>
         <section className="catalog">

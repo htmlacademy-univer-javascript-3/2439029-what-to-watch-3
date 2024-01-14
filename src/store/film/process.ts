@@ -34,6 +34,7 @@ type initialStateType = {
   myList: Film[];
   isMyListLoading: boolean;
   myListCount: number;
+  hasMyListError: boolean;
 };
 
 const initialState: initialStateType = {
@@ -54,7 +55,8 @@ const initialState: initialStateType = {
   isPromoFilmLoading: false,
   myList: [],
   isMyListLoading: false,
-  myListCount: 0
+  myListCount: 0,
+  hasMyListError: false,
 };
 
 
@@ -109,11 +111,17 @@ export const FilmProcess = createSlice({
       })
       .addCase(fetchMyList.pending, (state) => {
         state.isMyListLoading = true;
+        state.hasMyListError = false;
+      })
+      .addCase(fetchMyList.rejected, (state) => {
+        state.isMyListLoading = false;
+        state.hasMyListError = true;
       })
       .addCase(fetchMyList.fulfilled, (state, action) => {
         state.myList = action.payload;
         state.myListCount = state.myList.length;
         state.isMyListLoading = false;
+        state.hasMyListError = false;
       })
       .addCase(getFilm.fulfilled, (state, action) => {
         const filmData = action.payload;

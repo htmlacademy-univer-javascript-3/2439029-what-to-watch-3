@@ -2,16 +2,15 @@ import {useAppDispatch, useAppSelector} from '@components/use-app/use-app.tsx';
 import {getMyListCount} from '@store/film/selections.ts';
 import {postFavorite} from '@api/api-action.ts';
 
-
-type MyListProps ={
+type MyListProps = {
   isFavorite: boolean;
   id: string;
 }
-export default function MyListButton({isFavorite,id}: MyListProps): JSX.Element {
+export default function MyListButton({isFavorite, id}: MyListProps): JSX.Element {
   const dispatch = useAppDispatch();
   const count = useAppSelector(getMyListCount);
   const handleClick = () => {
-    dispatch(postFavorite({id: id,status:isFavorite ? 0 : 1}));
+    dispatch(postFavorite({id: id, status: isFavorite ? 0 : 1}));
   };
 
   return (
