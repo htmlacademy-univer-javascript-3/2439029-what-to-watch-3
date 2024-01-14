@@ -35,6 +35,8 @@ type initialStateType = {
   isMyListLoading: boolean;
   myListCount: number;
   hasMyListError: boolean;
+  hasFilmsError: boolean;
+  hasPromoFilmError: boolean;
 };
 
 const initialState: initialStateType = {
@@ -57,6 +59,8 @@ const initialState: initialStateType = {
   isMyListLoading: false,
   myListCount: 0,
   hasMyListError: false,
+  hasFilmsError: false,
+  hasPromoFilmError: false,
 };
 
 
@@ -100,11 +104,17 @@ export const FilmProcess = createSlice({
     builder
       .addCase(fetchFilmsAction.pending, (state) => {
         state.isFilmsDataLoading = true;
+        state.hasFilmsError = false;
+      })
+      .addCase(fetchFilmsAction.rejected, (state) => {
+        state.isFilmsDataLoading = false;
+        state.hasFilmsError = true;
       })
       .addCase(fetchFilmsAction.fulfilled, (state, action) => {
         state.allFilms = action.payload;
         state.filteredFilms = action.payload;
         state.isFilmsDataLoading = false;
+        state.hasFilmsError = false;
       })
       .addCase(getFilm.pending, (state) => {
         state.isFilmDataLoading = true;
@@ -136,6 +146,11 @@ export const FilmProcess = createSlice({
       })
       .addCase(fetchPromoFilmAction.pending, (state) => {
         state.isPromoFilmLoading = true;
+        state.hasPromoFilmError = false;
+      })
+      .addCase(fetchPromoFilmAction.rejected, (state) => {
+        state.isPromoFilmLoading = false;
+        state.hasPromoFilmError = true;
       })
       .addCase(postReview.rejected, (state) => {
         state.error = 'The comment was not published, something went wrong(';
@@ -143,6 +158,7 @@ export const FilmProcess = createSlice({
       .addCase(fetchPromoFilmAction.fulfilled, (state, action) => {
         state.promoFilm = action.payload;
         state.isPromoFilmLoading = false;
+        state.hasPromoFilmError = false;
       })
       .addCase(postFavorite.fulfilled, (state, action) => {
         const film = action.payload;

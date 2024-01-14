@@ -21,3 +21,5 @@ export const getMyList = (state: Pick<State, NameSpace.Film>): Film[] => state[N
 export const myListLoading = (state: Pick<State, NameSpace.Film>): boolean => state[NameSpace.Film].isMyListLoading;
 export const getMyListCount = (state: Pick<State, NameSpace.Film>): number => state[NameSpace.Film].myListCount;
 export const getHasMyListError = (state: Pick<State, NameSpace.Film>): boolean => state[NameSpace.Film].hasMyListError;
+export const getHasFilmsError = (state: Pick<State, NameSpace.Film>): boolean => state[NameSpace.Film].hasFilmsError;
+export const getHasPromoFilmError = (state: Pick<State, NameSpace.Film>): boolean => state[NameSpace.Film].hasPromoFilmError;
