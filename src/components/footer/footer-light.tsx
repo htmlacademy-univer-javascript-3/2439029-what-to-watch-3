@@ -1,11 +1,11 @@
 import {Link} from 'react-router-dom';
-import {Paths} from '@const/paths.ts';
+import {PATHS} from '@const/paths.ts';
 
 function FooterLight() {
   return (
     <footer className="page-footer">
       <div className="logo">
-        <Link to ={Paths.Main()} className="logo__link logo__link--light">
+        <Link to ={PATHS.Main()} className="logo__link logo__link--light">
           <span className="logo__letter logo__letter--1">W</span>
           <span className="logo__letter logo__letter--2">T</span>
           <span className="logo__letter logo__letter--3">W</span>

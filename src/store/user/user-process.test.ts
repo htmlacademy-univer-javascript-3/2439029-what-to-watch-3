@@ -1,13 +1,14 @@
 import {checkAuth, login, logout} from '@api/api-action.ts';
 import {setUserError, userProcess} from '@store/user/process.ts';
 import {expect} from 'vitest';
+import {UserData} from 'types/request/post-user-request.ts';
 
 describe('UserProcess Slice', () => {
-  const auth = {
-    'name': 'Oliver.conner',
-    'avatarUrl': 'https://url-to-image/image.jpg',
-    'email': 'Oliver.conner@gmail.com',
-    'token': 'T2xpdmVyLmNvbm5lckBnbWFpbC5jb20='
+  const userData: UserData = {
+    name: 'Oliver.conner',
+    avatarUrl: 'https://url-to-image/image.jpg',
+    email: 'Oliver.conner@gmail.com',
+    token: 'T2xpdmVyLmNvbm5lckBnbWFpbC5jb20='
   };
 
   it('should return initial state with auth', () => {
@@ -21,7 +22,7 @@ describe('UserProcess Slice', () => {
 
   it('should return default initial state with no auth', () => {
     const emptyAction = {type: ''};
-    const expectedState = {authorizationStatus: false, userImage: 'img/avatar.jpg', error: null};
+    const expectedState = {authorizationStatus: false, userImage: null, error: null};
 
     const result = userProcess.reducer(undefined, emptyAction);
 
@@ -29,17 +30,17 @@ describe('UserProcess Slice', () => {
   });
 
   it('should set auth = true with "checkAuth.fulfilled" action', () => {
-    const initialState = {authorizationStatus: false, userImage: 'img/avatar.jpg', error: null};
+    const initialState = {authorizationStatus: false, userImage: null, error: null};
     const expectedState = {authorizationStatus: true, userImage: 'https://url-to-image/image.jpg', error: null};
 
-    const result = userProcess.reducer(initialState, checkAuth.fulfilled(auth.avatarUrl));
+    const result = userProcess.reducer(initialState, checkAuth.fulfilled(userData.avatarUrl, '', undefined));
 
     expect(result).toEqual(expectedState);
   });
 
   it('should set auth = false with "checkAuth.rejected" action', () => {
     const initialState = {authorizationStatus: true, userImage: 'test_img', error: null};
-    const expectedState = {authorizationStatus: false, userImage: 'img/avatar.jpg', error: null};
+    const expectedState = {authorizationStatus: false, userImage: null, error: null};
 
     const result = userProcess.reducer(initialState, checkAuth.rejected);
 
@@ -47,7 +48,7 @@ describe('UserProcess Slice', () => {
   });
   it('should set "NoAuth" with "login.rejected" action', () => {
     const initialState = {authorizationStatus: true, userImage: 'test_img', error: null};
-    const expectedState = {authorizationStatus: false, userImage: 'img/avatar.jpg', error: 'Fill the fields with valid values!'};
+    const expectedState = {authorizationStatus: false, userImage: null, error: 'Fill the fields with valid values!'};
 
     const result = userProcess.reducer(initialState, login.rejected);
 
@@ -56,17 +57,16 @@ describe('UserProcess Slice', () => {
 
   it('should set false, with "logout.fulfilled" action', () => {
     const initialState = {authorizationStatus: true, userImage: 'test_img', error: null};
-    const expectedState = {authorizationStatus: false, userImage: 'img/avatar.jpg', error: null};
+    const expectedState = {authorizationStatus: false, userImage: null, error: null};
 
     const result = userProcess.reducer(initialState, logout.fulfilled);
 
     expect(result).toEqual(expectedState);
   });
   it('should set true, with "login.fulfilled" action', () => {
-    const initialState = {authorizationStatus: false, userImage: 'img/avatar.jpg', error: null};
+    const initialState = {authorizationStatus: false, userImage: null, error: null};
     const expectedState = {authorizationStatus: true, userImage: 'https://url-to-image/image.jpg', error: null};
-
-    const result = userProcess.reducer(initialState, login.fulfilled(auth));
+    const result = userProcess.reducer(initialState, login.fulfilled(userData, '', {email: '', password: ''}));
 
     expect(result).toEqual(expectedState);
   });

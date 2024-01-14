@@ -2,18 +2,18 @@ import {createSlice} from '@reduxjs/toolkit';
 import {NameSpace} from '@const/namespaces.ts';
 import {CatalogGenre} from 'types/genre.ts';
 import {Film, FilmCard, PromoFilm} from 'types/film.ts';
-import {showedFilmsCount} from '@const/values.ts';
+import {SHOWED_FILMS_COUNT} from '@const/values.ts';
 import {ReviewType} from 'types/review.ts';
 import {
   fetchFilmsAction,
+  fetchMyList,
   fetchPromoFilmAction,
   getFilm,
-  fetchMyList,
   postFavorite,
   postReview
 } from '@api/api-action.ts';
 import browserHistory from '../../browser-history.ts';
-import {Paths} from '@const/paths.ts';
+import {PATHS} from '@const/paths.ts';
 
 type initialStateType = {
   genre: CatalogGenre;
@@ -34,6 +34,10 @@ type initialStateType = {
   myList: Film[];
   isMyListLoading: boolean;
   myListCount: number;
+  hasMyListError: boolean;
+  hasFilmsError: boolean;
+  hasPromoFilmError: boolean;
+  hasFilmError: boolean;
 };
 
 const initialState: initialStateType = {
@@ -42,7 +46,7 @@ const initialState: initialStateType = {
   promoFilm: null,
   filteredFilms: [],
   allFilms: [],
-  count: showedFilmsCount,
+  count: SHOWED_FILMS_COUNT,
   authorizationStatus: false,
   error: null,
   film: null,
@@ -54,7 +58,11 @@ const initialState: initialStateType = {
   isPromoFilmLoading: false,
   myList: [],
   isMyListLoading: false,
-  myListCount: 0
+  myListCount: 0,
+  hasMyListError: false,
+  hasFilmsError: false,
+  hasPromoFilmError: false,
+  hasFilmError: false
 };
 
 
@@ -63,13 +71,8 @@ export const FilmProcess = createSlice({
   initialState,
   reducers: {
     changeShowedFilms(state) {
-      state.count = state.filteredFilms.length > state.count + showedFilmsCount
-        ? state.count + showedFilmsCount : state.filteredFilms.length;
-    },
-    setError(state, action: {
-      payload: string | null;
-    }) {
-      state.error = action.payload;
+      state.count = state.filteredFilms.length > state.count + SHOWED_FILMS_COUNT
+        ? state.count + SHOWED_FILMS_COUNT : state.filteredFilms.length;
     },
     setGenres(state, action: {
       payload: CatalogGenre[];
@@ -85,7 +88,7 @@ export const FilmProcess = createSlice({
       payload: CatalogGenre;
     }) {
       state.genre = action.payload;
-      state.count = showedFilmsCount;
+      state.count = SHOWED_FILMS_COUNT;
       if (state.genre === 'All genres') {
         state.filteredFilms = state.allFilms;
       } else {
@@ -98,22 +101,35 @@ export const FilmProcess = createSlice({
     builder
       .addCase(fetchFilmsAction.pending, (state) => {
         state.isFilmsDataLoading = true;
+        state.hasFilmsError = false;
+      })
+      .addCase(fetchFilmsAction.rejected, (state) => {
+        state.isFilmsDataLoading = false;
+        state.hasFilmsError = true;
       })
       .addCase(fetchFilmsAction.fulfilled, (state, action) => {
         state.allFilms = action.payload;
         state.filteredFilms = action.payload;
         state.isFilmsDataLoading = false;
+        state.hasFilmsError = false;
       })
       .addCase(getFilm.pending, (state) => {
         state.isFilmDataLoading = true;
+        state.hasFilmError = false;
       })
       .addCase(fetchMyList.pending, (state) => {
         state.isMyListLoading = true;
+        state.hasMyListError = false;
+      })
+      .addCase(fetchMyList.rejected, (state) => {
+        state.isMyListLoading = false;
+        state.hasMyListError = true;
       })
       .addCase(fetchMyList.fulfilled, (state, action) => {
         state.myList = action.payload;
         state.myListCount = state.myList.length;
         state.isMyListLoading = false;
+        state.hasMyListError = false;
       })
       .addCase(getFilm.fulfilled, (state, action) => {
         const filmData = action.payload;
@@ -121,13 +137,23 @@ export const FilmProcess = createSlice({
         state.reviews = filmData.comments;
         state.similarFilms = filmData.moreLikeThis;
         state.isFilmDataLoading = false;
+        state.hasFilmError = false;
       })
-      .addCase(getFilm.rejected, (state) => {
+      .addCase(getFilm.rejected, (state, action) => {
         state.isFilmDataLoading = false;
-        browserHistory.push(Paths.NotFound());
+        if (action.error.code === 'ERR_BAD_REQUEST') {
+          browserHistory.push(PATHS.NotFound());
+        } else {
+          state.hasFilmError = true;
+        }
       })
       .addCase(fetchPromoFilmAction.pending, (state) => {
         state.isPromoFilmLoading = true;
+        state.hasPromoFilmError = false;
+      })
+      .addCase(fetchPromoFilmAction.rejected, (state) => {
+        state.isPromoFilmLoading = false;
+        state.hasPromoFilmError = true;
       })
       .addCase(postReview.rejected, (state) => {
         state.error = 'The comment was not published, something went wrong(';
@@ -135,6 +161,7 @@ export const FilmProcess = createSlice({
       .addCase(fetchPromoFilmAction.fulfilled, (state, action) => {
         state.promoFilm = action.payload;
         state.isPromoFilmLoading = false;
+        state.hasPromoFilmError = false;
       })
       .addCase(postFavorite.fulfilled, (state, action) => {
         const film = action.payload;
@@ -154,4 +181,4 @@ export const FilmProcess = createSlice({
 });
 
 
-export const {changeShowedFilms, setError, setSection, setGenres, changeGenre} = FilmProcess.actions;
+export const {changeShowedFilms, setSection, setGenres, changeGenre} = FilmProcess.actions;

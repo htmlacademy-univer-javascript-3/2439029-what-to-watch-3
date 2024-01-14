@@ -5,7 +5,7 @@ import {getFilm} from '@api/api-action.ts';
 import {getFilmData} from '@store/film/selections.ts';
 import Spinner from '@components/spinner/spinner.tsx';
 import {useAppDispatch, useAppSelector} from '@components/use-app/use-app.tsx';
-import {Paths} from '@const/paths.ts';
+import {PATHS} from '@const/paths.ts';
 
 export function PlayerPage() {
   const id = useParams().id || '';
@@ -75,7 +75,7 @@ export function PlayerPage() {
       >
       </video>
 
-      <Link to={Paths.MoviePage(film.id)}>
+      <Link to={PATHS.MoviePage(film.id)}>
         <button type="button" className="player__exit">Exit</button>
       </Link>
       <div className="player__controls">

@@ -1,74 +1,103 @@
 import {describe, expect} from 'vitest';
 import {NameSpace} from '@const/namespaces.ts';
 import {
-  getPromoFilm, getFilms, getAllFilms, getShowFilms, getFilmData, getError, getReviews, getSimilarFilms,
-  filmsDataLoading, filmDataLoading, getGenre, getGenres, getSection, getMyList, myListLoading, getMyListCount
+  getPromoFilm,
+  getFilms,
+  getAllFilms,
+  getShowFilms,
+  getFilmData,
+  getError,
+  getReviews,
+  getSimilarFilms,
+  filmsDataLoading,
+  filmDataLoading,
+  getGenre,
+  getGenres,
+  getSection,
+  getMyList,
+  myListLoading,
+  getMyListCount,
+  getHasMyListError, getHasFilmsError, getHasPromoFilmError, getHasFilmError
 }
   from '@store/film/selections.ts';
-import {showedFilmsCount} from '@const/values.ts';
+import {SHOWED_FILMS_COUNT} from '@const/values.ts';
+import {CatalogGenre} from 'types/genre.ts';
+import {Film, FilmCard, PromoFilm} from 'types/film.ts';
+import {ReviewType} from 'types/review.ts';
 
 describe('UserSlice selectors', () => {
-  const promofilm = {
-    'id': '26193591-d574-43c5-b80a-9344b71814dc',
-    'name': 'Fantastic Beasts: The Crimes of Grindelwald',
-    'posterImage': 'https://13.design.htmlacademy.pro/static/film/poster/Fantastic_Beasts.jpg',
-    'backgroundImage': 'https://13.design.htmlacademy.pro/static/film/background/Fantastic_Beasts.jpg',
-    'videoLink': 'https://13.design.htmlacademy.pro/static/film/video/bike.mp4',
-    'genre': 'Fantasy',
-    'released': 2018,
-    'isFavorite': true
+  const promofilm: PromoFilm = {
+    id: '26193591-d574-43c5-b80a-9344b71814dc',
+    name: 'Fantastic Beasts: The Crimes of Grindelwald',
+    posterImage: 'https://13.design.htmlacademy.pro/static/film/poster/Fantastic_Beasts.jpg',
+    backgroundImage: 'https://13.design.htmlacademy.pro/static/film/background/Fantastic_Beasts.jpg',
+    videoLink: 'https://13.design.htmlacademy.pro/static/film/video/bike.mp4',
+    genre: 'Fantasy',
+    released: 2018,
+    isFavorite: true
   };
 
-  const film1 = {
-    'id': 'aba664c3-bdf3-4fb3-b8f3-42e007864bbf',
-    'name': 'test1',
-    'posterImage': 'https://url-to-image/image.jpg',
-    'backgroundImage': 'https://url-to-image/image.jpg',
-    'backgroundColor': '#ffffff',
-    'videoLink': 'https://url-to-video/video.jpg',
-    'description': 'In the 1930s, the Grand Budapest Hotel is a popular European ski resort, presided over by concierge Gustave H. (Ralph Fiennes). Zero, a junior lobby boy, becomes Gustave\'s friend and protege.',
-    'rating': 8.9,
-    'scoresCount': 240,
-    'director': 'Wes Anderson',
-    'starring': [
+  const filmCard : FilmCard = {
+    id: 'aba664c3-bdf3-4fb3-b8f3-42e007864bbf',
+    name: 'test',
+    posterImage: 'https://url-to-image/image.jpg',
+    backgroundImage: 'https://url-to-image/image.jpg',
+    backgroundColor: '#ffffff',
+    videoLink: 'https://url-to-video/video.jpg',
+    description: 'In the 1930s, the Grand Budapest Hotel is a popular European ski resort, presided over by concierge Gustave H. (Ralph Fiennes). Zero, a junior lobby boy, becomes Gustave\'s friend and protege.',
+    rating: 8.9,
+    scoresCount: 240,
+    director: 'Wes Anderson',
+    starring: [
       'Bill Murray'
     ],
-    'runTime': 99,
-    'genre': 'Comedy',
-    'released': 2014,
-    'isFavorite': false
+    runTime: 99,
+    genre: 'Comedy',
+    released: 2014,
+    isFavorite: false
+  };
+  const film1: Film = {
+    id: 'aba664c3-bdf3-4fb3-b8f3-42e007864bbf',
+    name: 'test1',
+    previewImage: 'https://url-to-image/image.jpg',
+    previewVideoLink: 'https://url-to-video/video.mp4',
+    genre: 'Comedy'
   };
   const film2 = {...film1};
   film2.name = 'test2';
   const film3 = {...film1};
   film3.name = 'test3';
-  const review = {
-    'id': 'ac8adb38-0cfa-4585-a767-d3afcc557a05',
-    'date': '2023-05-25T12:00:00.000Z',
-    'user': 'Kate Muir',
-    'comment': 'Discerning travellers and Wes Anderson fans will luxuriate in the glorious Mittel-European kitsch of one of the director\'s funniest and most exquisitely designed movies in years.',
-    'rating': 8
+  const review: ReviewType = {
+    id: 'ac8adb38-0cfa-4585-a767-d3afcc557a05',
+    date: '2023-05-25T12:00:00.000Z',
+    user: 'Kate Muir',
+    comment: 'Discerning travellers and Wes Anderson fans will luxuriate in the glorious Mittel-European kitsch of one of the director\'s funniest and most exquisitely designed movies in years.',
+    rating: 8
   };
   const state = {
-    [NameSpace.Film]: {
-      genre: 'All genres',
-      genres: ['All genres'],
+    [NameSpace.Film]:{
+      genre: 'All genres' as CatalogGenre,
+      genres: ['All genres'] as CatalogGenre[],
       promoFilm: promofilm,
       filteredFilms: [film1, film2],
       allFilms: [film1, film2, film3],
-      count: showedFilmsCount,
+      count: SHOWED_FILMS_COUNT,
       authorizationStatus: false,
       error: 'test_error',
-      film: film1,
+      film: filmCard,
       similarFilms: [film3],
       reviews: [review],
-      section: 'Overview',
+      section: 'Overview' as 'Overview' | 'Details' | 'Reviews',
       isFilmsDataLoading: true,
       isFilmDataLoading: false,
       isPromoFilmLoading: true,
       myList: [film2],
       isMyListLoading: false,
-      myListCount: 1
+      myListCount: 1,
+      hasMyListError: true,
+      hasPromoFilmError: false,
+      hasFilmsError: true,
+      hasFilmError: false
     },
   };
   it('should return promoFilm from state', () => {
@@ -151,5 +180,24 @@ describe('UserSlice selectors', () => {
     const result = getMyListCount(state);
     expect(result).toBe(myListCount);
   });
-
+  it('should return hasMyListError from state', () => {
+    const {hasMyListError} = state[NameSpace.Film];
+    const result = getHasMyListError(state);
+    expect(result).toBe(hasMyListError);
+  });
+  it('should return hasFilmsError from state', () => {
+    const {hasFilmsError} = state[NameSpace.Film];
+    const result = getHasFilmsError(state);
+    expect(result).toBe(hasFilmsError);
+  });
+  it('should return hasPromoFilmError from state', () => {
+    const {hasPromoFilmError} = state[NameSpace.Film];
+    const result = getHasPromoFilmError(state);
+    expect(result).toBe(hasPromoFilmError);
+  });
+  it('should return hasFilmError from state', () => {
+    const {hasFilmError} = state[NameSpace.Film];
+    const result = getHasFilmError(state);
+    expect(result).toBe(hasFilmError);
+  });
 });

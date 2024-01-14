@@ -2,6 +2,7 @@ import {Film} from 'types/film.ts';
 import FilmCard from '@components/film-card/film-card.tsx';
 import {useState} from 'react';
 import {TimeoutId} from '@reduxjs/toolkit/dist/query/core/buildMiddleware/types';
+import {TIMEOUT_SHOW_VIDEO} from '@const/values.ts';
 
 type FilmCardListProps = {
   films: Film[];
@@ -14,7 +15,7 @@ function FilmCardList({films}: FilmCardListProps) {
   const handleFocus = (id: string) => {
     timer = setTimeout(() => {
       setSelectedFilm(id);
-    }, 200);
+    }, TIMEOUT_SHOW_VIDEO);
   };
 
   const handleFocusOff = () => {

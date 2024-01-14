@@ -8,8 +8,9 @@ import {useAppSelector, useAppDispatch} from '@components/use-app/use-app.tsx';
 import {useEffect} from 'react';
 import {getFilm} from '@api/api-action.ts';
 import Spinner from '@components/spinner/spinner.tsx';
-import {filmDataLoading, getFilmData, getSimilarFilms} from '@store/film/selections.ts';
+import {filmDataLoading, getFilmData, getHasFilmError, getSimilarFilms} from '@store/film/selections.ts';
 import FooterLight from '@components/footer/footer-light.tsx';
+import Error from '@pages/error/error.tsx';
 
 type MoviePageProps = {
   children: JSX.Element;
@@ -27,7 +28,10 @@ function MoviePage(props: MoviePageProps) {
   const film = useAppSelector(getFilmData);
   const similarFilms = useAppSelector(getSimilarFilms);
   const loading = useAppSelector(filmDataLoading);
-
+  const error = useAppSelector(getHasFilmError);
+  if (error) {
+    return <Error id={id}/>;
+  }
   return (
     !loading && film ?
       <>

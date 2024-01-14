@@ -3,23 +3,25 @@ import {NameSpace} from '@const/namespaces.ts';
 import {checkAuth, login, logout} from '@api/api-action.ts';
 import {dropToken, saveToken} from '@components/use-app/use-app.tsx';
 import browserHistory from '../../browser-history.ts';
-import {Paths} from '@const/paths.ts';
+import {PATHS} from '@const/paths.ts';
 
 export type UserProcess = {
   authorizationStatus: boolean;
-  userImage: string;
+  userImage: string | null;
   error: string | null;
 };
 const initialState: UserProcess = {
   authorizationStatus: false,
-  userImage: 'img/avatar.jpg',
+  userImage: null,
   error: null
 };
 export const userProcess = createSlice({
   name: NameSpace.User,
   initialState,
   reducers: {
-    setUserError(state, action: { payload: string | null }) {
+    setUserError(state, action: {
+      payload: string | null;
+    }) {
       state.error = action.payload;
     }
   },
@@ -31,7 +33,7 @@ export const userProcess = createSlice({
       })
       .addCase(checkAuth.rejected, (state) => {
         state.authorizationStatus = false;
-        state.userImage = 'img/avatar.jpg';
+        state.userImage = null;
       })
       .addCase(login.fulfilled, (state, action) => {
         const userData = action.payload;
@@ -39,16 +41,16 @@ export const userProcess = createSlice({
         state.authorizationStatus = true;
         state.userImage = userData.avatarUrl;
         state.error = null;
-        browserHistory.push(Paths.Main());
+        browserHistory.push(PATHS.Main());
       })
       .addCase(login.rejected, (state) => {
         state.authorizationStatus = false;
-        state.userImage = 'img/avatar.jpg';
+        state.userImage = null;
         state.error = 'Fill the fields with valid values!';
       })
       .addCase(logout.fulfilled, (state) => {
         state.authorizationStatus = false;
-        state.userImage = 'img/avatar.jpg';
+        state.userImage = null;
         dropToken();
       });
   }

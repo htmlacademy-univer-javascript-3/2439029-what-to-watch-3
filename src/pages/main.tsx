@@ -6,14 +6,30 @@ import {useAppSelector} from '@components/use-app/use-app.tsx';
 import ShowMore from '@components/buttons/show-more.tsx';
 import Spinner from '@components/spinner/spinner.tsx';
 import PromoFilmInfo from '@components/main-page/promo-film-info.tsx';
-import {filmsDataLoading, getFilms, getPromoFilm, getShowFilms} from '@store/film/selections.ts';
+import {
+  filmsDataLoading,
+  getFilms,
+  getHasFilmsError,
+  getHasPromoFilmError,
+  getPromoFilm,
+  getShowFilms
+} from '@store/film/selections.ts';
 import FooterLight from '@components/footer/footer-light.tsx';
+import Error from '@pages/error/error.tsx';
 
 function MainPage() {
   const count = useAppSelector(getShowFilms);
   const films = useAppSelector(getFilms);
   const promoFilm = useAppSelector(getPromoFilm);
   const loading = useAppSelector(filmsDataLoading);
+  const errorFilms = useAppSelector(getHasFilmsError);
+  const errorPromo = useAppSelector(getHasPromoFilmError);
+  if (errorFilms || errorPromo) {
+    return (<Error/>);
+  }
+  if (loading){
+    return (<Spinner/>);
+  }
   return (
     <>
       <section className="film-card">
@@ -29,15 +45,14 @@ function MainPage() {
       </section>
 
       <div className="page-content">
-        {loading ? <Spinner/> :
-          <section className="catalog">
-            <h2 className="catalog__title visually-hidden">Catalog</h2>
-            <GenreList/>
-            <div className="catalog__films-list">
-              <FilmCardList films={films.slice(0, count)}/>
-            </div>
-            {count < films.length && <ShowMore/>}
-          </section>}
+        <section className="catalog">
+          <h2 className="catalog__title visually-hidden">Catalog</h2>
+          <GenreList/>
+          <div className="catalog__films-list">
+            <FilmCardList films={films.slice(0, count)}/>
+          </div>
+          {count < films.length && <ShowMore/>}
+        </section>
         <FooterLight/>
       </div>
     </>
