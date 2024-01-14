@@ -17,7 +17,7 @@ import {
   getMyList,
   myListLoading,
   getMyListCount,
-  getHasMyListError, getHasFilmsError, getHasPromoFilmError
+  getHasMyListError, getHasFilmsError, getHasPromoFilmError, getHasFilmError
 }
   from '@store/film/selections.ts';
 import {SHOWED_FILMS_COUNT} from '@const/values.ts';
@@ -96,7 +96,8 @@ describe('UserSlice selectors', () => {
       myListCount: 1,
       hasMyListError: true,
       hasPromoFilmError: false,
-      hasFilmsError: true
+      hasFilmsError: true,
+      hasFilmError: false
     },
   };
   it('should return promoFilm from state', () => {
@@ -193,5 +194,10 @@ describe('UserSlice selectors', () => {
     const {hasPromoFilmError} = state[NameSpace.Film];
     const result = getHasPromoFilmError(state);
     expect(result).toBe(hasPromoFilmError);
+  });
+  it('should return hasFilmError from state', () => {
+    const {hasFilmError} = state[NameSpace.Film];
+    const result = getHasFilmError(state);
+    expect(result).toBe(hasFilmError);
   });
 });

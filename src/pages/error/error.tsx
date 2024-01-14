@@ -1,7 +1,7 @@
 import styles from './error.module.css';
 import {useAppDispatch, useAppSelector} from '@components/use-app/use-app.tsx';
 import {fetchFilmsAction, fetchMyList, fetchPromoFilmAction, getFilm} from '@api/api-action.ts';
-import {getHasFilmsError, getHasMyListError, getHasPromoFilmError} from '@store/film/selections.ts';
+import {getHasFilmError, getHasFilmsError, getHasMyListError, getHasPromoFilmError} from '@store/film/selections.ts';
 
 type ErrorProps = {
   id?: string;
@@ -12,10 +12,11 @@ function Error({id}: ErrorProps): JSX.Element {
   const myListError = useAppSelector(getHasMyListError);
   const errorFilms = useAppSelector(getHasFilmsError);
   const errorPromo = useAppSelector(getHasPromoFilmError);
+  const errorFilm = useAppSelector(getHasFilmError);
   return (
     <div className={styles.page}>
       <h1 className={styles.code}>500</h1>
-      <h2 className={styles.info}>Failed to load {errorFilms || errorPromo ? 'movies' : 'my list'}</h2>
+      <h2 className={styles.info}>Failed to load {errorFilms || errorPromo || errorFilm ? 'movies' : 'my list'}</h2>
       <div className={styles.info}>Technical chocolates appeared...
       </div>
       <div className={styles.button}>

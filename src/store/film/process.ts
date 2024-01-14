@@ -6,9 +6,9 @@ import {SHOWED_FILMS_COUNT} from '@const/values.ts';
 import {ReviewType} from 'types/review.ts';
 import {
   fetchFilmsAction,
+  fetchMyList,
   fetchPromoFilmAction,
   getFilm,
-  fetchMyList,
   postFavorite,
   postReview
 } from '@api/api-action.ts';
@@ -37,6 +37,7 @@ type initialStateType = {
   hasMyListError: boolean;
   hasFilmsError: boolean;
   hasPromoFilmError: boolean;
+  hasFilmError: boolean;
 };
 
 const initialState: initialStateType = {
@@ -61,6 +62,7 @@ const initialState: initialStateType = {
   hasMyListError: false,
   hasFilmsError: false,
   hasPromoFilmError: false,
+  hasFilmError: false
 };
 
 
@@ -71,11 +73,6 @@ export const FilmProcess = createSlice({
     changeShowedFilms(state) {
       state.count = state.filteredFilms.length > state.count + SHOWED_FILMS_COUNT
         ? state.count + SHOWED_FILMS_COUNT : state.filteredFilms.length;
-    },
-    setError(state, action: {
-      payload: string | null;
-    }) {
-      state.error = action.payload;
     },
     setGenres(state, action: {
       payload: CatalogGenre[];
@@ -118,6 +115,7 @@ export const FilmProcess = createSlice({
       })
       .addCase(getFilm.pending, (state) => {
         state.isFilmDataLoading = true;
+        state.hasFilmError = false;
       })
       .addCase(fetchMyList.pending, (state) => {
         state.isMyListLoading = true;
@@ -139,10 +137,15 @@ export const FilmProcess = createSlice({
         state.reviews = filmData.comments;
         state.similarFilms = filmData.moreLikeThis;
         state.isFilmDataLoading = false;
+        state.hasFilmError = false;
       })
-      .addCase(getFilm.rejected, (state) => {
+      .addCase(getFilm.rejected, (state, action) => {
         state.isFilmDataLoading = false;
-        browserHistory.push(PATHS.NotFound());
+        if (action.error.code === 'ERR_BAD_REQUEST') {
+          browserHistory.push(PATHS.NotFound());
+        } else {
+          state.hasFilmError = true;
+        }
       })
       .addCase(fetchPromoFilmAction.pending, (state) => {
         state.isPromoFilmLoading = true;
@@ -178,4 +181,4 @@ export const FilmProcess = createSlice({
 });
 
 
-export const {changeShowedFilms, setError, setSection, setGenres, changeGenre} = FilmProcess.actions;
+export const {changeShowedFilms, setSection, setGenres, changeGenre} = FilmProcess.actions;
