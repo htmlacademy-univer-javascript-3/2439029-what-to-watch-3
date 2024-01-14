@@ -2,6 +2,6 @@ export const SHOWED_FILMS_COUNT = 8;
 
 export const SHOWED_SIMILAR_FILMS_COUNT = 4;
 
-export const TIMEOUT_SHOW_ERROR = 2000;
+export const TIMEOUT_SHOW_ERROR = 4000;
 
 export const TIMEOUT_SHOW_VIDEO = 2000;
