@@ -2,7 +2,7 @@ import {createSlice} from '@reduxjs/toolkit';
 import {NameSpace} from '@const/namespaces.ts';
 import {CatalogGenre} from 'types/genre.ts';
 import {Film, FilmCard, PromoFilm} from 'types/film.ts';
-import {SHOWED_FILMS_COUNT} from '@const/values.ts';
+import {SHOWED_FILMS_COUNT, SHOWED_SIMILAR_FILMS_COUNT} from '@const/values.ts';
 import {ReviewType} from 'types/review.ts';
 import {
   fetchFilmsAction,
@@ -135,7 +135,7 @@ export const FilmProcess = createSlice({
         const filmData = action.payload;
         state.film = filmData.filmCard;
         state.reviews = filmData.comments;
-        state.similarFilms = filmData.moreLikeThis;
+        state.similarFilms = filmData.moreLikeThis.slice(0, SHOWED_SIMILAR_FILMS_COUNT);
         state.isFilmDataLoading = false;
         state.hasFilmError = false;
       })

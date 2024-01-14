@@ -46,7 +46,7 @@ export const userProcess = createSlice({
       .addCase(login.rejected, (state) => {
         state.authorizationStatus = false;
         state.userImage = null;
-        state.error = 'Fill the fields with valid values!';
+        state.error = 'Failed to register, please check if your email and password are correct!';
       })
       .addCase(logout.fulfilled, (state) => {
         state.authorizationStatus = false;
