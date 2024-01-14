@@ -2,10 +2,11 @@ import {Link, useParams} from 'react-router-dom';
 
 import {useEffect, useRef, useState} from 'react';
 import {getFilm} from '@api/api-action.ts';
-import {getFilmData} from '@store/film/selections.ts';
+import {getFilmData, getHasFilmError} from '@store/film/selections.ts';
 import Spinner from '@components/spinner/spinner.tsx';
 import {useAppDispatch, useAppSelector} from '@components/use-app/use-app.tsx';
 import {PATHS} from '@const/paths.ts';
+import Error from '@pages/error/error.tsx';
 
 export function PlayerPage() {
   const id = useParams().id || '';
@@ -16,6 +17,10 @@ export function PlayerPage() {
   const [progress, setProgress] = useState(0);
   const [duration, setDuration] = useState(0);
   const isMounted = useRef(false);
+  const error = useAppSelector(getHasFilmError);
+  if (error) {
+    return <Error id={id}/>;
+  }
 
   const getDurationFormat = (seconds: number): string => {
     const hours = Math.floor(seconds / (60 * 60));
